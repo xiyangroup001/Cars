@@ -11,5 +11,12 @@
 
     <artifactId>cars_api</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>cn.betaxiyan</groupId>
+            <artifactId>cars_model</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 
 </project>
