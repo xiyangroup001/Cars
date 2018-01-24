@@ -6,11 +6,18 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="Cars" />
+        <module name="cars_api" />
+        <module name="cars_model" />
+        <module name="cars_provider" />
+        <module name="cars_task" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="Cars" target="1.5" />
+      <module name="cars_api" target="1.5" />
+      <module name="cars_model" target="1.5" />
+      <module name="cars_provider" target="1.5" />
+      <module name="cars_task" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>
