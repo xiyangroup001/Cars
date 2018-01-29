@@ -7,11 +7,33 @@
         <result property="userGuid" column="user_guid"/>
         <result property="userPhone" column="user_phone"/>
         <result property="userPassword" column="password"/>
-        <result property="registrateTime" column="registrate_time" />
+        <result property="registrateTime" column="registrate_time"/>
         <result property="userType" column="user_type"/>
         <result property="headPicUrl" column="head_pic_url"/>
     </resultMap>
     <select id="selectAllUser" resultMap="userMap">
         select * from user;
     </select>
+    <insert id="saveUser" parameterType="com.xiyan.model.entrty.User">
+        insert into user(
+            user_name,
+            user_id,
+            user_guid,
+            user_phone,
+            password,
+            registrate_time,
+            user_type,
+            Head_pic_url
+        )
+        values(
+            #{userName},
+            #{userId},
+            #{userGuid},
+            #{userPhone},
+            #{userPassword},
+            #{registrateTime},
+            #{userType},
+            #{headPicUrl}
+        )
+    </insert>
 </mapper>

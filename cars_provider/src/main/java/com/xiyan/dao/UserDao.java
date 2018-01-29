@@ -12,4 +12,5 @@ import java.util.List;
 @MapperScan
 public interface UserDao {
     List<User> selectAllUser();
+    int saveUser(User user);
 }

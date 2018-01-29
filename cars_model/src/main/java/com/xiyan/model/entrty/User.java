@@ -4,14 +4,14 @@ import com.alibaba.fastjson.annotation.JSONField;
 import org.joda.time.DateTime;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
-import java.util.Date;
 
 /**
  * @antuor binwang
  * @date 2018/1/24  15:33
  */
-public class User {
+public class User implements Serializable {
     private String userName;
     private int userId;
     private String userGuid;
@@ -69,10 +69,12 @@ public class User {
         return registrateTime;
     }
 
-    public void setRegistrateTime(Timestamp registrateTime) {
-        this.registrateTime = registrateTime;
+    public void setRegistrateTime(String registrateTime) {
+        this.registrateTime = Timestamp.valueOf(registrateTime);
     }
-
+    //public void setRegistrateTime(Timestamp registrateTime) {
+    //    this.registrateTime = registrateTime;
+    //}
     public short getUserType() {
         return userType;
     }

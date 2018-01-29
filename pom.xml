@@ -13,9 +13,18 @@
         <module>cars_model</module>
         <module>cars_task</module>
         <module>cars_provider</module>
+        <module>cars_controller</module>
     </modules>
 
+    <build>
+        <plugins>
+
+        </plugins>
+    </build>
+
     <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
         <spring_version>4.3.10.RELEASE</spring_version>
         <mybatis_version>3.4.1</mybatis_version>
         <mybatis-spring_version>1.3.1</mybatis-spring_version>
@@ -111,11 +120,7 @@
             <artifactId>slf4j-jdk14</artifactId>
             <version>${slf4j_version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-parent</artifactId>
-            <version>${slf4j_version}</version>
-        </dependency>
+
 
         <dependency>
             <groupId>ch.qos.logback</groupId>
@@ -167,7 +172,11 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>5.1.42</version>
-
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
         </dependency>
     </dependencies>
 </project>

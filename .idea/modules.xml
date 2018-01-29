@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Cars.iml" filepath="$PROJECT_DIR$/Cars.iml" />
       <module fileurl="file://$PROJECT_DIR$/cars_api/cars_api.iml" filepath="$PROJECT_DIR$/cars_api/cars_api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cars_controller/cars_controller.iml" filepath="$PROJECT_DIR$/cars_controller/cars_controller.iml" />
       <module fileurl="file://$PROJECT_DIR$/cars_model/cars_model.iml" filepath="$PROJECT_DIR$/cars_model/cars_model.iml" />
       <module fileurl="file://$PROJECT_DIR$/cars_provider/cars_provider.iml" filepath="$PROJECT_DIR$/cars_provider/cars_provider.iml" />
       <module fileurl="file://$PROJECT_DIR$/cars_task/cars_task.iml" filepath="$PROJECT_DIR$/cars_task/cars_task.iml" />

@@ -19,7 +19,6 @@ public class JodaTimeTypeHandler extends BaseTypeHandler<DateTime> {
         System.out.println(1);
 
         ps.setDate(i, (Date) parameter.toDate());
-
     }
 
     public DateTime getNullableResult(ResultSet rs, String columnName) throws SQLException {
