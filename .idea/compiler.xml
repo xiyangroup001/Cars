@@ -14,12 +14,12 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="Cars" target="1.5" />
-      <module name="cars_api" target="1.5" />
-      <module name="cars_controller" target="1.5" />
-      <module name="cars_model" target="1.6" />
-      <module name="cars_provider" target="1.5" />
-      <module name="cars_task" target="1.5" />
+      <module name="Cars" target="1.8" />
+      <module name="cars_api" target="1.8" />
+      <module name="cars_controller" target="1.8" />
+      <module name="cars_model" target="1.8" />
+      <module name="cars_provider" target="1.8" />
+      <module name="cars_task" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
