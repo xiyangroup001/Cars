@@ -14,29 +14,15 @@
 
     <mvc:annotation-driven/>
 
-    <context:component-scan base-package="com.xiyan.service.impl"></context:component-scan>
+    <context:component-scan base-package="com.xiyan.service.impl"/>
 
-    <context:property-placeholder  location="classpath:JDBC.properties"/>
-
-    <import resource="classpath:spring/Spring_dubbo.xml"></import>
-
-    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
-        <property name="url" value="${URL}"/>
-        <property name="username" value="${USER}"/>
-        <property name="password" value="${PASSWORD}"/>
-    </bean>
-    <!--事务管理类-->
-    <bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-        <property name="dataSource" ref="dataSource"/>
+    <!--properties配置引入-->
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations" value="classpath:*.properties"/>
     </bean>
 
-    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-        <property name="dataSource" ref="dataSource"/>
-        <property name="mapperLocations" value="classpath:mapper/userDao.xml"/>
-    </bean>
+    <import resource="classpath:spring/spring_jdbc.xml"/>
+    <import resource="classpath:spring/spring_dubbo.xml"/>
 
-    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
-        <property name="basePackage" value="com.xiyan.dao"/>
-    </bean>
+
 </beans>

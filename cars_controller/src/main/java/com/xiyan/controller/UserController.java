@@ -8,8 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.sql.Timestamp;
-
 /**
  * @antuor binwang
  * @date 2018/1/29  11:29
@@ -21,7 +19,7 @@ public class UserController {
     private UserService userService;
 
     @RequestMapping("/save")
-    public String savaUser(User user){
+    public String savaUser(User user) {
         return JSON.toJSONString(userService.insertUser(user), SerializerFeature.WRITE_MAP_NULL_FEATURES);
     }
 }

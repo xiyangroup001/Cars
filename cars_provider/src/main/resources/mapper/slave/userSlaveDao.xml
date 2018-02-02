@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" " http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.xiyan.dao.UserDao">
+<mapper namespace="com.xiyan.dao.slave.UserSlaveDao">
     <resultMap id="userMap" type="com.xiyan.model.entrty.User">
         <id property="userName" column="user_name"/>
         <result property="userId" column="user_id"/>
@@ -14,26 +14,5 @@
     <select id="selectAllUser" resultMap="userMap">
         select * from user;
     </select>
-    <insert id="saveUser" parameterType="com.xiyan.model.entrty.User">
-        insert into user(
-            user_name,
-            user_id,
-            user_guid,
-            user_phone,
-            password,
-            registrate_time,
-            user_type,
-            Head_pic_url
-        )
-        values(
-            #{userName},
-            #{userId},
-            #{userGuid},
-            #{userPhone},
-            #{userPassword},
-            #{registrateTime},
-            #{userType},
-            #{headPicUrl}
-        )
-    </insert>
+
 </mapper>

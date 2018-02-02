@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+    <!--<context:property-placeholder location="classpath:jdbc.properties"/>-->
+
+    <!--master用的连接池-->
+    <bean id="masterDataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
+        <property name="url" value="${master.url}"/>
+        <property name="username" value="${master.user}"/>
+        <property name="password" value="${master.password}"/>
+    </bean>
+
+    <!--slave用的连接池-->
+    <bean id="slaveDataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
+        <property name="url" value="${slave.url}"/>
+        <property name="username" value="${slave.user}"/>
+        <property name="password" value="${slave.password}"/>
+    </bean>
+
+    <!--事务管理类-->
+    <bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="masterDataSource"/>
+    </bean>
+
+    <!-- MyBatis master配置 -->
+    <bean id="masterSqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="masterDataSource"/>
+        <property name="mapperLocations" value="classpath:mapper/master/*.xml"/>
+    </bean>
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="sqlSessionFactoryBeanName" value="masterSqlSessionFactory"/>
+        <property name="basePackage" value="com.xiyan.dao.master"/>
+    </bean>
+    <bean class="org.mybatis.spring.SqlSessionTemplate">
+        <constructor-arg ref="masterSqlSessionFactory"/>
+    </bean>
+
+
+    <!-- MyBatis slave配置 -->
+    <bean id="slaveSqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="slaveDataSource"/>
+        <property name="mapperLocations" value="classpath:mapper/slave/*.xml"/>
+    </bean>
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="sqlSessionFactoryBeanName" value="slaveSqlSessionFactory"/>
+        <property name="basePackage" value="com.xiyan.dao.slave"/>
+    </bean>
+    <bean class="org.mybatis.spring.SqlSessionTemplate">
+        <constructor-arg ref="slaveSqlSessionFactory"/>
+    </bean>
+
+</beans>
