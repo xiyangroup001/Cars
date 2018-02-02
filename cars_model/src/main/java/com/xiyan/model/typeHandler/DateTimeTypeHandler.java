@@ -10,8 +10,7 @@ import org.apache.ibatis.type.MappedTypes;
 import org.apache.ibatis.type.TypeHandler;
 import org.joda.time.DateTime;
 
-@MappedJdbcTypes(value={JdbcType.DATE},includeNullJdbcType=true)
-@MappedTypes({DateTime.class})
+
 public class DateTimeTypeHandler implements TypeHandler<DateTime> {
     @Override
     public void setParameter(PreparedStatement preparedStatement, int i, DateTime dateTime, JdbcType jdbcType)

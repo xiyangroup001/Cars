@@ -15,8 +15,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
-
-
+import java.util.Date;
 
 
 /**
@@ -24,7 +23,7 @@ import org.springframework.transaction.annotation.Transactional;
  * @date 2018/1/24  16:27
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("classpath:/spring.xml")
+@ContextConfiguration(value = "classpath:spring/spring.xml")
 @SuppressWarnings("deprecation")
 @TransactionConfiguration(transactionManager = "txManager", defaultRollback = true)
 @Transactional
@@ -33,18 +32,17 @@ public class UserServiceImplTest {
     private UserService userService;
 
     private Logger logger = LoggerFactory.getLogger(UserServiceImplTest.class);
+
     @Test
     public void selectAllUser() throws Exception {
-       // System.out.println(new Timestamp(System.currentTimeMillis()));
 
-       // User u1 = new User();
-       // u1.setRegistrateTime("2017-11-11 12:53:22");
-       // System.out.println(JSON.toJSONString(u1, SerializerFeature.WriteMapNullValue));
-        String result=JSON.toJSONString(userService.selectAllUser());
-        for (int i=0;i<100;i++)
-            for (int j=0;j<10000;j++)
-            logger.info("结果是：{}",result);
-     //   System.out.println(result);
+//        User u1 = new User();
+//        u1.setRegistrateTime("2017-11-11 12:53:22");
+//        System.out.println(JSON.toJSONString(u1, SerializerFeature.WriteMapNullValue));
+        String result = JSON.toJSONString(userService.selectAllUser());
+        logger.info("结果是：{}", result);
+        System.out.println(result);
+        System.out.println(result);
     }
 
 
@@ -60,7 +58,7 @@ public class UserServiceImplTest {
         u1.setUserType((short) 0);
         u1.setUserPhone("12345678901");
         u1.setHeadPicUrl("iwrghjk");
-        u1.setRegistrateTime("2017-11-11 12:53:22");
+        u1.setRegistrateTime(new Date("2017-11-11 12:53:22"));
         System.out.println(userService.insertUser(u1));
     }
 

@@ -6,6 +6,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.Date;
 
 /**
  * @antuor binwang
@@ -20,7 +21,7 @@ public class User implements Serializable {
 
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @JSONField(format = "yyyy-MM-dd HH:mm:ss")
-    private Timestamp registrateTime;
+    private Date registrateTime;
 
     private short userType;
     private String headPicUrl;
@@ -65,16 +66,13 @@ public class User implements Serializable {
         this.userPassword = userPassword;
     }
 
-    public Timestamp getRegistrateTime() {
+    public Date getRegistrateTime() {
         return registrateTime;
     }
 
-    public void setRegistrateTime(String registrateTime) {
-        this.registrateTime = Timestamp.valueOf(registrateTime);
+    public void setRegistrateTime(Date registrateTime) {
+        this.registrateTime = registrateTime;
     }
-    //public void setRegistrateTime(Timestamp registrateTime) {
-    //    this.registrateTime = registrateTime;
-    //}
     public short getUserType() {
         return userType;
     }

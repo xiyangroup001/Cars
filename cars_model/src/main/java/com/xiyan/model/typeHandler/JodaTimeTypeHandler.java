@@ -12,13 +12,12 @@ import java.sql.*;
  * @antuor binwang
  * @date 2018/1/24  17:21
  */
-@MappedJdbcTypes({JdbcType.DATE})
-@MappedTypes({DateTime.class})
+
 public class JodaTimeTypeHandler extends BaseTypeHandler<DateTime> {
     public void setNonNullParameter(PreparedStatement ps, int i, DateTime parameter, JdbcType jdbcType) throws SQLException {
         System.out.println(1);
 
-        ps.setDate(i, (Date) parameter.toDate());
+        ps.setDate(i, new Date(parameter.getMillis()));
     }
 
     public DateTime getNullableResult(ResultSet rs, String columnName) throws SQLException {

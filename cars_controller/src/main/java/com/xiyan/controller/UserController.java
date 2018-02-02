@@ -1,5 +1,7 @@
 package com.xiyan.controller;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.xiyan.model.entrty.User;
 import com.xiyan.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +22,7 @@ public class UserController {
 
     @RequestMapping("/save")
     public String savaUser(User user){
-      //  user.setRegistrateTime(new Timestamp(System.currentTimeMillis()));
-        return userService.insertUser(user)+"";
+        return JSON.toJSONString(userService.insertUser(user), SerializerFeature.WRITE_MAP_NULL_FEATURES);
     }
 }
 

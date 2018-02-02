@@ -8,7 +8,10 @@
 
     <description>ChatRobot_Alpha_0.0.1</description>
 
-
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>classpath:spring/spring.xml</param-value>
+    </context-param>
 
 
     <!-- 编码过滤器 -->
@@ -33,7 +36,7 @@
         <!-- 配置springMVC需要加载的配置文件-->
         <init-param>
             <param-name>contextConfigLocation</param-name>
-            <param-value>classpath:spring.xml</param-value>
+            <param-value>classpath:spring/spring.xml</param-value>
         </init-param>
     </servlet>
     <servlet-mapping>
@@ -52,7 +55,7 @@
     </servlet-mapping>
 
     <welcome-file-list>
-        <welcome-file>index.html</welcome-file>
+        <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
 
 </web-app>

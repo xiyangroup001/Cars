@@ -13,7 +13,7 @@
         <module name="cars_task" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
+    <bytecodeTargetLevel target="1.8">
       <module name="Cars" target="1.8" />
       <module name="cars_api" target="1.8" />
       <module name="cars_controller" target="1.8" />

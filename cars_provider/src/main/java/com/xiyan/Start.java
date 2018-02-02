@@ -10,7 +10,7 @@ import java.io.IOException;
  */
 public class Start {
     public static void main(String[] args) throws IOException {
-        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("src/main/resources.dev/spring.xml");
         System.out.println(context.getDisplayName() + ": here");
         context.start();
         System.out.println("服务已经启动...");
