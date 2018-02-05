@@ -564,4 +564,11 @@ public class TmonitorConstants {
     // 更新房屋价格缓存task
     public static final String TASK_HOUSE_CHARGE_REFRESH_CACHE = "task_house_charge_refresh_cache";
 
+    //新建用户
+    public static final String DUBBO_USER_INSERT="dubbo_user_insert";
+    //更新用户
+    public static final String DUBBO_USER_UPDATE="dubbo_user_update";
+    //删除用户
+    public static final String DUBBO_USER_DELETE="dubbo_user_delete";
+
 }

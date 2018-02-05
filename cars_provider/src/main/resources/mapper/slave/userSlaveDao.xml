@@ -15,4 +15,8 @@
         select * from user;
     </select>
 
+    <select id="selectMaxUserId" resultType="int">
+        select max(user_id) from user;
+    </select>
+
 </mapper>

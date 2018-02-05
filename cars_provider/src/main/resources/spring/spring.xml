@@ -16,10 +16,12 @@
 
     <context:component-scan base-package="com.xiyan.service.impl"/>
 
+    <context:property-placeholder location="classpath:config.properties" ignore-unresolvable="true"/>
+    <context:property-placeholder location="classpath:jdbc.properties" ignore-unresolvable="true"/>
     <!--properties配置引入-->
-    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-        <property name="locations" value="classpath:*.properties"/>
-    </bean>
+    <!--<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">-->
+        <!--<property name="locations" value="classpath:*.properties"/>-->
+    <!--</bean>-->
 
     <import resource="classpath:spring/spring_jdbc.xml"/>
     <import resource="classpath:spring/spring_dubbo.xml"/>

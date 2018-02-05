@@ -57,6 +57,12 @@
                 <deploy.type>dev</deploy.type>
             </properties>
         </profile>
+        <profile>
+            <id>local</id>
+            <properties>
+                <deploy.type>local</deploy.type>
+            </properties>
+        </profile>
     </profiles>
 
     <properties>

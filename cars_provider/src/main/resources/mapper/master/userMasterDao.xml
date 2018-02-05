@@ -11,10 +11,8 @@
         <result property="userType" column="user_type"/>
         <result property="headPicUrl" column="head_pic_url"/>
     </resultMap>
-    <!--<select id="selectAllUser" resultMap="userMap">-->
-        <!--select * from user;-->
-    <!--</select>-->
-    <insert id="saveUser" parameterType="com.xiyan.model.entrty.User">
+
+    <insert id="insertUser" parameterType="com.xiyan.model.entrty.User">
         insert into user(
             user_name,
             user_id,
@@ -36,4 +34,24 @@
             #{headPicUrl}
         )
     </insert>
+
+    <update id="updateUser" parameterType="com.xiyan.model.entrty.User">
+        update user
+        set
+            user_name=#{userName},
+            user_guid=#{userGuid},
+            user_phone=#{userPhone},
+            password=#{userPassword},
+            registrate_time=#{registrateTime},
+            user_type=#{userType},
+            Head_pic_url=#{headPicUrl}
+        where
+            user_id=#{userId}
+    </update>
+
+    <delete id="deleteUser" parameterType="int" >
+        delete from user
+        where
+            user_id=#{userId}
+    </delete>
 </mapper>

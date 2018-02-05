@@ -11,5 +11,7 @@ import java.util.List;
  */
 @MapperScan
 public interface UserMasterDao {
-    int saveUser(User user);
+    int insertUser(User user);
+    int updateUser(User user);
+    int deleteUser(int userId);
 }
