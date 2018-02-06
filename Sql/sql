@@ -45,7 +45,7 @@ CREATE TABLE `store` (
   `store_id` bigint(20) NOT NULL DEFAULT '0'  COMMENT '门店Id',
   `store_name` VARCHAR(20) NOT NULL DEFAULT '0' COMMENT '门店名',
   `platform` TINYINT NOT NULL DEFAULT '0'  COMMENT '所属平台',
-  `location` TINYINT NOT NULL DEFAULT '0' COMMENT '位置信息',
+  `location` varchar(40) NOT NULL DEFAULT '0' COMMENT '位置信息',
   PRIMARY KEY (`store_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='门店表';
 
@@ -62,6 +62,7 @@ CREATE TABLE `car` (
   `rental_price` DECIMAL(5,2) NOT NULL DEFAULT '0' COMMENT '出租价格',
   `car_picture` VARCHAR(300) NOT NULL DEFAULT '' COMMENT '相关照片路径',
   `car_qualification` DECIMAL(5,2) NOT NULL DEFAULT '0.00' COMMENT '相关资质信息',
+  `insurance_type` VARCHAR(40) NOT NULL DEFAULT '' COMMENT '保险类型',
   `aduit_type` TINYINT NOT NULL DEFAULT '0' COMMENT '车辆审核状态',
   `aduit_id` bigint(20) NOT NULL DEFAULT '0' COMMENT '车辆审核号',
   PRIMARY KEY (`car_id`)
@@ -69,10 +70,12 @@ CREATE TABLE `car` (
 
 DROP TABLE IF EXISTS `driver`;
 CREATE TABLE `driver` (
+  `driver_name` VARCHAR(8) NOT NULL DEFAULT '' COMMENT '姓名',
   `id_number` CHAR(18) NOT NULL DEFAULT '00000000000000000x' COMMENT '身份证号',
   `user_id` bigint(20) NOT NULL DEFAULT '0'  COMMENT '用户Id',
+  `expiration_date` DATE NOT NULL DEFAULT '1900-01-01'  COMMENT '到期日期',
   `file_number` VARCHAR(22) NOT NULL DEFAULT ' ' COMMENT '驾照档案号',
-  `end_time` VARCHAR(300) NOT NULL DEFAULT ' ' COMMENT '相关照片路径',
+  `driver_Pic` VARCHAR(300) NOT NULL DEFAULT ' ' COMMENT '相关照片路径',
   `aduit_type` TINYINT NOT NULL DEFAULT '0' COMMENT '驾驶人审核状态',
   `aduit_id` bigint(20) NOT NULL DEFAULT '0' COMMENT '驾驶人审核号',
   PRIMARY KEY (`id_number`)

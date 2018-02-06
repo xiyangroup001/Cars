@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" " http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xiyan.dao.slave.StoreSlaveDao" >
+    <resultMap id="store" type="com.xiyan.model.entrty.Store">
+        <id column="store_id" property="storeId"/>
+        <result column="store_name" property="storeName"/>
+        <result column="platform" property="platform"/>
+        <result column="location" property="location" typeHandler="com.xiyan.model.typeHandler.PositionTypeHandler"/>
+    </resultMap>
+
+    <select id="selectAllStore" resultMap="store">
+        select * from store;
+    </select>
+</mapper>
