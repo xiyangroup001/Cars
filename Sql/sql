@@ -61,8 +61,8 @@ CREATE TABLE `car` (
   `car_state` TINYINT NOT NULL DEFAULT '0' COMMENT '车辆状态',
   `rental_price` DECIMAL(5,2) NOT NULL DEFAULT '0' COMMENT '出租价格',
   `car_picture` VARCHAR(300) NOT NULL DEFAULT '' COMMENT '相关照片路径',
-  `car_qualification` DECIMAL(5,2) NOT NULL DEFAULT '0.00' COMMENT '相关资质信息',
-  `insurance_type` VARCHAR(40) NOT NULL DEFAULT '' COMMENT '保险类型',
+  `car_qualification` VARCHAR(500) NOT NULL DEFAULT '0.00' COMMENT '相关资质信息',
+  `insurance_type` VARCHAR(40) NOT NULL DEFAULT 'ss' COMMENT '保险类型',
   `aduit_type` TINYINT NOT NULL DEFAULT '0' COMMENT '车辆审核状态',
   `aduit_id` bigint(20) NOT NULL DEFAULT '0' COMMENT '车辆审核号',
   PRIMARY KEY (`car_id`)
@@ -104,7 +104,7 @@ DROP TABLE IF EXISTS `check`;
 CREATE TABLE `check` (
   `check_user` VARCHAR(18) NOT NULL DEFAULT ' ' COMMENT '审核操作人',
   `check_time` DATETIME NOT NULL DEFAULT '1900-01-01 00:00:00'  COMMENT '审核时间',
-  `check_result` TINYINT NOT NULL DEFAULT '0' COMMENT '审核结果信息',
+  `check_result` VARCHAR(100) NOT NULL DEFAULT '0' COMMENT '审核结果信息',
   `check_type` TINYINT NOT NULL DEFAULT '0' COMMENT '审核类型'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='审核信息表';
 /*

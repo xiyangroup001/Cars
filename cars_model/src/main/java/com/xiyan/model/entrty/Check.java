@@ -7,7 +7,7 @@ package com.xiyan.model.entrty;
 public class Check {
     private String checkUserId;
     private String checkTime;
-    private String checkType;
+    private short checkType;
     private String checkResult;
 
     public String getCheckUserId() {
@@ -26,11 +26,11 @@ public class Check {
         this.checkTime = checkTime;
     }
 
-    public String getCheckType() {
+    public short getCheckType() {
         return checkType;
     }
 
-    public void setCheckType(String checkType) {
+    public void setCheckType(short checkType) {
         this.checkType = checkType;
     }
 

@@ -9,15 +9,7 @@ import java.util.Date;
  * @date 2018/2/6  20:10
  */
 public class Driver {
-    /*
-    * `driver_name` VARCHAR(8) NOT NULL DEFAULT '' COMMENT '姓名',
-  `id_number` CHAR(18) NOT NULL DEFAULT '00000000000000000x' COMMENT '身份证号',
-  `user_id` bigint(20) NOT NULL DEFAULT '0'  COMMENT '用户Id',
-  `expiration_date` DATE NOT NULL DEFAULT '1900-01-01'  COMMENT '到期日期',
-  `file_number` VARCHAR(22) NOT NULL DEFAULT ' ' COMMENT '驾照档案号',
-  `end_time` VARCHAR(300) NOT NULL DEFAULT ' ' COMMENT '相关照片路径',
-  `aduit_type` TINYINT NOT NULL DEFAULT '0' COMMENT '驾驶人审核状态',
-  `aduit_id` bigint(20) NOT NULL DEFAULT '0' COMMENT '驾驶人审核号',*/
+
 
     private String driverName;
     private String IdNumber;
@@ -28,5 +20,81 @@ public class Driver {
     private short aduitType;
     private int aduitId;
 
+    @Override
+    public String toString() {
+        return "Driver{" +
+                "driverName='" + driverName + '\'' +
+                ", IdNumber='" + IdNumber + '\'' +
+                ", userId=" + userId +
+                ", expirateDate=" + expirateDate +
+                ", fileNumber='" + fileNumber + '\'' +
+                ", driverPicUrl=" + driverPicUrl +
+                ", aduitType=" + aduitType +
+                ", aduitId=" + aduitId +
+                '}';
+    }
 
+    public String getDriverName() {
+        return driverName;
+    }
+
+    public void setDriverName(String driverName) {
+        this.driverName = driverName;
+    }
+
+    public String getIdNumber() {
+        return IdNumber;
+    }
+
+    public void setIdNumber(String idNumber) {
+        IdNumber = idNumber;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public Date getExpirateDate() {
+        return expirateDate;
+    }
+
+    public void setExpirateDate(Date expirateDate) {
+        this.expirateDate = expirateDate;
+    }
+
+    public String getFileNumber() {
+        return fileNumber;
+    }
+
+    public void setFileNumber(String fileNumber) {
+        this.fileNumber = fileNumber;
+    }
+
+    public DriverPictureUrl getDriverPicUrl() {
+        return driverPicUrl;
+    }
+
+    public void setDriverPicUrl(DriverPictureUrl driverPicUrl) {
+        this.driverPicUrl = driverPicUrl;
+    }
+
+    public short getAduitType() {
+        return aduitType;
+    }
+
+    public void setAduitType(short aduitType) {
+        this.aduitType = aduitType;
+    }
+
+    public int getAduitId() {
+        return aduitId;
+    }
+
+    public void setAduitId(int aduitId) {
+        this.aduitId = aduitId;
+    }
 }

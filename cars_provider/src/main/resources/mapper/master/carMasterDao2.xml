@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" " http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xiyan.dao.master.CarMasterDao">
+
+    <insert id="insertCar" parameterType="com.xiyan.model.entrty.Car">
+
+        insert into car(
+        car_id,
+        car_license,
+        car_brand,
+        car_type,
+        car_price,
+        in_store,
+        car_state,
+        rental_price,
+        car_picture,
+        car_qualification,
+        insurance_type,
+        aduit_type,
+        aduit_id
+        )
+
+        values(
+        #{carId},
+        #{carLicense},
+        #{carBrand},
+        #{carType},
+        #{carPrice},
+        #{inStore},
+        #{carState},
+        #{rentalPrice},
+        #{carPicture,typeHandler=com.xiyan.model.typeHandler.CarsPicUrlTypeHandler},
+        #{carQualifications,typeHandler=com.xiyan.model.typeHandler.CarQualTypeHandler},
+        #{insuranceType,typeHandler=com.xiyan.model.typeHandler.ArrayListTypeHandler},
+        #{aduitType},
+        #{aduitId}
+        )
+    </insert>
+
+</mapper>

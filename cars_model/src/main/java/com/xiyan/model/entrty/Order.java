@@ -1,5 +1,6 @@
 package com.xiyan.model.entrty;
 
+import com.alibaba.fastjson.annotation.JSONField;
 import com.xiyan.model.entrty.twolevel.Position;
 
 import java.util.Date;
@@ -14,8 +15,14 @@ public class Order {
     private String orderId;
     private String userId;
     private String carId;
+
+    @JSONField(format = "yyyy-MM-dd HH:mm:SS")
     private Date orderGenerationTime;
+
+    @JSONField(format = "yyyy-MM-dd")
     private Date startTime;
+
+    @JSONField(format = "yyyy-MM-dd")
     private Date endTime;
     private int takeCarShop;
     private int returnCarShop;

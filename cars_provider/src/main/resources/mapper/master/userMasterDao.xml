@@ -38,13 +38,15 @@
     <update id="updateUser" parameterType="com.xiyan.model.entrty.User">
         update user
         set
-            user_name=#{userName},
-            user_guid=#{userGuid},
-            user_phone=#{userPhone},
-            password=#{userPassword},
-            registrate_time=#{registrateTime},
-            user_type=#{userType},
-            Head_pic_url=#{headPicUrl}
+        <trim suffixOverrides=",">
+            <if test="userName != null">user_name = #{userName},</if>
+            <if test="userGuid != null">user_guid = #{userGuid},</if>
+            <if test="userPhone != null">user_phone = #{userPhone},</if>
+            <if test="userPassword != null">password = #{userPassword},</if>
+            <if test="registrateTime != null">registrate_time = #{registrateTime},</if>
+            <if test="userType != null">user_type = #{userType},</if>
+            <if test="headPicUrl != null">Head_pic_url = #{headPicUrl},</if>
+        </trim>
         where
             user_id=#{userId}
     </update>
