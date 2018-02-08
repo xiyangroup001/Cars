@@ -1,42 +1,43 @@
 package com.xiyan.service;
 
-import java.util.List;
-
+import com.xiyan.model.entrty.Admin;
 import com.xiyan.model.entrty.User;
 import com.xiyan.model.utils.APIResponse;
+
+import java.util.List;
 
 /**
  * @antuor binwang
  * @date 2018/1/24  16:21
  */
-public interface UserService {
+public interface AdminService {
 
     /**
      * Method 删除用户
-     * @param userid
+     * @param adminId
      * @return
      */
-    APIResponse<Integer> deleteUser(Integer userid);
+    APIResponse<Integer> deleteAdmin(Integer adminId);
 
     /**
      * Method 新建用户
-     * @param user
+     * @param admin
      * @return
      */
-    APIResponse<Integer> insertUser(User user);
+    APIResponse<Integer> insertAdmin(Admin admin);
 
     /**
      * Method 选择全部用户
      * @return
      */
-    APIResponse<List<User>> listAllUser();
+    APIResponse<List<Admin>> listAllAdmin();
 
     /**
      * Method 更新用户信息
-     * @param user
+     * @param admin
      * @return
      */
-    APIResponse<Integer> updateUser(User user);
+    APIResponse<Integer> updateAdmin(Admin admin);
 }
 
 

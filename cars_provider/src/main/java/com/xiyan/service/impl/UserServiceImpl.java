@@ -43,7 +43,7 @@ public class UserServiceImpl implements UserService {
      * @return
      */
     private int createUserId() {
-        return userSlaveDao.selectMaxUserId() + 1;
+        return userSlaveDao.queryMaxUserId() + 1;
     }
 
     @Override
@@ -56,6 +56,7 @@ public class UserServiceImpl implements UserService {
 
             @Override
             protected APIResponse<Integer> process() throws BizException {
+                logger.info("删除用户：{}",userid);
                 return APIResponse.returnSuccess(userMasterDao.deleteUser(userid));
             }
         }.execute();
@@ -72,18 +73,19 @@ public class UserServiceImpl implements UserService {
             }
             @Override
             protected APIResponse<Integer> process() throws BizException {
-                logger.info("更新用户信息：{}",user.toString());
+                logger.info("更新用户信息：{}",user);
                 return APIResponse.returnSuccess(userMasterDao.insertUser(user));
             }
         }.execute();
     }
 
     @Override
-    public APIResponse<List<User>> selectAllUser() {
+    public APIResponse<List<User>> listAllUser() {
         return new ApiTemplate<List<User>>(TmonitorConstants.DUBBO_LANDLORD_SERVICE_QUERY_BY_ID) {
             @Override
             protected APIResponse<List<User>> process() throws BizException {
-                return APIResponse.returnSuccess(userSlaveDao.selectAllUser());
+                logger.info("查找所有的用户");
+                return APIResponse.returnSuccess(userSlaveDao.listAllUser());
             }
         }.execute();
     }
@@ -98,8 +100,10 @@ public class UserServiceImpl implements UserService {
             }
             @Override
             protected APIResponse<Integer> process() throws BizException {
-                logger.info("{}类更新用户信息：{}",this.getClass().toString(),user);
-                return APIResponse.returnSuccess(userMasterDao.updateUser(user));
+                logger.info("更新用户信息---参数：{}",user);
+                APIResponse<Integer> response= APIResponse.returnSuccess(userMasterDao.updateUser(user));
+                logger.info("更新用户信息---结果：{}",user,response);
+                return response;
             }
         }.execute();
     }

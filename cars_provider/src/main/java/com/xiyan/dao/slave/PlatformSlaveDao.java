@@ -1,6 +1,7 @@
 package com.xiyan.dao.slave;
 
 import com.xiyan.model.entrty.Car;
+import com.xiyan.model.entrty.Platform;
 import org.mybatis.spring.annotation.MapperScan;
 
 import java.util.List;
@@ -10,6 +11,7 @@ import java.util.List;
  * @date 2018/2/7  11:28
  */
 @MapperScan
-public interface CarSlaveDao {
-    List<Car> listAllCar();
+
+public interface PlatformSlaveDao {
+    List<Platform> listAllPlatform();
 }

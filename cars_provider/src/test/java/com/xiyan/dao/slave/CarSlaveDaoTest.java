@@ -23,7 +23,7 @@ public class CarSlaveDaoTest {
     private CarSlaveDao carSlaveDao;
     @Test
     public void selectAllCar() throws Exception {
-        System.out.println(carSlaveDao.selectAllCar());
+        System.out.println(carSlaveDao.listAllCar());
     }
 
 

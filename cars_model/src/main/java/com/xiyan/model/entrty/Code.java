@@ -3,13 +3,15 @@ package com.xiyan.model.entrty;
 import com.alibaba.fastjson.annotation.JSONField;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import java.util.Date;
+
 public class Code {
     private String userPhone;
     private String codeVal;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @JSONField( format = "yyyy-MM-dd HH:mm:ss")
-    private String sendTime;
+    private Date sendTime;
 
     public String getUserPhone() {
         return userPhone;
@@ -27,11 +29,11 @@ public class Code {
         this.codeVal = codeVal;
     }
 
-    public String getSendTime() {
+    public Date getSendTime() {
         return sendTime;
     }
 
-    public void setSendTime(String sendTime) {
+    public void setSendTime(Date sendTime) {
         this.sendTime = sendTime;
     }
 

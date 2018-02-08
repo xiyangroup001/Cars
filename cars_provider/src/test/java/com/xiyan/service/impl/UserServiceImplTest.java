@@ -54,7 +54,7 @@ public class UserServiceImplTest {
 
     @Test
     public void selectAllUser1() throws Exception {
-        System.out.println(userService.selectAllUser());
+        System.out.println(userService.listAllUser());
     }
 
     @Test
@@ -69,7 +69,7 @@ public class UserServiceImplTest {
 //        User u1 = new User();
 //        u1.setRegistrateTime("2017-11-11 12:53:22");
 //        System.out.println(JSON.toJSONString(u1, SerializerFeature.WriteMapNullValue));
-        String result = JSON.toJSONString(userService.selectAllUser());
+        String result = JSON.toJSONString(userService.listAllUser());
         logger.info("结果是：{}", result);
         System.out.println(result);
         System.out.println(result);

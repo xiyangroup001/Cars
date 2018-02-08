@@ -570,5 +570,12 @@ public class TmonitorConstants {
     public static final String DUBBO_USER_UPDATE="dubbo_user_update";
     //删除用户
     public static final String DUBBO_USER_DELETE="dubbo_user_delete";
+    //删除管理员
+    public static final String DUBBO_ADMIN_DELETE="dubbo_admin_delete";
+    //新建管理员
+    public static final String DUBBO_ADMIN_INSERT="dubbo_admin_insert";
+    //更新管理员
+    public static final String DUBBO_ADMIN_UPDATE="dubbo_admin_update";
+
 
 }

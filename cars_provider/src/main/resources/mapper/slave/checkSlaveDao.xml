@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" " http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xiyan.dao.slave.CarSlaveDao" >
+
+    <resultMap id="check" type="com.xiyan.model.entrty.Check">
+        <id property="checkId" column="check_id"/>
+        <result property="checkUserId" column="check_user"/>
+        <result property="checkTime" column="check_time"/>
+        <result property="checkType" column="check_type"/>
+        <result property="checkResult" column="check_result"/>
+    </resultMap>
+
+    <select id="listAllCheck" resultMap="check">
+        select * from check;
+    </select>
+</mapper>

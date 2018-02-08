@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" " http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xiyan.dao.slave.CarSlaveDao" >
+
+    <resultMap id="code" type="com.xiyan.model.entrty.Code">
+        <id property="userPhone" column="user_phone"/>
+        <result property="codeVal" column="code_val"/>
+        <result property="sendTime" column="send_time"/>
+
+    </resultMap>
+
+    <select id="listAllCode" resultMap="code">
+        select * from code;
+    </select>
+</mapper>

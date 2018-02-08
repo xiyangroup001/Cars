@@ -27,7 +27,7 @@ public class UserController {
 
     @GetMapping("/all")
     public String selectAllUser(){
-        return JSON.toJSONString(userService.selectAllUser(),SerializerFeature.WRITE_MAP_NULL_FEATURES);
+        return JSON.toJSONString(userService.listAllUser(),SerializerFeature.WRITE_MAP_NULL_FEATURES);
     }
 
     @GetMapping("/delete")

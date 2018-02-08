@@ -11,7 +11,7 @@ import java.util.List;
  */
 @MapperScan
 public interface UserSlaveDao {
-    List<User> selectAllUser();
-    int selectMaxUserId();
+    List<User> listAllUser();
+    int queryMaxUserId();
 
 }

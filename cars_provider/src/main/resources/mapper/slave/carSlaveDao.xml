@@ -3,7 +3,7 @@
 <mapper namespace="com.xiyan.dao.slave.CarSlaveDao" >
 
     <resultMap id="car" type="com.xiyan.model.entrty.Car">
-        <id property="car_id" column="carId"/>
+        <id property="carId" column="car_id"/>
         <result property="carLicense" column="car_license"/>
         <result property="carBrand" column="car_brand"/>
         <result property="carType" column="car_type"/>
@@ -18,7 +18,7 @@
         <result property="aduitId" column="aduit_id"/>
     </resultMap>
 
-    <select id="selectAllCar" resultMap="car">
+    <select id="listAllCar" resultMap="car">
         select * from car;
     </select>
 </mapper>

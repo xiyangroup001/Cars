@@ -11,11 +11,11 @@
         <result property="userType" column="user_type"/>
         <result property="headPicUrl" column="head_pic_url"/>
     </resultMap>
-    <select id="selectAllUser" resultMap="userMap">
+    <select id="listAllUser" resultMap="userMap">
         select * from user;
     </select>
 
-    <select id="selectMaxUserId" resultType="int">
+    <select id="queryMaxUserId" resultType="int">
         select max(user_id) from user;
     </select>
 

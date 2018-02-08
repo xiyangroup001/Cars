@@ -1,6 +1,6 @@
 package com.xiyan.dao.master;
 
-import com.xiyan.model.entrty.Car;
+import com.xiyan.model.entrty.Order;
 import org.mybatis.spring.annotation.MapperScan;
 
 /**
@@ -9,6 +9,6 @@ import org.mybatis.spring.annotation.MapperScan;
  */
 @MapperScan
 
-public interface CarMasterDao {
-    int insertCar(Car car);
+public interface OrderMasterDao {
+    int insertOrder(Order order);
 }

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" " http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xiyan.dao.master.OrderMasterDao">
+
+    <insert id="insertOrder" parameterType="com.xiyan.model.entrty.Order">
+        insert into order(
+        order_id,
+        user_id,
+        car_id,
+        order_generation_time,
+        start_time,
+        end_time,
+        take_car_shop,
+        return_car_shop,
+        total_amount,
+        prepay_amount,
+        pay_type,
+        position
+        )
+        values(
+        #{orderId},
+        #{userId},
+        #{carId},
+        #{orderGenerationTime},
+        #{startTime},
+        #{endTime},
+        #{takeCarShop},
+        #{returnCarShop},
+        #{totalAmount},
+        #{prepayAmount},
+        #{payType},
+        #{position,typeHandler=com.xiyan.model.typeHandler.PositionTypeHandler}
+        )
+    </insert>
+</mapper>

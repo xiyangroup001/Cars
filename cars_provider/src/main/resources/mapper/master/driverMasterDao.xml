@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" " http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xiyan.dao.master.DriverMas   terDao">
+
+    <insert id="insertDriver" parameterType="com.xiyan.model.entrty.Driver">
+        insert into driver(
+            driver_name,
+            id_number,
+            user_id,
+            expiration_date,
+            file_number,
+            driver_Pic,
+            aduit_type,
+            aduit_id
+        )
+        values(
+            #{driverName},
+            #{IdNumber},
+            #{userId},
+            #{expirateDate},
+            #{fileNumber},
+            #{driverPicUrl,typeHandler=com.xiyan.model.typeHandler.DriverPicTypeHandler},
+            #{aduitType},
+            #{aduitId}
+        )
+
+    </insert>
+</mapper>

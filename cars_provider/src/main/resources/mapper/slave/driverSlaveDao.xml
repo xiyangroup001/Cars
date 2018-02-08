@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" " http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xiyan.dao.slave.CarSlaveDao" >
+
+
+
+    <resultMap id="driver" type="com.xiyan.model.entrty.Driver">
+        <id property="IdNumber" column="id_number"/>
+        <result property="driverName" column="driver_name"/>
+        <result property="userId" column="user_id"/>
+        <result property="expirateDate" column="expiration_date"/>
+        <result property="fileNumber" column="file_number"/>
+        <result property="driverPicUrl" column="driver_Pic" typeHandler="com.xiyan.model.typeHandler.DriverPicTypeHandler"/>
+        <result property="aduitType" column="aduit_type"/>
+        <result property="aduitId" column="aduit_id"/>
+
+    </resultMap>
+
+    <select id="listAllDriver" resultMap="driver">
+        select * from driver;
+    </select>
+</mapper>

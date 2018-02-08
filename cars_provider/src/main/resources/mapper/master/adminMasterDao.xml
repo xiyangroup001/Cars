@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" " http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xiyan.dao.master.AdminMasterDao">
+
+    <insert id="insertAdmin" parameterType="com.xiyan.model.entrty.Admin">
+        insert into admin(
+            admin_id,
+            admin_name,
+            platform_id,
+            power,
+            password,
+            store
+        )
+        values(
+            #{adminId},
+            #{adminName},
+            #{platformId},
+            #{power},
+            #{passWord},
+            #{store}
+        )
+    </insert>
+    <delete id="deleteAdmin" parameterType="java.lang.Integer">
+        delete from admin where admin_id={#adminId}
+    </delete>
+
+</mapper>

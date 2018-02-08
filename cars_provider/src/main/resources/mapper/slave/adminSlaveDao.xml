@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" " http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xiyan.dao.slave.AdminSlaveDao" >
+
+
+    <resultMap id="admin" type="com.xiyan.model.entrty.Admin">
+        <id property="adminId" column="admin_id"/>
+        <result property="adminName" column="admin_name"/>
+        <result property="platformId" column="platform_id"/>
+        <result property="power" column="power"/>
+        <result property="passWord" column="password"/>
+        <result property="store" column="store"/>
+
+    </resultMap>
+
+    <select id="listAllCar" resultMap="admin">
+        select * from car;
+    </select>
+
+    <select id="queryMaxAdminId">
+        select max(admin_id) from admin;
+    </select>
+</mapper>

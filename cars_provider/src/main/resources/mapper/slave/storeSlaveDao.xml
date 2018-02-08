@@ -8,7 +8,7 @@
         <result column="location" property="location" typeHandler="com.xiyan.model.typeHandler.PositionTypeHandler"/>
     </resultMap>
 
-    <select id="selectAllStore" resultMap="store">
+    <select id="listAllStore" resultMap="store">
         select * from store;
     </select>
 </mapper>

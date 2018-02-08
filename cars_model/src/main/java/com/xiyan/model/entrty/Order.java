@@ -2,6 +2,7 @@ package com.xiyan.model.entrty;
 
 import com.alibaba.fastjson.annotation.JSONField;
 import com.xiyan.model.entrty.twolevel.Position;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
@@ -12,24 +13,45 @@ import java.util.Date;
 public class Order {
 
 
-    private String orderId;
-    private String userId;
-    private String carId;
+        private String orderId;
+        private int userId;
+        private int carId;
 
-    @JSONField(format = "yyyy-MM-dd HH:mm:SS")
-    private Date orderGenerationTime;
+        @JSONField(format = "yyyy-MM-dd HH:mm:SS")
+        @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:SS")
+        private Date orderGenerationTime;
 
-    @JSONField(format = "yyyy-MM-dd")
-    private Date startTime;
+        @JSONField(format = "yyyy-MM-dd")
+        @DateTimeFormat(pattern = "yyyy-MM-dd")
+        private Date startTime;
 
-    @JSONField(format = "yyyy-MM-dd")
-    private Date endTime;
-    private int takeCarShop;
-    private int returnCarShop;
-    private double prepayAmount;
-    private double totalAmount;
-    private short payType;
-    private Position position;
+        @DateTimeFormat(pattern = "yyyy-MM-dd")
+        @JSONField(format = "yyyy-MM-dd")
+        private Date endTime;
+        private int takeCarShop;
+        private int returnCarShop;
+        private double prepayAmount;
+        private double totalAmount;
+        private short payType;
+        private Position position;
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "orderId='" + orderId + '\'' +
+                ", userId=" + userId +
+                ", carId=" + carId +
+                ", orderGenerationTime=" + orderGenerationTime +
+                ", startTime=" + startTime +
+                ", endTime=" + endTime +
+                ", takeCarShop=" + takeCarShop +
+                ", returnCarShop=" + returnCarShop +
+                ", prepayAmount=" + prepayAmount +
+                ", totalAmount=" + totalAmount +
+                ", payType=" + payType +
+                ", position=" + position +
+                '}';
+    }
 
     public String getOrderId() {
         return orderId;
@@ -39,19 +61,19 @@ public class Order {
         this.orderId = orderId;
     }
 
-    public String getUserId() {
+    public int getUserId() {
         return userId;
     }
 
-    public void setUserId(String userId) {
+    public void setUserId(int userId) {
         this.userId = userId;
     }
 
-    public String getCarId() {
+    public int getCarId() {
         return carId;
     }
 
-    public void setCarId(String carId) {
+    public void setCarId(int carId) {
         this.carId = carId;
     }
 
@@ -125,23 +147,5 @@ public class Order {
 
     public void setPosition(Position position) {
         this.position = position;
-    }
-
-    @Override
-    public String toString() {
-        return "Order{" +
-                "orderId='" + orderId + '\'' +
-                ", userId='" + userId + '\'' +
-                ", carId='" + carId + '\'' +
-                ", orderGenerationTime=" + orderGenerationTime +
-                ", startTime=" + startTime +
-                ", endTime=" + endTime +
-                ", takeCarShop=" + takeCarShop +
-                ", returnCarShop=" + returnCarShop +
-                ", prepayAmount=" + prepayAmount +
-                ", totalAmount=" + totalAmount +
-                ", payType=" + payType +
-                ", position=" + position +
-                '}';
     }
 }

@@ -5,11 +5,20 @@ package com.xiyan.model.entrty;
  * @date 2018/2/6  18:26
  */
 public class Check {
+
+
+    private int checkId;
     private String checkUserId;
     private String checkTime;
     private short checkType;
     private String checkResult;
+    public int getCheckId() {
+        return checkId;
+    }
 
+    public void setCheckId(int checkId) {
+        this.checkId = checkId;
+    }
     public String getCheckUserId() {
         return checkUserId;
     }
@@ -45,9 +54,10 @@ public class Check {
     @Override
     public String toString() {
         return "Check{" +
-                "checkUserId='" + checkUserId + '\'' +
+                "checkId=" + checkId +
+                ", checkUserId='" + checkUserId + '\'' +
                 ", checkTime='" + checkTime + '\'' +
-                ", checkType='" + checkType + '\'' +
+                ", checkType=" + checkType +
                 ", checkResult='" + checkResult + '\'' +
                 '}';
     }

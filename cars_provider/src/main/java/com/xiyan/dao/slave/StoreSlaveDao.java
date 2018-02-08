@@ -11,5 +11,5 @@ import java.util.List;
  */
 @MapperScan
 public interface StoreSlaveDao {
-    List<Store> selectAllStore();
+    List<Store> listAllStore();
 }
