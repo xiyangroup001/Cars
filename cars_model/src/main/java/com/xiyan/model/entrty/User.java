@@ -1,11 +1,9 @@
 package com.xiyan.model.entrty;
 
 import com.alibaba.fastjson.annotation.JSONField;
-import org.joda.time.DateTime;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
 import java.util.Date;
 
 /**

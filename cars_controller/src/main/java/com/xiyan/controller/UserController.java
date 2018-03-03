@@ -22,21 +22,21 @@ public class UserController {
 
     @RequestMapping("/save")
     public String insertUser(User user) {
-        return JSON.toJSONString(userService.insertUser(user), SerializerFeature.WRITE_MAP_NULL_FEATURES);
+        return JSON.toJSONString(userService.insertUser(user), SerializerFeature.WriteMapNullValue);
     }
 
     @GetMapping("/all")
     public String selectAllUser(){
-        return JSON.toJSONString(userService.listAllUser(),SerializerFeature.WRITE_MAP_NULL_FEATURES);
+        return JSON.toJSONString(userService.listAllUser(),SerializerFeature.WriteMapNullValue);
     }
 
     @GetMapping("/delete")
     public String deleteUser(Integer userId){
-        return JSON.toJSONString(userService.deleteUser(userId),SerializerFeature.WRITE_MAP_NULL_FEATURES);
+        return JSON.toJSONString(userService.deleteUser(userId),SerializerFeature.WriteMapNullValue);
     }
     @GetMapping("/update")
     public String updateUser(User user){
-        return JSON.toJSONString(userService.updateUser(user),SerializerFeature.WRITE_MAP_NULL_FEATURES);
+        return JSON.toJSONString(userService.updateUser(user),SerializerFeature.WriteMapNullValue);
     }
 
 }

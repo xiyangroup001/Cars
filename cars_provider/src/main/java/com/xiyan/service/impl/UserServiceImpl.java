@@ -1,15 +1,6 @@
 package com.xiyan.service.impl;
 
-import java.util.List;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import com.google.common.base.Preconditions;
-
 import com.xiyan.dao.master.UserMasterDao;
 import com.xiyan.dao.slave.UserSlaveDao;
 import com.xiyan.model.entrty.User;
@@ -17,8 +8,12 @@ import com.xiyan.model.exception.BizException;
 import com.xiyan.model.monitor.TmonitorConstants;
 import com.xiyan.model.utils.APIResponse;
 import com.xiyan.model.utils.ApiTemplate;
-import com.xiyan.model.utils.UserUtil;
 import com.xiyan.service.UserService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import java.util.List;
 
 /**
  * @antuor binwang

@@ -26,6 +26,6 @@ public class CarsPicUrlTypeHandler extends BasicTypeHandler<CarsPictureUrl> {
 
     @Override
     protected String toString(CarsPictureUrl value) {
-        return JSON.toJSONString(value, SerializerFeature.WRITE_MAP_NULL_FEATURES);
+        return JSON.toJSONString(value, SerializerFeature.WriteMapNullValue);
     }
 }
