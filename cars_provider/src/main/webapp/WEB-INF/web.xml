@@ -38,6 +38,8 @@
             <param-name>contextConfigLocation</param-name>
             <param-value>classpath:spring/spring.xml</param-value>
         </init-param>
+        <!--启动顺序，值越小级别越高-->
+        <load-on-startup>1</load-on-startup>
     </servlet>
     <servlet-mapping>
         <servlet-name>SpringMVC</servlet-name>
