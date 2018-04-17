@@ -2,11 +2,17 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" " http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xiyan.dao.slave.CarSlaveDao" >
     <resultMap id="platform" type="com.xiyan.model.entrty.Platform">
-        <id property="platformId" column="platform_id"/>
-        <result property="platformName" column="platform_name"/>
+        <id property="platformId" column="platformId"/>
+        <result property="platformName" column="platformName"/>
     </resultMap>
 
-    <select id="listAllPlatform" resultMap="platform">
+    <select id="selectAll" resultMap="platform">
         select * from platform;
+    </select>
+    <select id="selectById" resultMap="platform" parameterType="int">
+        select * from platform where platformId = #{platformId};
+    </select>
+    <select id="selectRowNumber" resultType="int">
+        select count(0) from platform;
     </select>
 </mapper>

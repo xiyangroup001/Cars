@@ -1,7 +1,7 @@
 package com.xiyan.dao.master;
 
 import com.xiyan.model.entrty.Car;
-import com.xiyan.model.entrty.twolevel.CarQualifications;
+import com.xiyan.model.entrty.twolevel.CarQualification;
 import com.xiyan.model.entrty.twolevel.CarsPictureUrl;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,7 +11,6 @@ import org.springframework.test.context.transaction.TransactionConfiguration;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @antuor binwang
@@ -42,19 +41,19 @@ public class CarMasterDaoTest {
         car.setCarType((short)1);
         car.setCarState((short)2);
         car.setInStore(10236);
-        CarQualifications qualifications = new CarQualifications();
-        qualifications.setAddress("SSSSS");
+        CarQualification qualification = new CarQualification();
+        qualification.setAddress("SSSSS");
         CarsPictureUrl carsPictureUrl = new CarsPictureUrl();
 
         carsPictureUrl.setComcInsrPicUrl("/001");
-        carsPictureUrl.setRearPicUrl("/001");
-        carsPictureUrl.setSidePicUrl("/001");
-        carsPictureUrl.setInsideFrontPicUrl("/001");
-        carsPictureUrl.setInsideRearPicUrl("/001");
-        carsPictureUrl.setSignPicUrl("/001");
-        carsPictureUrl.setLicensePicUrl("/001");
-        carsPictureUrl.setInsrPicUrl("/001");
-        carsPictureUrl.setComcInsrPicUrl("/001");
+        carsPictureUrl.setRearPicUrl("/002");
+        carsPictureUrl.setSidePicUrl("/003");
+        carsPictureUrl.setInsideFrontPicUrl("/004");
+        carsPictureUrl.setInsideRearPicUrl("/005");
+        carsPictureUrl.setSignPicUrl("/006");
+        carsPictureUrl.setLicensePicUrl("/007");
+        carsPictureUrl.setInsrPicUrl("/008");
+        carsPictureUrl.setComcInsrPicUrl("/009");
 
         ArrayList<String> list = new ArrayList<>();
         list.add("111");
@@ -63,12 +62,12 @@ public class CarMasterDaoTest {
 
         carsPictureUrl.setOtherPicUrl(list);
         car.setCarPicture(carsPictureUrl);
-        car.setCarQualifications(qualifications);
+        car.setCarQualification(qualification);
         ArrayList<Integer> list1=new ArrayList<Integer>();
         list1.add(Integer.valueOf(11));
         car.setInsuranceType(list1);
 
-        carMasterDao.insertCar(car);
+        carMasterDao.insert(car);
     }
 
 

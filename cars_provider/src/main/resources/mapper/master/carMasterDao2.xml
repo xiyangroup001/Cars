@@ -2,39 +2,67 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" " http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xiyan.dao.master.CarMasterDao">
 
-    <insert id="insertCar" parameterType="com.xiyan.model.entrty.Car">
+    <insert id="insert" useGeneratedKeys="true" keyProperty="carId"
+            parameterType="com.xiyan.model.entrty.Car">
+        insert into car
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="carLicense != null">carLicense,</if>
+            <if test="carBrand != null">carBrand,</if>
+            <if test="carType != null ">carType,</if>
+            <if test="carPrice != null">carPrice,</if>
+            <if test="inStore != null and inStore != 0">inStore,</if>
+            <if test="carState != null">carState,</if>
+            <if test="rentalPrice != null">rentalPrice,</if>
+            <if test="carPicture != null">carPicture,</if>
+            <if test="carQualification != null">carQualification,</if>
+            <if test="insuranceType != null">insuranceType,</if>
+            <if test="aduitId != null">aduitId,</if>
+            <if test="aduitType != null ">aduitType,</if>
+        </trim>
+        values
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="carLicense != null">#{carLicense},</if>
+            <if test="carBrand != null">#{carBrand},</if>
+            <if test="carType != null ">#{carType},</if>
+            <if test="carPrice != null">#{carPrice},</if>
+            <if test="inStore != null and inStore != 0">#{inStore},</if>
+            <if test="carState != null">#{carState},</if>
+            <if test="rentalPrice != null">#{rentalPrice},</if>
+            <if test="carPicture != null">#{carPicture,typeHandler =
+                com.xiyan.model.typeHandler.CarsPicUrlTypeHandler},</if>
+            <if test="carQualification != null">#{carQualification,typeHandler =
+                com.xiyan.model.typeHandler.CarQualTypeHandler},</if>
+            <if test="insuranceType != null">#{insuranceType,typeHandler =
+                com.xiyan.model.typeHandler.ArrayListTypeHandler},</if>
+            <if test="aduitId != null">#{aduitId},</if>
+            <if test="aduitType != null ">#{aduitType},</if>
+        </trim>
 
-        insert into car(
-        car_id,
-        car_license,
-        car_brand,
-        car_type,
-        car_price,
-        in_store,
-        car_state,
-        rental_price,
-        car_picture,
-        car_qualification,
-        insurance_type,
-        aduit_type,
-        aduit_id
-        )
-
-        values(
-        #{carId},
-        #{carLicense},
-        #{carBrand},
-        #{carType},
-        #{carPrice},
-        #{inStore},
-        #{carState},
-        #{rentalPrice},
-        #{carPicture,typeHandler=com.xiyan.model.typeHandler.CarsPicUrlTypeHandler},
-        #{carQualifications,typeHandler=com.xiyan.model.typeHandler.CarQualTypeHandler},
-        #{insuranceType,typeHandler=com.xiyan.model.typeHandler.ArrayListTypeHandler},
-        #{aduitType},
-        #{aduitId}
-        )
     </insert>
 
+    <update id="update">
+        UPDATE Car
+        <set>
+            <if test="carLicense != null">carLicense=#{carLicense},</if>
+            <if test="carBrand != null">carBrand=#{carBrand},</if>
+            <if test="carType != null ">carType=#{carType},</if>
+            <if test="carPrice != null">carPrice=#{carPrice},</if>
+            <if test="inStore != null and inStore != 0">inStore=#{inStore},</if>
+            <if test="carState != null">carState=#{carState},</if>
+            <if test="rentalPrice != null">rentalPrice=#{rentalPrice},</if>
+            <if test="carPicture != null">carPicture=#{carPicture,typeHandler =
+                com.xiyan.model.typeHandler.CarsPicUrlTypeHandler},</if>
+            <if test="carQualification != null">carQualification=#{carQualification,typeHandler =
+                com.xiyan.model.typeHandler.CarQualTypeHandler},</if>
+            <if test="insuranceType != null">insuranceType=#{insurance,typeHandler =
+                com.xiyan.model.typeHandler.ArrayListTypeHandler},</if>
+            <if test="aduitId != null">aduitId=#{aduitId},</if>
+            <if test="aduitType != null ">aduitType=#{aduitType},</if>
+        </set>
+        WHERE CarId = #{CarId}
+    </update>
+    <delete id="delete">
+        DELETE FROM Car
+        WHERE CarId = #{CarId}
+    </delete>
 </mapper>

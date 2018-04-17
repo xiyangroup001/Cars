@@ -2,26 +2,55 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" " http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xiyan.dao.master.AdminMasterDao">
 
-    <insert id="insertAdmin" parameterType="com.xiyan.model.entrty.Admin">
-        insert into admin(
-            admin_id,
-            admin_name,
-            platform_id,
-            power,
-            password,
-            store
-        )
-        values(
-            #{adminId},
-            #{adminName},
-            #{platformId},
-            #{power},
-            #{passWord},
-            #{store}
-        )
+    <insert id="insert" useGeneratedKeys="true" keyProperty="adminId"
+            parameterType="com.xiyan.model.entrty.Admin">
+        insert into admin
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="adminId != null">adminId,</if>
+            <if test="adminName != null">adminName,</if>
+            <if test="platformId != null and platformId != 0">platformId,</if>
+            <if test="power != null">power,</if>
+            <if test="passWord != null">passWord,</if>
+            <if test="store != null and store != 0">store,</if>
+        </trim>
+        values
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="adminId != null">#{adminId},</if>
+            <if test="adminName != null">#{adminName},</if>
+            <if test="platformId != null and platformId != 0">#{platformId},</if>
+            <if test="power != null">#{power},</if>
+            <if test="passWord != null">#{passWord},</if>
+            <if test="store != null and store != 0">#{store},</if>
+        </trim>
+
     </insert>
-    <delete id="deleteAdmin" parameterType="java.lang.Integer">
-        delete from admin where admin_id={#adminId}
+
+    <delete id="delete" parameterType="java.lang.Integer">
+        delete from admin
+        where adminId={#adminId}
     </delete>
+
+    <update id="update" useGeneratedKeys="true" keyProperty="adminId"
+            parameterType="com.xiyan.model.entrty.Admin">
+        update admin
+        <set>
+            <if test="adminName != null">
+                adminName = #{adminName},
+            </if>
+            <if test="platformId != null">
+                platformId = #{platformId},
+            </if>
+            <if test="power != null">
+                power = #{power},
+            </if>
+            <if test="passWord != null">
+                passWord = #{passWord},
+            </if>
+            <if test=" store != 0">
+                store = #{store},
+            </if>
+        </set>
+        where adminId = #{adminId}
+    </update>
 
 </mapper>

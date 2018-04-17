@@ -1,16 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" " http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.xiyan.dao.slave.CarSlaveDao" >
+<mapper namespace="com.xiyan.dao.slave.CheckSlaveDao" >
 
     <resultMap id="check" type="com.xiyan.model.entrty.Check">
-        <id property="checkId" column="check_id"/>
-        <result property="checkUserId" column="check_user"/>
-        <result property="checkTime" column="check_time"/>
-        <result property="checkType" column="check_type"/>
-        <result property="checkResult" column="check_result"/>
+        <id property="checkId" column="checkId"/>
+        <result property="checkUserId" column="checkUserId"/>
+        <result property="checkTime" column="checkTime"/>
+        <result property="checkType" column="checkType"/>
+        <result property="checkResult" column="checkResult"/>
     </resultMap>
 
-    <select id="listAllCheck" resultMap="check">
-        select * from check;
+    <sql id="all_check_col">
+        checkId,
+        checkUser,
+        checkTime,
+        checkType,
+        checkResult
+    </sql>
+
+    <select id="select" resultMap="check">
+        SELECT <include refid="all_check_col" />
+        FROM checks
+        <where>
+            <if test="checkId != 0"> AND checkId = #{checkId} </if>
+            <if test="checkUser != null"> AND checkUser = #{checkUser} </if>
+            <if test="checkTime != null"> AND checkTime = #{checkTime} </if>
+            <if test="checkType != null"> AND checkType = #{checkType} </if>
+            <if test="checkResult != null"> AND checkResult = #{checkResult} </if>
+        </where>
+    </select>
+
+    <select id="selectAll" resultMap="check">
+        SELECT <include refid="all_check_col" />
+        FROM checks
+    </select>
+
+    <select id="selectById" resultMap="check" parameterType="int">
+        SELECT <include refid="all_check_col" />
+        FROM checks
+        WHERE checkId = #{checkId}
+    </select>
+
+    <select id="selectRowNumber" resultType="int">
+        select count(0) from checks;
     </select>
 </mapper>

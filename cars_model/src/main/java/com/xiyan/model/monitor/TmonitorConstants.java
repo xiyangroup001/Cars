@@ -576,6 +576,8 @@ public class TmonitorConstants {
     public static final String DUBBO_ADMIN_INSERT="dubbo_admin_insert";
     //更新管理员
     public static final String DUBBO_ADMIN_UPDATE="dubbo_admin_update";
+    //查询管理员
+    public static final String DUBBO_ADMIN_LISTALL="dubbo_admin_listall";
 
 
 }

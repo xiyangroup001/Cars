@@ -1,5 +1,6 @@
 package com.xiyan.dao.slave;
 
+import com.xiyan.dao.master.GeneralMasterDao;
 import com.xiyan.model.entrty.Car;
 import com.xiyan.model.entrty.Driver;
 import org.mybatis.spring.annotation.MapperScan;
@@ -11,6 +12,6 @@ import java.util.List;
  * @date 2018/2/7  11:28
  */
 @MapperScan
-public interface DriverSlaveDao {
-    List<Driver> listAllDriver();
+public interface DriverSlaveDao extends GeneralSlaveDao<Driver> {
+    Driver selectByIdNumber(String idNumber);
 }

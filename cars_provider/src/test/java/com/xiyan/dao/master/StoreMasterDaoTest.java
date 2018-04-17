@@ -30,10 +30,10 @@ public class StoreMasterDaoTest {
 
         Store store = new Store();
         store.setLocation(p1);
-        store.setStoreId(1002);
+       // store.setStoreId(1002);
         store.setStoreName("第一门店");
         store.setPlatform((short) 1);
-        storeMasterDao.insertStore(store);
+        storeMasterDao.insert(store);
 
     }
 

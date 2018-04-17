@@ -3,9 +3,10 @@ package com.xiyan.model.entrty;
 import com.alibaba.fastjson.annotation.JSONField;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Code {
+public class Code implements Serializable {
     private String userPhone;
     private String codeVal;
 

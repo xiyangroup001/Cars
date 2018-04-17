@@ -4,15 +4,14 @@ import com.alibaba.fastjson.annotation.JSONField;
 import com.xiyan.model.entrty.twolevel.Position;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * @antuor binwang
  * @date 2018/2/5  17:55
  */
-public class Order {
-
-
+public class Order implements Serializable {
         private String orderId;
         private int userId;
         private int carId;

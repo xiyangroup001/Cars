@@ -41,7 +41,7 @@ public class AdminServiceImpl implements AdminService {
             @Override
             protected APIResponse<Integer> process() throws BizException {
                 logger.info("删除Admin---参数：{}",adminId);
-                APIResponse<Integer> response =APIResponse.returnSuccess(adminMasterDao.deleteAdmin(adminId));
+                APIResponse<Integer> response =APIResponse.returnSuccess(adminMasterDao.delete(adminId));
                 logger.info("删除Admin---参数结果：{}",response);
                 return response;
             }
@@ -60,21 +60,41 @@ public class AdminServiceImpl implements AdminService {
             @Override
             protected APIResponse<Integer> process() throws BizException {
                 logger.info("新建Admin---参数：{}",admin);
-                APIResponse<Integer> response = APIResponse.returnSuccess(adminMasterDao.insertAdmin(admin));
+                APIResponse<Integer> response = APIResponse.returnSuccess(adminMasterDao.insert(admin));
                 logger.info("新建Admin---结果：{}",response);
-                return null;
+                return response;
             }
         }.execute();
     }
 
     @Override
     public APIResponse<List<Admin>> listAllAdmin() {
-        return null;
+        return new ApiTemplate<List<Admin>>(TmonitorConstants.DUBBO_ADMIN_LISTALL){
+            @Override
+            protected APIResponse<List<Admin>> process() throws BizException {
+                APIResponse<List<Admin>> response = APIResponse.returnSuccess(adminSlaveDao.selectAll());
+                logger.info("查询Admin---结果：{}",response);
+                return response;
+            }
+        }.execute();
     }
 
     @Override
     public APIResponse<Integer> updateAdmin(Admin admin) {
-        return null;
+        return new ApiTemplate<Integer>(TmonitorConstants.DUBBO_ADMIN_UPDATE){
+            @Override
+            protected void checkParams() throws BizException {
+                Preconditions.checkNotNull(admin);
+                Preconditions.checkArgument(Pattern.matches("^\\d{17}((\\d)|(X))$", admin.getAdminId()),"身份证号不正确！");
+                Preconditions.checkArgument(Pattern.matches("^[a-zA-Z0-9]{6,16}$",admin.getPassWord()),"密码不符合要求！");
+            }
+            @Override
+            protected APIResponse<Integer> process() throws BizException {
+                logger.info("更新Admin---参数：{}",admin);
+                APIResponse<Integer> response = APIResponse.returnSuccess(adminMasterDao.update(admin));
+                logger.info("更新Admin---结果：{}",response);
+                return response;            }
+        }.execute();
     }
 
 

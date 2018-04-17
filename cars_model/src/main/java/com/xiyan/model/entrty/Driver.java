@@ -2,37 +2,22 @@ package com.xiyan.model.entrty;
 
 import com.xiyan.model.entrty.twolevel.DriverPictureUrl;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * @antuor binwang
  * @date 2018/2/6  20:10
  */
-public class Driver {
-
-
+public class Driver implements Serializable {
     private String driverName;
-    private String IdNumber;
+    private String idNumber;
     private int userId;
-    private Date expirateDate;
+    private Date expirationDate;
     private String fileNumber;
-    private DriverPictureUrl driverPicUrl;
+    private DriverPictureUrl driverPic;
     private short aduitType;
     private int aduitId;
-
-    @Override
-    public String toString() {
-        return "Driver{" +
-                "driverName='" + driverName + '\'' +
-                ", IdNumber='" + IdNumber + '\'' +
-                ", userId=" + userId +
-                ", expirateDate=" + expirateDate +
-                ", fileNumber='" + fileNumber + '\'' +
-                ", driverPicUrl=" + driverPicUrl +
-                ", aduitType=" + aduitType +
-                ", aduitId=" + aduitId +
-                '}';
-    }
 
     public String getDriverName() {
         return driverName;
@@ -43,11 +28,11 @@ public class Driver {
     }
 
     public String getIdNumber() {
-        return IdNumber;
+        return idNumber;
     }
 
     public void setIdNumber(String idNumber) {
-        IdNumber = idNumber;
+        this.idNumber = idNumber;
     }
 
     public int getUserId() {
@@ -58,12 +43,12 @@ public class Driver {
         this.userId = userId;
     }
 
-    public Date getExpirateDate() {
-        return expirateDate;
+    public Date getExpirationDate() {
+        return expirationDate;
     }
 
-    public void setExpirateDate(Date expirateDate) {
-        this.expirateDate = expirateDate;
+    public void setExpirationDate(Date expirationDate) {
+        this.expirationDate = expirationDate;
     }
 
     public String getFileNumber() {
@@ -74,12 +59,12 @@ public class Driver {
         this.fileNumber = fileNumber;
     }
 
-    public DriverPictureUrl getDriverPicUrl() {
-        return driverPicUrl;
+    public DriverPictureUrl getDriverPic() {
+        return driverPic;
     }
 
-    public void setDriverPicUrl(DriverPictureUrl driverPicUrl) {
-        this.driverPicUrl = driverPicUrl;
+    public void setDriverPic(DriverPictureUrl driverPic) {
+        this.driverPic = driverPic;
     }
 
     public short getAduitType() {
@@ -96,5 +81,10 @@ public class Driver {
 
     public void setAduitId(int aduitId) {
         this.aduitId = aduitId;
+    }
+
+    @Override
+    public String toString() {
+        return "Driver{" + "driverName='" + driverName + '\'' + ", idNumber='" + idNumber + '\'' + ", userId=" + userId + ", expirationDate=" + expirationDate + ", fileNumber='" + fileNumber + '\'' + ", driverPic=" + driverPic + ", aduitType=" + aduitType + ", aduitId=" + aduitId + '}';
     }
 }

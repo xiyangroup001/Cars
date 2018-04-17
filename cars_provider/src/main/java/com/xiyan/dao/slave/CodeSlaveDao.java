@@ -11,6 +11,7 @@ import java.util.List;
  * @date 2018/2/7  11:28
  */
 @MapperScan
-public interface CodeSlaveDao {
-    List<Code> listAllCode();
+public interface CodeSlaveDao extends GeneralSlaveDao<Code> {
+    Code selectByPhone(String phone);
 }
+

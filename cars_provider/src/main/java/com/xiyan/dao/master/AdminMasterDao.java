@@ -9,9 +9,6 @@ import org.mybatis.spring.annotation.MapperScan;
  * @date 2018/2/7  10:42
  */
 @MapperScan
+public interface AdminMasterDao extends GeneralMasterDao<Admin> {
 
-public interface AdminMasterDao {
-    int insertAdmin(Admin admin);
-
-    int deleteAdmin(Integer adminId);
 }

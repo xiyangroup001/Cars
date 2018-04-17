@@ -12,6 +12,6 @@ import java.util.List;
  */
 @MapperScan
 
-public interface CheckSlaveDao {
-    List<Check> listAllCheck();
+public interface CheckSlaveDao extends GeneralSlaveDao<Check> {
+    Check selectById(int checkId);
 }

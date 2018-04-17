@@ -10,6 +10,5 @@ import org.mybatis.spring.annotation.MapperScan;
  */
 @MapperScan
 
-public interface PlatformMasterDao {
-    int insertPlatform(Platform platform);
+public interface PlatformMasterDao extends GeneralMasterDao<Platform> {
 }

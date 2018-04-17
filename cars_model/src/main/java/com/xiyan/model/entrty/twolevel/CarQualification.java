@@ -6,7 +6,7 @@ import java.util.Date;
  * @antuor binwang
  * @date 2018/2/6  17:24
  */
-public class CarQualifications {
+public class CarQualification {
     /*所有人*/
     private String owner;
 

@@ -9,6 +9,6 @@ import org.mybatis.spring.annotation.MapperScan;
  */
 @MapperScan
 
-public interface CheckMasterDao {
-    int insertCheck(Check check);
+public interface CheckMasterDao extends GeneralMasterDao<Check> {
+
 }

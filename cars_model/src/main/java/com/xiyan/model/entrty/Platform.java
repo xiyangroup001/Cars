@@ -1,10 +1,12 @@
 package com.xiyan.model.entrty;
 
+import java.io.Serializable;
+
 /**
  * @antuor binwang
  * @date 2018/2/6  18:24
  */
-public class Platform {
+public class Platform implements Serializable {
     private short platformId;
     private String platformName;
 

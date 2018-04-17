@@ -2,21 +2,35 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" " http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xiyan.dao.master.StoreMasterDao">
 
-
-
-    <insert id="insertStore" parameterType="com.xiyan.model.entrty.Store">
-        insert into store(
-        store_id,
-        store_name,
-        platform,
-        location
-        )
-        values(
-        #{storeId},
-        #{storeName},
-        #{platform},
-        #{location,typeHandler=com.xiyan.model.typeHandler.PositionTypeHandler}
-        )
-
+    <insert id="insert" useGeneratedKeys="true" keyProperty="StoreId"
+            parameterType="com.xiyan.model.entrty.Store">
+        INSERT INTO store
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="storeName != null">storeName,</if>
+            <if test="platform != 0">platform,</if>
+            <if test="location != null">location,</if>
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="storeName != null">#{storeName},</if>
+            <if test="platform != 0">#{platform},</if>
+            <if test="location != null">#{location,typeHandler=com.xiyan.model.typeHandler.PositionTypeHandler},</if>
+        </trim>
     </insert>
+    <update id="update" parameterType="com.xiyan.model.entrty.Store">
+        UPDATE Store
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="storeName != null">storeName=#{storeName},</if>
+            <if test="platform != 0">platform=#{platform},</if>
+            <if test="location != null">location=#{location,typeHandler=com.xiyan.model.typeHandler.PositionTypeHandler},</if>
+        </trim>
+        WHERE platformId = #{platformId}
+    </update>
+
+    <!--int delete(int id);-->
+    <delete id="delete">
+        DELETE FROM Store
+        WHERE storemId = #{id}
+    </delete>
+
 </mapper>

@@ -4,21 +4,28 @@
 
     <resultMap id="car" type="com.xiyan.model.entrty.Car">
         <id property="carId" column="car_id"/>
-        <result property="carLicense" column="car_license"/>
-        <result property="carBrand" column="car_brand"/>
-        <result property="carType" column="car_type"/>
-        <result property="carPrice" column="car_price"/>
-        <result property="inStore" column="in_store"/>
-        <result property="carState" column="car_state"/>
-        <result property="rentalPrice" column="rental_price"/>
-        <result property="carPicture" column="car_picture" typeHandler="com.xiyan.model.typeHandler.CarsPicUrlTypeHandler"/>
-        <result property="carQualifications" column="car_qualification" typeHandler="com.xiyan.model.typeHandler.CarQualTypeHandler"/>
-        <result property="insuranceType" column="insurance_type" typeHandler="com.xiyan.model.typeHandler.ArrayListTypeHandler"/>
-        <result property="aduitType" column="aduit_type"/>
-        <result property="aduitId" column="aduit_id"/>
+        <result property="carLicense" column="carLicense"/>
+        <result property="carBrand" column="carBrand"/>
+        <result property="carType" column="carType"/>
+        <result property="carPrice" column="carPrice"/>
+        <result property="inStore" column="inStore"/>
+        <result property="carState" column="carState"/>
+        <result property="rentalPrice" column="rentalPrice"/>
+        <result property="carPicture" column="carPicture" typeHandler="com.xiyan.model.typeHandler.CarsPicUrlTypeHandler"/>
+        <result property="carQualification" column="carQualification" typeHandler="com.xiyan.model.typeHandler.CarQualTypeHandler"/>
+        <result property="insuranceType" column="insuranceType" typeHandler="com.xiyan.model.typeHandler.ArrayListTypeHandler"/>
+        <result property="aduitType" column="aduitType"/>
+        <result property="aduitId" column="aduitId"/>
     </resultMap>
 
-    <select id="listAllCar" resultMap="car">
+    <select id="selectAll" resultMap="car">
         select * from car;
+    </select>
+    <select id="selectById" resultMap="car" parameterType="int">
+        select * from car
+        where carId = #{carId} ;
+    </select>
+    <select id="selectRowNumber">
+        select count(0) from car;
     </select>
 </mapper>

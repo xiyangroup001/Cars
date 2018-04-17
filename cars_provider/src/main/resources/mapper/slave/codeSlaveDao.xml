@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" " http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.xiyan.dao.slave.CarSlaveDao" >
+<mapper namespace="com.xiyan.dao.slave.CodeSlaveDao" >
 
     <resultMap id="code" type="com.xiyan.model.entrty.Code">
-        <id property="userPhone" column="user_phone"/>
-        <result property="codeVal" column="code_val"/>
-        <result property="sendTime" column="send_time"/>
+        <id property="userPhone" column="userPhone"/>
+        <result property="codeVal" column="codeVal"/>
+        <result property="sendTime" column="sendTime"/>
 
     </resultMap>
 
-    <select id="listAllCode" resultMap="code">
-        select * from code;
+    <!--Code selectByPhone(String phone);-->
+    <select id="selectByPhone" resultMap="code" parameterType="java.lang.String">
+        select * from code WHERE userPhone = #{phone};
     </select>
+
 </mapper>

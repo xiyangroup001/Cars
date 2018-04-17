@@ -2,11 +2,13 @@ package com.xiyan.model.entrty;
 
 import com.xiyan.model.entrty.twolevel.Position;
 
+import java.io.Serializable;
+
 /**
  * @antuor binwang
  * @date 2018/2/5  18:06
  */
-public class Store {
+public class Store implements Serializable {
 
     private int storeId;
     private String storeName;

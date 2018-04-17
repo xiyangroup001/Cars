@@ -2,21 +2,37 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" " http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xiyan.dao.slave.UserSlaveDao">
     <resultMap id="userMap" type="com.xiyan.model.entrty.User">
-        <id property="userName" column="user_name"/>
-        <result property="userId" column="user_id"/>
-        <result property="userGuid" column="user_guid"/>
-        <result property="userPhone" column="user_phone"/>
+        <id property="userName" column="userName"/>
+        <result property="userId" column="userId"/>
+        <result property="userGuid" column="userGuid"/>
+        <result property="userPhone" column="userPhone"/>
         <result property="userPassword" column="password"/>
-        <result property="registrateTime" column="registrate_time"/>
-        <result property="userType" column="user_type"/>
-        <result property="headPicUrl" column="head_pic_url"/>
+        <result property="registrateTime" column="registrateTime"/>
+        <result property="userType" column="userType"/>
+        <result property="headPicUrl" column="headPicUrl"/>
     </resultMap>
-    <select id="listAllUser" resultMap="userMap">
+
+    <select id="selectAll" resultMap="userMap">
         select * from user;
     </select>
 
-    <select id="queryMaxUserId" resultType="int">
-        select max(user_id) from user;
+    <select id="select" resultMap="userMap" parameterType="com.xiyan.model.entrty.User">
+        select * from user
+        <where>
+            <if test="userId != 0">AND userId = #{userId},</if>
+            <if test="userGuid != null">AND userGuid = #{userGuid},</if>
+            <if test="userPhone != null">AND userPhone = #{userPhone},</if>
+            <if test="registrateTime != null">AND registrateTime = #{registrateTime},</if>
+            <if test="userType != 0">AND userType = #{userType},</if>
+        </where>
     </select>
-
+    <select id="selectById" resultMap="userMap" parameterType="int">
+        select * from user where userId = #{id};
+    </select>
+    <select id="queryMaxUserId" resultType="int">
+        select max(userId) from user;
+    </select>
+    <select id="selectRowNumber" resultType="int">
+        select count(0) from user;
+    </select>
 </mapper>

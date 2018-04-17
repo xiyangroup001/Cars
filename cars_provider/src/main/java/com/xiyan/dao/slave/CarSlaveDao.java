@@ -10,6 +10,6 @@ import java.util.List;
  * @date 2018/2/7  11:28
  */
 @MapperScan
-public interface CarSlaveDao {
-    List<Car> listAllCar();
+public interface CarSlaveDao extends GeneralSlaveDao<Car> {
+    Car selectById(int carId);
 }

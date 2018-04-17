@@ -27,7 +27,7 @@ public class StoreSlaveDaoTest {
     private StoreSlaveDao storeSlaveDao;
     @Test
     public void selectAllStore() throws Exception {
-        logger.info(JSON.toJSONString(storeSlaveDao.listAllStore()));
+        logger.info(JSON.toJSONString(storeSlaveDao.selectAll()));
     }
 
 

@@ -1,5 +1,6 @@
 package com.xiyan.dao.slave;
 
+import com.xiyan.dao.master.GeneralMasterDao;
 import com.xiyan.model.entrty.Car;
 import com.xiyan.model.entrty.Order;
 import org.mybatis.spring.annotation.MapperScan;
@@ -12,6 +13,6 @@ import java.util.List;
  */
 @MapperScan
 
-public interface OrderSlaveDao {
-    List<Order> listAllOrder();
+public interface OrderSlaveDao  extends GeneralSlaveDao<Order> {
+    Order selectById(int orderId);
 }

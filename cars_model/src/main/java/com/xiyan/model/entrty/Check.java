@@ -1,17 +1,25 @@
 package com.xiyan.model.entrty;
 
+import com.alibaba.fastjson.annotation.JSONField;
+
+import java.io.Serializable;
+import java.util.Date;
+
 /**
  * @antuor binwang
  * @date 2018/2/6  18:26
  */
-public class Check {
-
+public class Check implements Serializable {
 
     private int checkId;
-    private String checkUserId;
-    private String checkTime;
-    private short checkType;
+    private String checkUser;
+
+    @JSONField(format = "yyyy-MM-dd HH:mm:ss")
+    private Date checkTime;
+
+    private Short checkType;
     private String checkResult;
+
     public int getCheckId() {
         return checkId;
     }
@@ -19,27 +27,28 @@ public class Check {
     public void setCheckId(int checkId) {
         this.checkId = checkId;
     }
-    public String getCheckUserId() {
-        return checkUserId;
+
+    public String getCheckUser() {
+        return checkUser;
     }
 
-    public void setCheckUserId(String checkUserId) {
-        this.checkUserId = checkUserId;
+    public void setCheckUser(String checkUser) {
+        this.checkUser = checkUser;
     }
 
-    public String getCheckTime() {
+    public Date getCheckTime() {
         return checkTime;
     }
 
-    public void setCheckTime(String checkTime) {
+    public void setCheckTime(Date checkTime) {
         this.checkTime = checkTime;
     }
 
-    public short getCheckType() {
+    public Short getCheckType() {
         return checkType;
     }
 
-    public void setCheckType(short checkType) {
+    public void setCheckType(Short checkType) {
         this.checkType = checkType;
     }
 
@@ -55,7 +64,7 @@ public class Check {
     public String toString() {
         return "Check{" +
                 "checkId=" + checkId +
-                ", checkUserId='" + checkUserId + '\'' +
+                ", checkUserId='" + checkUser + '\'' +
                 ", checkTime='" + checkTime + '\'' +
                 ", checkType=" + checkType +
                 ", checkResult='" + checkResult + '\'' +

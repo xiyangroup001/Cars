@@ -1,29 +1,29 @@
 package com.xiyan.model.entrty;
 
-import com.xiyan.model.entrty.twolevel.CarQualifications;
+import com.xiyan.model.entrty.twolevel.CarQualification;
 import com.xiyan.model.entrty.twolevel.CarsPictureUrl;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * @antuor binwang
  * @date 2018/2/6  18:13
  */
-public class Car {
+public class Car implements Serializable {
     private int carId;    //车辆Id
     private String carLicense;   // 车牌号
     private String carBrand;    //品牌
-    private short carType;      //车辆类型
-    private double carPrice;    //车辆价位
+    private Short carType;      //车辆类型
+    private Double carPrice;    //车辆价位
     private int inStore;    //目前所在门店
-    private short carState;     //车辆状态
-    private double rentalPrice;     //出租价格
+    private Short carState;     //车辆状态
+    private Double rentalPrice;     //出租价格
     private CarsPictureUrl carPicture;      //相关照片路径
-    private CarQualifications carQualifications;        //相关资质信息
+    private CarQualification carQualification;        //相关资质信息
     private ArrayList<Integer> insuranceType;       //保险类型
-    private short aduitType;            //车辆审核状态
+    private Short aduitType;            //车辆审核状态
     private int aduitId;        //车辆审核号
-
 
     public int getCarId() {
         return carId;
@@ -49,19 +49,19 @@ public class Car {
         this.carBrand = carBrand;
     }
 
-    public short getCarType() {
+    public Short getCarType() {
         return carType;
     }
 
-    public void setCarType(short carType) {
+    public void setCarType(Short carType) {
         this.carType = carType;
     }
 
-    public double getCarPrice() {
+    public Double getCarPrice() {
         return carPrice;
     }
 
-    public void setCarPrice(double carPrice) {
+    public void setCarPrice(Double carPrice) {
         this.carPrice = carPrice;
     }
 
@@ -73,19 +73,19 @@ public class Car {
         this.inStore = inStore;
     }
 
-    public short getCarState() {
+    public Short getCarState() {
         return carState;
     }
 
-    public void setCarState(short carState) {
+    public void setCarState(Short carState) {
         this.carState = carState;
     }
 
-    public double getRentalPrice() {
+    public Double getRentalPrice() {
         return rentalPrice;
     }
 
-    public void setRentalPrice(double rentalPrice) {
+    public void setRentalPrice(Double rentalPrice) {
         this.rentalPrice = rentalPrice;
     }
 
@@ -97,12 +97,12 @@ public class Car {
         this.carPicture = carPicture;
     }
 
-    public CarQualifications getCarQualifications() {
-        return carQualifications;
+    public CarQualification getCarQualification() {
+        return carQualification;
     }
 
-    public void setCarQualifications(CarQualifications carQualifications) {
-        this.carQualifications = carQualifications;
+    public void setCarQualification(CarQualification carQualification) {
+        this.carQualification = carQualification;
     }
 
     public ArrayList<Integer> getInsuranceType() {
@@ -113,11 +113,11 @@ public class Car {
         this.insuranceType = insuranceType;
     }
 
-    public short getAduitType() {
+    public Short getAduitType() {
         return aduitType;
     }
 
-    public void setAduitType(short aduitType) {
+    public void setAduitType(Short aduitType) {
         this.aduitType = aduitType;
     }
 
@@ -131,20 +131,6 @@ public class Car {
 
     @Override
     public String toString() {
-        return "Car{" +
-                "carId=" + carId +
-                ", carLicense='" + carLicense + '\'' +
-                ", carBrand='" + carBrand + '\'' +
-                ", carType=" + carType +
-                ", carPrice=" + carPrice +
-                ", inStore=" + inStore +
-                ", carState=" + carState +
-                ", rentalPrice=" + rentalPrice +
-                ", carPicture=" + carPicture +
-                ", carQualifications=" + carQualifications +
-                ", insuranceType=" + insuranceType +
-                ", aduitType=" + aduitType +
-                ", aduitId=" + aduitId +
-                '}';
+        return "Car{" + "carId=" + carId + ", carLicense='" + carLicense + '\'' + ", carBrand='" + carBrand + '\'' + ", carType=" + carType + ", carPrice=" + carPrice + ", inStore=" + inStore + ", carState=" + carState + ", rentalPrice=" + rentalPrice + ", carPicture=" + carPicture + ", carQualification=" + carQualification + ", insuranceType=" + insuranceType + ", aduitType=" + aduitType + ", aduitId=" + aduitId + '}';
     }
 }

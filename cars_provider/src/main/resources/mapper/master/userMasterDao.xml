@@ -12,16 +12,16 @@
         <result property="headPicUrl" column="head_pic_url"/>
     </resultMap>
 
-    <insert id="insertUser" parameterType="com.xiyan.model.entrty.User">
+    <insert id="insert" parameterType="com.xiyan.model.entrty.User">
         insert into user(
-            user_name,
-            user_id,
-            user_guid,
-            user_phone,
-            password,
-            registrate_time,
-            user_type,
-            Head_pic_url
+            userName,
+            userId,
+            userGuid,
+            userPhone,
+            userPassword,
+            registrateTime,
+            userType,
+            headPicUrl
         )
         values(
             #{userName},
@@ -35,25 +35,25 @@
         )
     </insert>
 
-    <update id="updateUser" parameterType="com.xiyan.model.entrty.User">
+    <update id="update" parameterType="com.xiyan.model.entrty.User">
         update user
         set
         <trim suffixOverrides=",">
-            <if test="userName != null">user_name = #{userName},</if>
-            <if test="userGuid != null">user_guid = #{userGuid},</if>
-            <if test="userPhone != null">user_phone = #{userPhone},</if>
-            <if test="userPassword != null">password = #{userPassword},</if>
-            <if test="registrateTime != null">registrate_time = #{registrateTime},</if>
-            <if test="userType != null">user_type = #{userType},</if>
-            <if test="headPicUrl != null">Head_pic_url = #{headPicUrl},</if>
+            <if test="userName != null">userName = #{userName},</if>
+            <if test="userGuid != null">userGuid = #{userGuid},</if>
+            <if test="userPhone != null">userPhone = #{userPhone},</if>
+            <if test="userPassword != null">password = #{password},</if>
+            <if test="registrateTime != null">registrateTime = #{registrateTime},</if>
+            <if test="userType != null">userType = #{userType},</if>
+            <if test="headPicUrl != null">headPicUrl = #{headPicUrl},</if>
         </trim>
         where
-            user_id=#{userId}
+        userId=#{userId}
     </update>
 
-    <delete id="deleteUser" parameterType="int" >
+    <delete id="delete" parameterType="int">
         delete from user
         where
-            user_id=#{userId}
+        userId=#{userId}
     </delete>
 </mapper>

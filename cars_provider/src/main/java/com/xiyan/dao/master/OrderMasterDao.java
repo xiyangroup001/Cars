@@ -9,6 +9,6 @@ import org.mybatis.spring.annotation.MapperScan;
  */
 @MapperScan
 
-public interface OrderMasterDao {
-    int insertOrder(Order order);
+public interface OrderMasterDao extends GeneralMasterDao<Order> {
+
 }

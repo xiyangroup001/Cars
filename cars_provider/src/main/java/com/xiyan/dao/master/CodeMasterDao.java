@@ -9,6 +9,5 @@ import org.mybatis.spring.annotation.MapperScan;
  */
 @MapperScan
 
-public interface CodeMasterDao {
-    int insertCode(Code codeode);
+public interface CodeMasterDao extends GeneralMasterDao<Code> {
 }

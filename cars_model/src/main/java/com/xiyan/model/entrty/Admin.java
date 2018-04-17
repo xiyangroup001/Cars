@@ -1,17 +1,12 @@
 package com.xiyan.model.entrty;
 
+import java.io.Serializable;
+
 /**
  * @antuor binwang
  * @date 2018/2/6  18:29
  */
-public class Admin {
-    /*`admin_id` VARCHAR(18) NOT NULL DEFAULT ' ' COMMENT '帐号',
-  `admin_name` VARCHAR(10) NOT NULL DEFAULT ' '  COMMENT '姓名',
-  `platform_id` TINYINT NOT NULL DEFAULT '0' COMMENT '所属平台',
-  `power` TINYINT NOT NULL DEFAULT '0' COMMENT '权限',
-  `password` VARCHAR(18) NOT NULL DEFAULT ' ' COMMENT '密码',
-  `store` bigint(20) NOT NULL DEFAULT '0' COMMENT '所属门店',
-  PRIMARY KEY (`admin_id`)*/
+public class Admin implements Serializable {
 
     private String adminId;
     private String adminName;

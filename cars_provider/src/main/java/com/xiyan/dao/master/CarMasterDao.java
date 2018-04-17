@@ -8,7 +8,6 @@ import org.mybatis.spring.annotation.MapperScan;
  * @date 2018/2/7  10:42
  */
 @MapperScan
+public interface CarMasterDao extends GeneralMasterDao<Car> {
 
-public interface CarMasterDao {
-    int insertCar(Car car);
 }

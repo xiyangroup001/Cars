@@ -1,22 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" " http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.xiyan.dao.slave.CarSlaveDao" >
-
-
+<mapper namespace="com.xiyan.dao.slave.DriverSlaveDao">
 
     <resultMap id="driver" type="com.xiyan.model.entrty.Driver">
-        <id property="IdNumber" column="id_number"/>
-        <result property="driverName" column="driver_name"/>
-        <result property="userId" column="user_id"/>
-        <result property="expirateDate" column="expiration_date"/>
-        <result property="fileNumber" column="file_number"/>
-        <result property="driverPicUrl" column="driver_Pic" typeHandler="com.xiyan.model.typeHandler.DriverPicTypeHandler"/>
-        <result property="aduitType" column="aduit_type"/>
-        <result property="aduitId" column="aduit_id"/>
-
+        <id property="IdNumber" column="IdNumber"/>
+        <result property="driverName" column="driverName"/>
+        <result property="userId" column="userId"/>
+        <result property="expirateDate" column="expirateDate"/>
+        <result property="fileNumber" column="fileNumber"/>
+        <result property="driverPicUrl" column="driverPicUrl"
+                typeHandler="com.xiyan.model.typeHandler.DriverPicTypeHandler"/>
+        <result property="aduitType" column="aduitType"/>
+        <result property="aduitId" column="aduitId"/>
     </resultMap>
+    <!--Driver selectByIdNumber(String idNumber);-->
+    <select id="selectByIdNumber" resultMap="driver" parameterType="java.lang.String">
+        select * FROM driver where idNumber = #{idNumber};
+    </select>
 
-    <select id="listAllDriver" resultMap="driver">
-        select * from driver;
+
+    <select id="selectAll" resultMap="driver">
+        select * FROM driver
+    </select>
+
+    <select id="select" resultMap="driver" parameterType="com.xiyan.model.entrty.Driver">
+        select * FROM driver
+        <where>
+            <if test="idNumber != null">AND idNumber = #{idNumber}</if>
+            <if test="driverName != null">AND driverName = #{driverName}</if>
+            <if test="userId != 0">AND userId = #{userId}</if>
+            <if test="expirationDate != null">AND expirationDate = #{expirationDate}</if>
+            <if test="fileNumber != null">AND fileNumber = #{fileNumber}</if>
+            <if test="driverPic != null">AND driverPic = #{driverPic}</if>
+            <if test="aduitType != null">AND aduitType = #{aduitType}</if>
+            <if test="aduitId != 0">AND aduitId = #{aduitId}</if>
+        </where>
+    </select>
+    <select id="selectRowNumber" resultType="int">
+        select count(0) from driver;
     </select>
 </mapper>

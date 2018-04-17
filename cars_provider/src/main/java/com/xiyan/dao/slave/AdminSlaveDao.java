@@ -11,7 +11,6 @@ import java.util.List;
  * @date 2018/2/7  11:28
  */
 @MapperScan
-public interface AdminSlaveDao {
-    List<Admin> listAllAdmin();
-    int queryMaxAdminId();
+public interface AdminSlaveDao extends GeneralSlaveDao<Admin> {
+    Admin selectById(String adminId);
 }

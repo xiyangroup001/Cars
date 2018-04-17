@@ -8,6 +8,6 @@ import org.mybatis.spring.annotation.MapperScan;
  * @date 2018/2/5  18:33
  */
 @MapperScan
-public interface StoreMasterDao {
-    int insertStore(Store store);
+public interface StoreMasterDao extends GeneralMasterDao<Store> {
+
 }

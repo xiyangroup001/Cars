@@ -10,6 +10,7 @@ import org.mybatis.spring.annotation.MapperScan;
  */
 @MapperScan
 
-public interface DriverMasterDao {
-    int insertDriver(Driver driver);
+public interface DriverMasterDao extends GeneralMasterDao<Driver> {
+    int deleteByIdNumber(String idNumber);
+
 }

@@ -2,18 +2,29 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" " http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xiyan.dao.master.CodeMasterDao">
 
-
-    <insert id="insertCode" parameterType="com.xiyan.model.entrty.Code">
-        insert into code(
-            user_phone,
-            code_val,
-            send_time
-        )
-        values(
-            #{userPhone},
-            #{codeVal},
-            #{sendTime}
-        )
-
+    <insert id="insert" parameterType="com.xiyan.model.entrty.Code">
+        INSERT INTO code
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="userPhone != null">userPhone,</if>
+            <if test="codeVal != null">codeVal,</if>
+            <if test="sendTime != null">sendTime,</if>
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="userPhone != null">#{userPhone},</if>
+            <if test="codeVal != null">#{codeVal},</if>
+            <if test="sendTime != null">#{sendTime},</if>
+        </trim>
     </insert>
+
+    <update id="update" parameterType="com.xiyan.model.entrty.Code">
+        update code
+        <trim prefix="set" suffixOverrides=",">
+            <if test="codeVal != null">codeVal = #{codeVal},</if>
+            <if test="sendTime != null">sendTime = #{sendTime},</if>
+        </trim>
+        WHERE userPhone = #{userPhone}
+    </update>
+
+    <delete id="delete"></delete>
 </mapper>

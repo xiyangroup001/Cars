@@ -1,21 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" " http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xiyan.dao.master.CheckMasterDao">
-    <insert id="insertCheck" parameterType="com.xiyan.model.entrty.Check">
-        insert into check(
-        check_id,
-        check_user,
-        check_time,
-        check_result,
-        check_type
-        )
-        values(
-        #{checkId},
-        #{checkUserId},
-        #{checkTime},
-        #{checkResult},
-        #{checkType}
-        )
 
+    <insert id="insert" useGeneratedKeys="true" keyProperty="checkId" parameterType="com.xiyan.model.entrty.Check">
+        INSERT INTO checks
+            <trim prefix="(" suffix=")" suffixOverrides=",">
+                <if test="checkUser != null"> checkUser, </if>
+                <if test="checkTime != null"> checkTime, </if>
+                <if test="checkType != null"> checkType, </if>
+                <if test="checkResult != null"> checkResult, </if>
+            </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="checkUser != null"> #{checkUser}, </if>
+            <if test="checkTime != null"> #{checkTime}, </if>
+            <if test="checkType != null"> #{checkType}, </if>
+            <if test="checkResult != null"> #{checkResult}, </if>
+        </trim>
     </insert>
+
+    <update id="update">
+        UPDATE checks
+        <trim prefix="SET" suffixOverrides="," >
+            <if test="checkUser != null"> checkUser = #{checkUser}, </if>
+            <if test="checkTime != null"> checkTime = #{checkTime}, </if>
+            <if test="checkType != null"> checkType = #{checkType}, </if>
+            <if test="checkResult != null"> checkResult = #{checkResult}, </if>
+        </trim>
+            WHERE checkId = #{checkId}
+    </update>
+
+    <delete id="delete">
+        DELETE FROM checks
+        WHERE checkId = #{id}
+    </delete>
 </mapper>

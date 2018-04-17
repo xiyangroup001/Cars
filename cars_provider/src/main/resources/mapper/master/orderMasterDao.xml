@@ -1,35 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" " http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xiyan.dao.master.OrderMasterDao">
-
-    <insert id="insertOrder" parameterType="com.xiyan.model.entrty.Order">
-        insert into order(
-        order_id,
-        user_id,
-        car_id,
-        order_generation_time,
-        start_time,
-        end_time,
-        take_car_shop,
-        return_car_shop,
-        total_amount,
-        prepay_amount,
-        pay_type,
-        position
-        )
-        values(
-        #{orderId},
-        #{userId},
-        #{carId},
-        #{orderGenerationTime},
-        #{startTime},
-        #{endTime},
-        #{takeCarShop},
-        #{returnCarShop},
-        #{totalAmount},
-        #{prepayAmount},
-        #{payType},
-        #{position,typeHandler=com.xiyan.model.typeHandler.PositionTypeHandler}
-        )
+    <insert id="insert" useGeneratedKeys="true" keyProperty="orderId" parameterType="com.xiyan.model.entrty.Order">
+        INSERT INTO order
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="userId != 0">userId,</if>
+            <if test="carId != 0">carId,</if>
+            <if test="orderGenerationTime != null">orderGenerationTime,</if>
+            <if test="startTime != null">startTime,</if>
+            <if test="endTime != null">endTime,</if>
+            <if test="takeCarShop != 0">takeCarShop,</if>
+            <if test="returnCarShop != 0">returnCarShop,</if>
+            <if test="prepayAmount != null">prepayAmount,</if>
+            <if test="totalAmount != null">totalAmount,</if>
+            <if test="payType != null">payType,</if>
+            <if test="position != null">position,</if>
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="userId != 0">#{userId},</if>
+            <if test="carId != 0">#{carId},</if>
+            <if test="orderGenerationTime != null">#{orderGenerationTime},</if>
+            <if test="startTime != null">#{startTime},</if>
+            <if test="endTime != null">#{endTime},</if>
+            <if test="takeCarShop != 0">#{takeCarShop},</if>
+            <if test="returnCarShop != 0">#{returnCarShop},</if>
+            <if test="prepayAmount != null">#{prepayAmount},</if>
+            <if test="totalAmount != null">#{totalAmount},</if>
+            <if test="payType != null">#{payType},</if>
+            <if test="position != null">#{position,typeHandler=com.xiyan.model.typeHandler.PositionTypeHandler},</if>
+        </trim>
     </insert>
+
+    <update id="update">
+        UPDATE order
+        <trim prefix="SET" suffixOverrides="," >
+            <if test="userId != 0">userId = #{userId},</if>
+            <if test="carId != 0">carId = #{carId},</if>
+            <if test="orderGenerationTime != null">orderGenerationTime = #{orderGenerationTime},</if>
+            <if test="startTime != null">startTime = #{startTime},</if>
+            <if test="endTime != null">endTime = #{endTime},</if>
+            <if test="takeCarShop != 0">takeCarShop = #{takeCarShop},</if>
+            <if test="returnCarShop != 0">returnCarShop = #{returnCarShop},</if>
+            <if test="prepayAmount != null">prepayAmount = #{prepayAmount},</if>
+            <if test="totalAmount != null">totalAmount = #{totalAmount},</if>
+            <if test="payType != null">payType = #{payType},</if>
+            <if test="position != null">position = #{position,typeHandler=com.xiyan.model.typeHandler.PositionTypeHandler},</if>
+        </trim>
+        WHERE orderId = #{orderId}
+    </update>
+
+    <delete id="delete">
+        DELETE FROM order
+        WHERE orderId = #{id}
+    </delete>
+
 </mapper>

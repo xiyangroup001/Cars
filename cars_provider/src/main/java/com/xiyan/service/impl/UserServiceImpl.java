@@ -33,14 +33,6 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserSlaveDao userSlaveDao;
 
-    /**
-     * Method 创建用户Id
-     * @return
-     */
-    private int createUserId() {
-        return userSlaveDao.queryMaxUserId() + 1;
-    }
-
     @Override
     public APIResponse<Integer> deleteUser(Integer userid) {
         return new ApiTemplate<Integer>(TmonitorConstants.DUBBO_USER_DELETE){
@@ -52,14 +44,13 @@ public class UserServiceImpl implements UserService {
             @Override
             protected APIResponse<Integer> process() throws BizException {
                 logger.info("删除用户：{}",userid);
-                return APIResponse.returnSuccess(userMasterDao.deleteUser(userid));
+                return APIResponse.returnSuccess(userMasterDao.delete(userid));
             }
         }.execute();
     }
 
     @Override
     public APIResponse<Integer> insertUser(User user) {
-        user.setUserId(createUserId());
         logger.info("传入的参数是：{}", user.toString());
         return new ApiTemplate<Integer>(TmonitorConstants.DUBBO_USER_INSERT) {
             @Override
@@ -69,7 +60,7 @@ public class UserServiceImpl implements UserService {
             @Override
             protected APIResponse<Integer> process() throws BizException {
                 logger.info("更新用户信息：{}",user);
-                return APIResponse.returnSuccess(userMasterDao.insertUser(user));
+                return APIResponse.returnSuccess(userMasterDao.insert(user));
             }
         }.execute();
     }
@@ -80,7 +71,7 @@ public class UserServiceImpl implements UserService {
             @Override
             protected APIResponse<List<User>> process() throws BizException {
                 logger.info("查找所有的用户");
-                return APIResponse.returnSuccess(userSlaveDao.listAllUser());
+                return APIResponse.returnSuccess(userSlaveDao.selectAll());
             }
         }.execute();
     }
@@ -96,7 +87,7 @@ public class UserServiceImpl implements UserService {
             @Override
             protected APIResponse<Integer> process() throws BizException {
                 logger.info("更新用户信息---参数：{}",user);
-                APIResponse<Integer> response= APIResponse.returnSuccess(userMasterDao.updateUser(user));
+                APIResponse<Integer> response= APIResponse.returnSuccess(userMasterDao.update(user));
                 logger.info("更新用户信息---结果：{}",user,response);
                 return response;
             }

@@ -10,8 +10,6 @@ import java.util.List;
  * @date 2018/1/24  16:12
  */
 @MapperScan
-public interface UserMasterDao {
-    int insertUser(User user);
-    int updateUser(User user);
-    int deleteUser(int userId);
+public interface UserMasterDao extends GeneralMasterDao<User>  {
+
 }
