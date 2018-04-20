@@ -10,5 +10,5 @@ import org.mybatis.spring.annotation.MapperScan;
  */
 @MapperScan
 public interface AdminMasterDao extends GeneralMasterDao<Admin> {
-
+    int delete(String id);
 }

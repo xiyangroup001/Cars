@@ -13,6 +13,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -51,15 +53,21 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public APIResponse<Integer> insertUser(User user) {
-        logger.info("传入的参数是：{}", user.toString());
         return new ApiTemplate<Integer>(TmonitorConstants.DUBBO_USER_INSERT) {
             @Override
             protected void checkParams() throws BizException {
                 Preconditions.checkNotNull(user, "传入参数为空！");
+                Preconditions.checkArgument(userSlaveDao.selectByName(user.getUserName())==0,"用户名已被占用！");
+                Preconditions.checkArgument(userSlaveDao.selectByPhone(user.getUserPhone())==0,"电话号已注册！");
+
             }
             @Override
             protected APIResponse<Integer> process() throws BizException {
-                logger.info("更新用户信息：{}",user);
+                logger.info("用户注册：{}",user);
+                user.setUserType(User.USER);
+                user.setUserGuid(""+new Date().getTime());
+                user.setRegistrateTime(new Date());
+                //user.set
                 return APIResponse.returnSuccess(userMasterDao.insert(user));
             }
         }.execute();
@@ -77,10 +85,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public APIResponse<Integer> updateUser(User user) {
+    public APIResponse<Integer> updateUser(User currentUser,User user) {
         return new ApiTemplate<Integer>(TmonitorConstants.DUBBO_USER_UPDATE) {
             @Override
             protected void checkParams() throws BizException {
+                Preconditions.checkArgument(currentUser.getUserId()==user.getUserId(),"请正确使用！");
                 Preconditions.checkNotNull(user, "传入参数为空");
                 Preconditions.checkNotNull(user.getUserId(), "用户Id不能为空");
             }
@@ -90,6 +99,46 @@ public class UserServiceImpl implements UserService {
                 APIResponse<Integer> response= APIResponse.returnSuccess(userMasterDao.update(user));
                 logger.info("更新用户信息---结果：{}",user,response);
                 return response;
+            }
+        }.execute();
+    }
+
+    @Override
+    public boolean loginUser(int userId, String password) {
+        User user = userSlaveDao.selectById(userId);
+        if (user==null)
+            return false;
+        else
+            return user.getUserPassword().equals(password);
+    }
+
+    @Override
+    public User getUserById(int userId) {
+        return userSlaveDao.selectById(userId);
+    }
+
+    @Override
+    public APIResponse<Boolean> nameIsUsing(String name) {
+        return new ApiTemplate<Boolean>() {
+            @Override
+            protected APIResponse<Boolean> process() throws BizException {
+                if (userSlaveDao.selectByName(name)>0){
+                    return APIResponse.returnSuccess(false);
+                }else
+                    return APIResponse.returnSuccess(true);
+            }
+        }.execute();
+    }
+
+    @Override
+    public APIResponse<Boolean> phoneIsUsing(String phone) {
+        return new ApiTemplate<Boolean>() {
+            @Override
+            protected APIResponse<Boolean> process() throws BizException {
+                if (userSlaveDao.selectByPhone(phone)>0){
+                    return APIResponse.returnSuccess(false);
+                }else
+                    return APIResponse.returnSuccess(true);
             }
         }.execute();
     }

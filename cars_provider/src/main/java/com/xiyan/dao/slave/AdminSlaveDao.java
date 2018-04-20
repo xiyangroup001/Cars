@@ -13,4 +13,5 @@ import java.util.List;
 @MapperScan
 public interface AdminSlaveDao extends GeneralSlaveDao<Admin> {
     Admin selectById(String adminId);
+    Admin selectByName(String adminName);
 }

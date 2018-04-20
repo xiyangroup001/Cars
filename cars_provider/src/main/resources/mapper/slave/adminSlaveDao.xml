@@ -16,6 +16,9 @@
     <select id="selectAll" resultMap="admin">
         select * from admin;
     </select>
+    <select id="selectByName" resultMap="admin" parameterType="java.lang.String">
+        select * from admin where adminName= #{adminName};
+    </select>
 
     <select id="selectById" resultMap="admin">
         select * from admin WHERE adminId = #{adminId} ;

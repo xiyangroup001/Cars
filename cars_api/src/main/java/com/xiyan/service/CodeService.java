@@ -33,6 +33,8 @@ public interface CodeService {
      * @return
      */
     APIResponse<Integer> updateCode(Code code);
+
+    void sendCode(String phone);
 }
 
 

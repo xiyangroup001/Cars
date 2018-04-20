@@ -14,4 +14,8 @@ import java.util.List;
 @MapperScan
 public interface UserSlaveDao  extends GeneralSlaveDao<User> {
     int queryMaxUserId();
+
+    User selectById(int userId);
+    int selectByPhone(String Phone);
+    int selectByName(String name);
 }

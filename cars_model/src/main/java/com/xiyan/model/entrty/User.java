@@ -22,6 +22,9 @@ public class User implements Serializable {
     private Date registrateTime;
 
     private short userType;
+    public static final short USER = 1;
+
+
     private String headPicUrl;
 
     public String getUserName() {

@@ -26,9 +26,21 @@
             <if test="userType != 0">AND userType = #{userType},</if>
         </where>
     </select>
+    <!--User selectById(int userId);-->
     <select id="selectById" resultMap="userMap" parameterType="int">
-        select * from user where userId = #{id};
+        select * from user where userId = #{userId};
     </select>
+
+    <!--int selectByPhone(String Phone);-->
+    <select id="selectByPhone" resultType="int" parameterType="java.lang.String">
+        select count(0) from user where userPhone = #{Phone};
+    </select>
+
+    <!--int selectByName(String name);-->
+    <select id="selectByName"  resultType="int" parameterType="java.lang.String">
+        select count(0) from user where userName = #{name};
+    </select>
+
     <select id="queryMaxUserId" resultType="int">
         select max(userId) from user;
     </select>

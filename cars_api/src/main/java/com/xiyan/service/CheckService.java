@@ -13,14 +13,14 @@ import java.util.List;
 public interface CheckService {
 
     /**
-     * Method 删除用户
+     * Method 删除审核
      * @param checkId
      * @return
      */
     APIResponse<Integer> deleteCheck(Integer checkId);
 
     /**
-     * Method 新建用户
+     * Method 新建审核
      * @param check
      * @return
      */

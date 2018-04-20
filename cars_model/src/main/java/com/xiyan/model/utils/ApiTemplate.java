@@ -25,6 +25,9 @@ public abstract class ApiTemplate<T> {
     protected ApiTemplate(String monitorKey) {
         this.monitorKey = monitorKey;
     }
+    protected ApiTemplate() {
+
+    }
 
     protected void checkParams() throws BizException {
     }

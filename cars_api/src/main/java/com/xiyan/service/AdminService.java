@@ -11,33 +11,55 @@ import java.util.List;
  * @date 2018/1/24  16:21
  */
 public interface AdminService {
-
     /**
-     * Method 删除用户
-     * @param adminId
-     * @return
-     */
-    APIResponse<Integer> deleteAdmin(Integer adminId);
-
-    /**
-     * Method 新建用户
+     * Method 新建管理员
      * @param admin
      * @return
      */
-    APIResponse<Integer> insertAdmin(Admin admin);
+    APIResponse<Integer> createAdmin(Admin currentAdmin,Admin admin);
 
     /**
-     * Method 选择全部用户
+     * Method 选择管理员
      * @return
      */
-    APIResponse<List<Admin>> listAllAdmin();
+    APIResponse<List<Admin>> listAdmin(Admin currentAdmin, Admin admin);
+
+    /**
+     * Method 选择自己下属
+     * @return
+     */
+    APIResponse<List<Admin>> listUnde(Admin admin);
 
     /**
      * Method 更新用户信息
      * @param admin
      * @return
      */
-    APIResponse<Integer> updateAdmin(Admin admin);
+    APIResponse<Integer> updateAdmin(Admin currentAdmin,Admin admin);
+
+    /**
+     * Method 修改密码
+     * @param admin
+     * @return
+     */
+    APIResponse<Integer> alertPassWord(Admin admin,String newPassWord);
+    /**
+     * Method 删除管理员
+     * @return
+     */
+    APIResponse<Integer> deleteAdmin(Admin currentAdmin,String adminId);
+
+    /**
+     * Metho
+     * @return
+     */
+    boolean loginAdmin(String adminName,String passWord);
+
+    /**
+     * Metho
+     * @return
+     */
+    Admin getAdminByName(String adminName);
 }
 
 

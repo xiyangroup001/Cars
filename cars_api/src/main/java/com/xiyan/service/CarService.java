@@ -13,31 +13,49 @@ import java.util.List;
 public interface CarService {
 
     /**
-     * Method 删除用户
+     * Method 删除车辆
      * @param carId
      * @return
      */
     APIResponse<Integer> deleteCar(Integer carId);
 
     /**
-     * Method 新建用户
+     * Method 上车
      * @param car
      * @return
      */
-    APIResponse<Integer> insertCar(Car car);
+    APIResponse<Integer> createCar(Car car);
 
     /**
-     * Method 选择全部用户
+     * Method 上多个车辆
+     * @param cars
      * @return
      */
-    APIResponse<List<Car>> listAllCar();
+    APIResponse<Integer> createCarList(List<Car> cars);
+    /**
+     * Method 根据条件选择车辆
+     * @return
+     */
+    APIResponse<List<Car>> selectCars();
 
     /**
-     * Method 更新用户信息
+     * Method 更新车辆信息
      * @param car
      * @return
      */
     APIResponse<Integer> updateCar(Car car);
+
+    /**
+     * Method 根据车价位改车辆价格
+     * @return
+     */
+    APIResponse<Integer> updateCarPrice(double low,double high,double price);
+    /**
+     * Method 添加审核信息
+     * @return
+     */
+    APIResponse<Integer> updateCarPrice(int carId,int checkId);
+
 }
 
 

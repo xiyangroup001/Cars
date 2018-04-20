@@ -36,7 +36,24 @@ public interface UserService {
      * @param user
      * @return
      */
-    APIResponse<Integer> updateUser(User user);
+    APIResponse<Integer> updateUser(User currentUser,User user);
+
+    boolean loginUser(int useId, String password);
+
+    User getUserById(int userId);
+
+    /**
+     * Method 名称是否可用
+     * @param
+     * @return
+     */
+    APIResponse<Boolean> nameIsUsing(String name);
+    /**
+     * Method 手机号是否已被占用
+     * @param
+     * @return
+     */
+    APIResponse<Boolean> phoneIsUsing(String phone);
 }
 
 

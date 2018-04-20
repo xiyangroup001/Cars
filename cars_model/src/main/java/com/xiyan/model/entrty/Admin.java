@@ -15,6 +15,11 @@ public class Admin implements Serializable {
     private int store;
     private short power;
 
+    public static final short PLATFORM_ADMIN = 3;
+    public static final short STORE_ADMIN = 2;
+    public static final short ADMIN = 1;
+    public static final short SUPER_ADMIN = 4;
+
     public String getAdminId() {
         return adminId;
     }

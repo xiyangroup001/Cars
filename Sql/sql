@@ -9,10 +9,10 @@ CREATE TABLE `code` (
 
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
-  `userName` varchar(16) DEFAULT '' COMMENT '用户名',
+  `userName` varchar(16) unique DEFAULT '' COMMENT '用户名',
   `userId` bigint(20) auto_increment NOT NULL COMMENT '用户Id',
   `userGuid` char(24) NOT NULL DEFAULT '' COMMENT '用户Guid',
-  `userPhone` char(11) NOT NULL DEFAULT '' COMMENT '手机号',
+  `userPhone` char(11) unique NOT NULL DEFAULT '' COMMENT '手机号',
   `password` varchar(16) NOT NULL DEFAULT '' COMMENT '密码',
   `registrateTime` datetime NOT NULL DEFAULT '1900-01-01 00:00:00' COMMENT '注册时间',
   `userType` smallint(1) NOT NULL DEFAULT '0' COMMENT '用户状态',
