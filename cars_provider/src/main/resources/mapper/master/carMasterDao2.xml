@@ -3,7 +3,7 @@
 <mapper namespace="com.xiyan.dao.master.CarMasterDao">
 
     <insert id="insert" useGeneratedKeys="true" keyProperty="carId"
-            parameterType="com.xiyan.model.entrty.Car">
+            parameterType="com.xiyan.model.entity.Car">
         insert into car
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="carLicense != null">carLicense,</if>

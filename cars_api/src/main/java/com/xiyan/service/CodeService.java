@@ -1,10 +1,7 @@
 package com.xiyan.service;
 
-import com.xiyan.model.entrty.Code;
-import com.xiyan.model.entrty.User;
+import com.xiyan.model.entity.Code;
 import com.xiyan.model.utils.APIResponse;
-
-import java.util.List;
 
 /**
  * @antuor binwang

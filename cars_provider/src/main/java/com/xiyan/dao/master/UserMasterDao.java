@@ -1,9 +1,7 @@
 package com.xiyan.dao.master;
 
-import com.xiyan.model.entrty.User;
+import com.xiyan.model.entity.User;
 import org.mybatis.spring.annotation.MapperScan;
-
-import java.util.List;
 
 /**
  * @antuor binwang

@@ -17,7 +17,11 @@
 
     <dubbo:service interface="com.xiyan.service.AdminService" ref="adminService"  registry="cars-registry" protocol="dubbo" version="${zookeeper.version}"
                    group="${zookeeper.group}"/>
+    <dubbo:service interface="com.xiyan.service.CodeService" ref="codeService"  registry="cars-registry" protocol="dubbo" version="${zookeeper.version}"
+                   group="${zookeeper.group}"/>
 
+    <dubbo:service interface="com.xiyan.service.CarService" ref="carService"  registry="cars-registry" protocol="dubbo" version="${zookeeper.version}"
+                   group="${zookeeper.group}"/>
 
 
 </beans>

@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" " http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xiyan.dao.slave.DriverSlaveDao">
 
-    <resultMap id="driver" type="com.xiyan.model.entrty.Driver">
+    <resultMap id="driver" type="com.xiyan.model.entity.Driver">
         <id property="IdNumber" column="IdNumber"/>
         <result property="driverName" column="driverName"/>
         <result property="userId" column="userId"/>
@@ -23,7 +23,7 @@
         select * FROM driver
     </select>
 
-    <select id="select" resultMap="driver" parameterType="com.xiyan.model.entrty.Driver">
+    <select id="select" resultMap="driver" parameterType="com.xiyan.model.entity.Driver">
         select * FROM driver
         <where>
             <if test="idNumber != null">AND idNumber = #{idNumber}</if>

@@ -1,7 +1,7 @@
-package com.xiyan.model.entrty;
+package com.xiyan.model.entity;
 
 import com.alibaba.fastjson.annotation.JSONField;
-import com.xiyan.model.entrty.twolevel.Position;
+import com.xiyan.model.entity.twolevel.Position;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;

@@ -3,7 +3,7 @@ package com.xiyan.dao;
 import com.alibaba.fastjson.JSON;
 import com.xiyan.dao.master.CodeMasterDao;
 import com.xiyan.dao.slave.CodeSlaveDao;
-import com.xiyan.model.entrty.Code;
+import com.xiyan.model.entity.Code;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;

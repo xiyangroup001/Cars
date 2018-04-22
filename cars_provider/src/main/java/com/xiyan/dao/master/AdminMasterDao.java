@@ -1,7 +1,6 @@
 package com.xiyan.dao.master;
 
-import com.xiyan.model.entrty.Admin;
-import com.xiyan.model.utils.APIResponse;
+import com.xiyan.model.entity.Admin;
 import org.mybatis.spring.annotation.MapperScan;
 
 /**

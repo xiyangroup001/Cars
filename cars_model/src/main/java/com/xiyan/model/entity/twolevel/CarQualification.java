@@ -1,12 +1,13 @@
-package com.xiyan.model.entrty.twolevel;
+package com.xiyan.model.entity.twolevel;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * @antuor binwang
  * @date 2018/2/6  17:24
  */
-public class CarQualification {
+public class CarQualification implements Serializable {
     /*所有人*/
     private String owner;
 

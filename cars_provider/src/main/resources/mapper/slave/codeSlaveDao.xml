@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" " http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xiyan.dao.slave.CodeSlaveDao" >
 
-    <resultMap id="code" type="com.xiyan.model.entrty.Code">
+    <resultMap id="code" type="com.xiyan.model.entity.Code">
         <id property="userPhone" column="userPhone"/>
         <result property="codeVal" column="codeVal"/>
         <result property="sendTime" column="sendTime"/>

@@ -1,10 +1,7 @@
 package com.xiyan.dao.slave;
 
-import com.xiyan.model.entrty.Car;
-import com.xiyan.model.entrty.Check;
+import com.xiyan.model.entity.Check;
 import org.mybatis.spring.annotation.MapperScan;
-
-import java.util.List;
 
 /**
  * @antuor binwang

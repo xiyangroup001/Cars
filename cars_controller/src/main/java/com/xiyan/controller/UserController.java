@@ -2,12 +2,11 @@ package com.xiyan.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.SerializerFeature;
-import com.xiyan.model.entrty.User;
+import com.xiyan.model.entity.User;
 import com.xiyan.model.utils.APIResponse;
 import com.xiyan.service.UserService;
 import com.xiyan.utils.JWTUtil;
 import io.jsonwebtoken.Claims;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

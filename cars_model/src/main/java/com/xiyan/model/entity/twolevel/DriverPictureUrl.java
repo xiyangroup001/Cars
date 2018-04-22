@@ -1,10 +1,12 @@
-package com.xiyan.model.entrty.twolevel;
+package com.xiyan.model.entity.twolevel;
+
+import java.io.Serializable;
 
 /**
  * @antuor binwang
  * @date 2018/2/6  19:58
  */
-public class DriverPictureUrl {
+public class DriverPictureUrl implements Serializable {
     private String positiveIDPhoto;
     private String backIDPhoto;
     private String DriverLicensePhoto;

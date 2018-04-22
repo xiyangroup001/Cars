@@ -26,6 +26,11 @@ public class CarSlaveDaoTest {
         System.out.println(carSlaveDao.selectAll());
     }
 
-
+    @Test
+    public void selectCarByCondition() throws Exception {
+        int[] a = new int[]{1,2,3};
+        String[] brand = new String[]{"大众","奔驰","宝马"};
+        System.out.println(carSlaveDao.selectCarByCondition(10236,a,brand,30,120000,50,200));
+    }
 
 }

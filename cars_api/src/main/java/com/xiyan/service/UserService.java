@@ -2,7 +2,7 @@ package com.xiyan.service;
 
 import java.util.List;
 
-import com.xiyan.model.entrty.User;
+import com.xiyan.model.entity.User;
 import com.xiyan.model.utils.APIResponse;
 
 /**

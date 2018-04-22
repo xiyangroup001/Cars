@@ -2,14 +2,7 @@ package com.xiyan.model.typeHandler;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.SerializerFeature;
-import com.xiyan.model.entrty.twolevel.CarsPictureUrl;
-import org.apache.ibatis.type.BaseTypeHandler;
-import org.apache.ibatis.type.JdbcType;
-
-import java.sql.CallableStatement;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import com.xiyan.model.entity.twolevel.CarsPictureUrl;
 
 /**
  * @antuor binwang

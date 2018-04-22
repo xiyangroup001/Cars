@@ -1,6 +1,6 @@
 package com.xiyan.service.impl;
 
-import com.xiyan.model.entrty.Admin;
+import com.xiyan.model.entity.Admin;
 import com.xiyan.service.AdminService;
 import org.junit.Test;
 import org.junit.runner.RunWith;

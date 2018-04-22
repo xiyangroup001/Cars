@@ -1,6 +1,6 @@
-package com.xiyan.model.entrty;
+package com.xiyan.model.entity;
 
-import com.xiyan.model.entrty.twolevel.DriverPictureUrl;
+import com.xiyan.model.entity.twolevel.DriverPictureUrl;
 
 import java.io.Serializable;
 import java.util.Date;

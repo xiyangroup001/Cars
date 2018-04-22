@@ -3,7 +3,7 @@
 <mapper namespace="com.xiyan.dao.slave.AdminSlaveDao" >
 
 
-    <resultMap id="admin" type="com.xiyan.model.entrty.Admin">
+    <resultMap id="admin" type="com.xiyan.model.entity.Admin">
         <id property="adminId" column="adminId"/>
         <result property="adminName" column="adminName"/>
         <result property="platformId" column="platformId"/>

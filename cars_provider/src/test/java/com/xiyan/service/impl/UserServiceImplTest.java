@@ -2,7 +2,7 @@ package com.xiyan.service.impl;
 
 
 import com.alibaba.fastjson.JSON;
-import com.xiyan.model.entrty.User;
+import com.xiyan.model.entity.User;
 import com.xiyan.service.UserService;
 import org.junit.Assert;
 import org.junit.Test;

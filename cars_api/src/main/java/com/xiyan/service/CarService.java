@@ -1,7 +1,6 @@
 package com.xiyan.service;
 
-import com.xiyan.model.entrty.Car;
-import com.xiyan.model.entrty.User;
+import com.xiyan.model.entity.Car;
 import com.xiyan.model.utils.APIResponse;
 
 import java.util.List;
@@ -56,6 +55,9 @@ public interface CarService {
      */
     APIResponse<Integer> updateCarPrice(int carId,int checkId);
 
+    APIResponse<List<Car>> selectCarByCondition(int getStore, int[] carType, String[] carBrand, int lowPrice, int highPrice,int lowRentalPrice, int highRentalPrice);
+
+    APIResponse<List<Car>> selectAllCarCanUse();
 }
 
 

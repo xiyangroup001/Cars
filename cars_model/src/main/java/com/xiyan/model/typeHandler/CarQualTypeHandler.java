@@ -1,7 +1,7 @@
 package com.xiyan.model.typeHandler;
 
 import com.alibaba.fastjson.JSON;
-import com.xiyan.model.entrty.twolevel.CarQualification;
+import com.xiyan.model.entity.twolevel.CarQualification;
 
 /**
  * @antuor binwang

@@ -1,6 +1,6 @@
 package com.xiyan.dao.master;
 
-import com.xiyan.model.entrty.Order;
+import com.xiyan.model.entity.Order;
 import org.mybatis.spring.annotation.MapperScan;
 
 /**

@@ -1,6 +1,6 @@
-package com.xiyan.model.entrty;
+package com.xiyan.model.entity;
 
-import com.xiyan.model.entrty.twolevel.Position;
+import com.xiyan.model.entity.twolevel.Position;
 
 import java.io.Serializable;
 

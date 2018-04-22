@@ -1,9 +1,8 @@
 package com.xiyan.dao;
 
 import com.xiyan.dao.master.AdminMasterDao;
-import com.xiyan.dao.master.CarMasterDao;
 import com.xiyan.dao.slave.AdminSlaveDao;
-import com.xiyan.model.entrty.Admin;
+import com.xiyan.model.entity.Admin;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;

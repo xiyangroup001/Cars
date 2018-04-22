@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" " http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xiyan.dao.master.CheckMasterDao">
 
-    <insert id="insert" useGeneratedKeys="true" keyProperty="checkId" parameterType="com.xiyan.model.entrty.Check">
+    <insert id="insert" useGeneratedKeys="true" keyProperty="checkId" parameterType="com.xiyan.model.entity.Check">
         INSERT INTO checks
             <trim prefix="(" suffix=")" suffixOverrides=",">
                 <if test="checkUser != null"> checkUser, </if>

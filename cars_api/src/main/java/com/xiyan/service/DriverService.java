@@ -1,7 +1,6 @@
 package com.xiyan.service;
 
-import com.xiyan.model.entrty.Driver;
-import com.xiyan.model.entrty.User;
+import com.xiyan.model.entity.Driver;
 import com.xiyan.model.utils.APIResponse;
 
 import java.util.List;

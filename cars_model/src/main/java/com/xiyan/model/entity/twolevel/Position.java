@@ -1,6 +1,4 @@
-package com.xiyan.model.entrty.twolevel;
-
-import com.alibaba.fastjson.serializer.SerializerFeature;
+package com.xiyan.model.entity.twolevel;
 
 import java.io.Serializable;
 
@@ -13,6 +11,7 @@ public class Position implements Serializable {
     private Double longitude;
     //纬度
     private Double latitude;
+    private String address;
 
     public Double getLongitude() {
         return longitude;
@@ -30,11 +29,16 @@ public class Position implements Serializable {
         this.latitude = latitude;
     }
 
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
     @Override
     public String toString() {
-        return "Position{" +
-                "longitude=" + longitude +
-                ", latitude=" + latitude +
-                '}';
+        return "Position{" + "longitude=" + longitude + ", latitude=" + latitude + ", address='" + address + '\'' + '}';
     }
 }

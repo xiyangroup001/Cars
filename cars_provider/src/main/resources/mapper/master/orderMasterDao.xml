@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" " http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xiyan.dao.master.OrderMasterDao">
-    <insert id="insert" useGeneratedKeys="true" keyProperty="orderId" parameterType="com.xiyan.model.entrty.Order">
+    <insert id="insert" useGeneratedKeys="true" keyProperty="orderId" parameterType="com.xiyan.model.entity.Order">
         INSERT INTO order
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="userId != 0">userId,</if>

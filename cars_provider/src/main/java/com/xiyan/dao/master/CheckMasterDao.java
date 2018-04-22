@@ -1,6 +1,6 @@
 package com.xiyan.dao.master;
 
-import com.xiyan.model.entrty.Check;
+import com.xiyan.model.entity.Check;
 import org.mybatis.spring.annotation.MapperScan;
 
 /**

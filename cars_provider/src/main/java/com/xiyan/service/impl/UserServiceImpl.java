@@ -3,7 +3,7 @@ package com.xiyan.service.impl;
 import com.google.common.base.Preconditions;
 import com.xiyan.dao.master.UserMasterDao;
 import com.xiyan.dao.slave.UserSlaveDao;
-import com.xiyan.model.entrty.User;
+import com.xiyan.model.entity.User;
 import com.xiyan.model.exception.BizException;
 import com.xiyan.model.monitor.TmonitorConstants;
 import com.xiyan.model.utils.APIResponse;

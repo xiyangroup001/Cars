@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" " http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xiyan.dao.slave.StoreSlaveDao">
-    <resultMap id="store" type="com.xiyan.model.entrty.Store">
+    <resultMap id="store" type="com.xiyan.model.entity.Store">
         <id column="storeId" property="storeId"/>
         <result column="storeName" property="storeName"/>
         <result column="platform" property="platform"/>
         <result column="location" property="location" typeHandler="com.xiyan.model.typeHandler.PositionTypeHandler"/>
     </resultMap>
 
-    <select id="select" resultMap="store" parameterType="com.xiyan.model.entrty.Store">
+    <select id="select" resultMap="store" parameterType="com.xiyan.model.entity.Store">
         select * from store
         <where>
             <if test="storeId != 0">AND storeId=#{storeName},</if>

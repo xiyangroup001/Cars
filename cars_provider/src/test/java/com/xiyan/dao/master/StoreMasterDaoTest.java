@@ -1,7 +1,7 @@
 package com.xiyan.dao.master;
 
-import com.xiyan.model.entrty.Store;
-import com.xiyan.model.entrty.twolevel.Position;
+import com.xiyan.model.entity.Store;
+import com.xiyan.model.entity.twolevel.Position;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

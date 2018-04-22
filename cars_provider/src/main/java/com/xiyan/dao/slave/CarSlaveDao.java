@@ -1,6 +1,6 @@
 package com.xiyan.dao.slave;
 
-import com.xiyan.model.entrty.Car;
+import com.xiyan.model.entity.Car;
 import org.mybatis.spring.annotation.MapperScan;
 
 import java.util.List;
@@ -12,4 +12,8 @@ import java.util.List;
 @MapperScan
 public interface CarSlaveDao extends GeneralSlaveDao<Car> {
     Car selectById(int carId);
+
+    List<Car> selectCarByCondition(int getStore, int[] carType, String[] carBrand, int lowPrice, int highPrice,int lowRentalPrice, int highRentalPrice);
+
+    List<Car> selectAllCarCanUse();
 }

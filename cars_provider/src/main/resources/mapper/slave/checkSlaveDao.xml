@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" " http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xiyan.dao.slave.CheckSlaveDao" >
 
-    <resultMap id="check" type="com.xiyan.model.entrty.Check">
+    <resultMap id="check" type="com.xiyan.model.entity.Check">
         <id property="checkId" column="checkId"/>
         <result property="checkUserId" column="checkUserId"/>
         <result property="checkTime" column="checkTime"/>

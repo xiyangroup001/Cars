@@ -3,7 +3,7 @@
 <mapper namespace="com.xiyan.dao.master.StoreMasterDao">
 
     <insert id="insert" useGeneratedKeys="true" keyProperty="StoreId"
-            parameterType="com.xiyan.model.entrty.Store">
+            parameterType="com.xiyan.model.entity.Store">
         INSERT INTO store
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="storeName != null">storeName,</if>
@@ -17,7 +17,7 @@
             <if test="location != null">#{location,typeHandler=com.xiyan.model.typeHandler.PositionTypeHandler},</if>
         </trim>
     </insert>
-    <update id="update" parameterType="com.xiyan.model.entrty.Store">
+    <update id="update" parameterType="com.xiyan.model.entity.Store">
         UPDATE Store
         <trim prefix="SET" suffixOverrides=",">
             <if test="storeName != null">storeName=#{storeName},</if>

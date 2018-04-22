@@ -1,13 +1,13 @@
-package com.xiyan.model.entrty.twolevel;
+package com.xiyan.model.entity.twolevel;
 
+import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @antuor binwang
  * @date 2018/2/6  17:55
  */
-public class CarsPictureUrl {
+public class CarsPictureUrl implements Serializable {
     /*正面照片*/
     private String frontPicUrl;
 

@@ -11,7 +11,7 @@ import javax.annotation.Resource;
 public class CodeController {
     @Resource
     private CodeService codeService;
-
+    @RequestMapping("/send")
     public void sendCode(String phone){
         codeService.sendCode(phone);
     }

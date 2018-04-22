@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" " http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xiyan.dao.master.UserMasterDao">
-    <resultMap id="userMap" type="com.xiyan.model.entrty.User">
+    <resultMap id="userMap" type="com.xiyan.model.entity.User">
         <id property="userName" column="userName"/>
         <result property="userId" column="userId"/>
         <result property="userGuid" column="userGuid"/>
@@ -12,7 +12,7 @@
         <result property="headPicUrl" column="head_pic_url"/>
     </resultMap>
 
-    <insert id="insert" parameterType="com.xiyan.model.entrty.User">
+    <insert id="insert" parameterType="com.xiyan.model.entity.User">
         insert into user(
             userName,
             userId,
@@ -35,7 +35,7 @@
         )
     </insert>
 
-    <update id="update" parameterType="com.xiyan.model.entrty.User">
+    <update id="update" parameterType="com.xiyan.model.entity.User">
         update user
         set
         <trim suffixOverrides=",">

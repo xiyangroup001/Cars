@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" " http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xiyan.dao.master.DriverMasterDao">
 
-    <insert id="insert" useGeneratedKeys="true" keyProperty="checkId" parameterType="com.xiyan.model.entrty.Driver">
+    <insert id="insert" useGeneratedKeys="true" keyProperty="checkId" parameterType="com.xiyan.model.entity.Driver">
         INSERT INTO driver
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="idNumber != null">idNumber,</if>

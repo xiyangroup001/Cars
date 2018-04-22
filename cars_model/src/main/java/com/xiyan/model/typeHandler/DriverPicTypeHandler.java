@@ -1,7 +1,7 @@
 package com.xiyan.model.typeHandler;
 
 import com.alibaba.fastjson.JSON;
-import com.xiyan.model.entrty.twolevel.DriverPictureUrl;
+import com.xiyan.model.entity.twolevel.DriverPictureUrl;
 
 /**
  * @antuor binwang

@@ -3,7 +3,7 @@ package com.xiyan.dao;
 import com.alibaba.fastjson.JSON;
 import com.xiyan.dao.master.CheckMasterDao;
 import com.xiyan.dao.slave.CheckSlaveDao;
-import com.xiyan.model.entrty.Check;
+import com.xiyan.model.entity.Check;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;

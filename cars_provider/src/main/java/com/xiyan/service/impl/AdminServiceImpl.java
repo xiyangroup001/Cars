@@ -3,7 +3,7 @@ package com.xiyan.service.impl;
 import com.google.common.base.Preconditions;
 import com.xiyan.dao.master.AdminMasterDao;
 import com.xiyan.dao.slave.AdminSlaveDao;
-import com.xiyan.model.entrty.Admin;
+import com.xiyan.model.entity.Admin;
 import com.xiyan.model.exception.BizException;
 import com.xiyan.model.monitor.TmonitorConstants;
 import com.xiyan.model.utils.APIResponse;
@@ -15,7 +15,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Properties;
 import java.util.regex.Pattern;
 
 /**

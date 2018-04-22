@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" " http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xiyan.dao.slave.OrderSlaveDao" >
 
-    <resultMap id="order" type="com.xiyan.model.entrty.Order">
+    <resultMap id="order" type="com.xiyan.model.entity.Order">
         <id property="orderId" column="orderId"/>
         <result property="userId" column="userId"/>
         <result property="carId" column="carId"/>
@@ -17,7 +17,7 @@
         <result property="position" column="position" typeHandler="com.xiyan.model.typeHandler.PositionTypeHandler"/>
     </resultMap>
 
-    <select id="select" resultMap="order" parameterType="com.xiyan.model.entrty.Order">
+    <select id="select" resultMap="order" parameterType="com.xiyan.model.entity.Order">
         select * from order
         <where>
             <if test="orderId != 0">AND orderId = #{orderId}</if>
@@ -35,7 +35,7 @@
         </where>
     </select>
 
-    <select id="selectAll" resultMap="order" parameterType="com.xiyan.model.entrty.Order">
+    <select id="selectAll" resultMap="order" parameterType="com.xiyan.model.entity.Order">
         select * from order
     </select>
     <!--Order selectById(int orderId);-->

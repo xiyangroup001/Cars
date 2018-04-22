@@ -3,7 +3,7 @@
 <mapper namespace="com.xiyan.dao.master.AdminMasterDao">
 
     <insert id="insert" useGeneratedKeys="true" keyProperty="adminId"
-            parameterType="com.xiyan.model.entrty.Admin">
+            parameterType="com.xiyan.model.entity.Admin">
         insert into admin
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="adminId != null">adminId,</if>
@@ -31,7 +31,7 @@
     </delete>
 
     <update id="update" useGeneratedKeys="true" keyProperty="adminId"
-            parameterType="com.xiyan.model.entrty.Admin">
+            parameterType="com.xiyan.model.entity.Admin">
         update admin
         <set>
             <if test="adminName != null">

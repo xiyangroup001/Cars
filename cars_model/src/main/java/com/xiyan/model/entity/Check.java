@@ -1,4 +1,4 @@
-package com.xiyan.model.entrty;
+package com.xiyan.model.entity;
 
 import com.alibaba.fastjson.annotation.JSONField;
 

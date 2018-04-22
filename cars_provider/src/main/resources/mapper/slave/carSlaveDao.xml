@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" " http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xiyan.dao.slave.CarSlaveDao" >
 
-    <resultMap id="car" type="com.xiyan.model.entrty.Car">
+    <resultMap id="car" type="com.xiyan.model.entity.Car">
         <id property="carId" column="carId"/>
         <result property="carLicense" column="carLicense"/>
         <result property="carBrand" column="carBrand"/>
@@ -21,8 +21,9 @@
     <select id="selectAll" resultMap="car">
         select * from car;
     </select>
-    <select id="select" resultMap="car" parameterType="com.xiyan.model.entrty.Car">
-        select * from car;
+    <!--List<Car> selectAllCarCanUse();-->
+    <select id="selectAllCarCanUse" resultMap="car">
+        select * from car where aduitType = 1;
     </select>
     <select id="selectById" resultMap="car" parameterType="int">
         select * from car
@@ -30,5 +31,25 @@
     </select>
     <select id="selectRowNumber" resultType="int">
         select count(0) from car;
+    </select>
+
+
+    <!--selectCarByCondition(int getStore, int[] carType, String[] carBrand, int lowPrice, int highPrice);-->
+    <select id="selectCarByCondition" resultMap="car">
+        select * from car where
+            inStore = #{param1}
+        AND carType in
+            <foreach item="item" index="index" collection="param2"
+                                open="(" separator="," close=")">
+                #{item}
+            </foreach>
+        AND carBrand in
+            <foreach item="item" index="index" collection="param3"
+                     open="(" separator="," close=")">
+                #{item}
+            </foreach>
+        AND carPrice betWeen #{param4} and #{param5}
+        AND rentalPrice betWeen #{param6} and #{param7}
+        AND aduitType = 1
     </select>
 </mapper>

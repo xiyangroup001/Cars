@@ -1,9 +1,6 @@
 package com.xiyan.utils;
 
-import com.xiyan.model.entrty.Code;
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 public class CodeSendUtilTest {
     @Test

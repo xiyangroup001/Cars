@@ -13,7 +13,7 @@
         </trim>
     </insert>
 
-    <update id="update" parameterType="com.xiyan.model.entrty.Platform">
+    <update id="update" parameterType="com.xiyan.model.entity.Platform">
         UPDATE order
         <trim prefix="SET" suffixOverrides=",">
             <if test="platformName != null">platformName=#{platformName},</if>

@@ -2,15 +2,16 @@ package com.xiyan.service.impl;
 
 import com.xiyan.dao.master.CodeMasterDao;
 import com.xiyan.dao.slave.CodeSlaveDao;
-import com.xiyan.model.entrty.Code;
+import com.xiyan.model.entity.Code;
 import com.xiyan.model.utils.APIResponse;
 import com.xiyan.service.CodeService;
 import com.xiyan.utils.CodeSendUtil;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.Date;
 import java.util.Random;
-
+@Service("codeService")
 public class CodeServiceImpl implements CodeService {
     @Resource
     private CodeMasterDao codeMasterDao;

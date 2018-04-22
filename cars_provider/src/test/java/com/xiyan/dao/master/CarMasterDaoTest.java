@@ -1,8 +1,8 @@
 package com.xiyan.dao.master;
 
-import com.xiyan.model.entrty.Car;
-import com.xiyan.model.entrty.twolevel.CarQualification;
-import com.xiyan.model.entrty.twolevel.CarsPictureUrl;
+import com.xiyan.model.entity.Car;
+import com.xiyan.model.entity.twolevel.CarQualification;
+import com.xiyan.model.entity.twolevel.CarsPictureUrl;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -35,7 +35,7 @@ public class CarMasterDaoTest {
         car.setAduitType((short)1);
         car.setCarBrand("大众");
         car.setCarLicense("鲁A3503");
-        car.setCarPrice(100.00);
+        car.setCarPrice(100000.00);
         car.setCarState((short)1);
         car.setRentalPrice(111.25);
         car.setCarType((short)1);

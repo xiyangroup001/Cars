@@ -1,7 +1,6 @@
 package com.xiyan.service;
 
-import com.xiyan.model.entrty.Order;
-import com.xiyan.model.entrty.User;
+import com.xiyan.model.entity.Order;
 import com.xiyan.model.utils.APIResponse;
 
 import java.util.List;

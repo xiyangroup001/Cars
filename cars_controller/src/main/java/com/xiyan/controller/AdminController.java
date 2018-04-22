@@ -2,7 +2,7 @@ package com.xiyan.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.SerializerFeature;
-import com.xiyan.model.entrty.Admin;
+import com.xiyan.model.entity.Admin;
 import com.xiyan.model.utils.APIResponse;
 import com.xiyan.service.AdminService;
 import com.xiyan.utils.JWTUtil;

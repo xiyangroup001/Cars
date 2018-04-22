@@ -1,7 +1,7 @@
 package com.xiyan.model.typeHandler;
 
 import com.alibaba.fastjson.JSON;
-import com.xiyan.model.entrty.twolevel.Position;
+import com.xiyan.model.entity.twolevel.Position;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

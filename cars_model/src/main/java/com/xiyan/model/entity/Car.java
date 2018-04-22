@@ -1,7 +1,7 @@
-package com.xiyan.model.entrty;
+package com.xiyan.model.entity;
 
-import com.xiyan.model.entrty.twolevel.CarQualification;
-import com.xiyan.model.entrty.twolevel.CarsPictureUrl;
+import com.xiyan.model.entity.twolevel.CarQualification;
+import com.xiyan.model.entity.twolevel.CarsPictureUrl;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -24,6 +24,9 @@ public class Car implements Serializable {
     private ArrayList<Integer> insuranceType;       //保险类型
     private Short aduitType;            //车辆审核状态
     private int aduitId;        //车辆审核号
+
+
+    public static final short ADUIT_PASS = 1;
 
     public int getCarId() {
         return carId;
