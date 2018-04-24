@@ -58,6 +58,8 @@ public interface CarService {
     APIResponse<List<Car>> selectCarByCondition(int getStore, int[] carType, String[] carBrand, int lowPrice, int highPrice,int lowRentalPrice, int highRentalPrice);
 
     APIResponse<List<Car>> selectAllCarCanUse();
+
+    APIResponse<List<Car>> selectCarByStore(int storeid);
 }
 
 

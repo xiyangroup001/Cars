@@ -29,7 +29,7 @@ public class CodeServiceImpl implements CodeService {
     }
 
     @Override
-    public void sendCode(String phone) {
+    public APIResponse<String> sendCode(String phone) {
         if(codeSlaveDao.selectByPhone(phone)!=null){//数据库没有该记录
             Code code = new Code();
             String val = getCodeVal();
@@ -38,6 +38,7 @@ public class CodeServiceImpl implements CodeService {
             code.setUserPhone(phone);
             codeMasterDao.insert(code);
             CodeSendUtil.send(phone,val);
+            return APIResponse.returnSuccess(val);
         }else {
             Code code = new Code();
             String val = getCodeVal();
@@ -46,6 +47,7 @@ public class CodeServiceImpl implements CodeService {
             code.setUserPhone(phone);
             codeMasterDao.update(code);
             CodeSendUtil.send(phone,val);
+            return APIResponse.returnSuccess(val);
         }
     }
     private static String getCodeVal(){

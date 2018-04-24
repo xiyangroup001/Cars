@@ -1,5 +1,6 @@
 package com.xiyan.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.xiyan.service.CodeService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,7 +13,7 @@ public class CodeController {
     @Resource
     private CodeService codeService;
     @RequestMapping("/send")
-    public void sendCode(String phone){
-        codeService.sendCode(phone);
+    public String sendCode(String phone){
+        return JSON.toJSONString(codeService.sendCode(phone));
     }
 }

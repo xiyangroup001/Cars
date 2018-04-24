@@ -14,11 +14,12 @@ import javax.annotation.Resource;
 import java.util.List;
 
 @Service("carService")
-public class CarServiceImpl implements CarService{
+public class CarServiceImpl implements CarService {
     @Resource
     CarMasterDao carMasterDao;
     @Resource
     CarSlaveDao carSlaveDao;
+
     @Override
     public APIResponse<Integer> deleteCar(Integer carId) {
         return null;
@@ -55,21 +56,21 @@ public class CarServiceImpl implements CarService{
     }
 
     @Override
-    public APIResponse<List<Car>> selectCarByCondition(int getStore, int[] carType, String[] carBrand, int lowPrice, int highPrice,int lowRentalPrice, int highRentalPrice) {
-        return new ApiTemplate<List<Car>>(){
+    public APIResponse<List<Car>> selectCarByCondition(int getStore, int[] carType, String[] carBrand, int lowPrice, int highPrice, int lowRentalPrice, int highRentalPrice) {
+        return new ApiTemplate<List<Car>>() {
             @Override
             protected void checkParams() throws BizException {
-                Preconditions.checkArgument(getStore>0,"门店错误！");
-                Preconditions.checkArgument(carType.length>0,"车辆类型错误！");
-                Preconditions.checkArgument(carBrand.length>0,"车辆品牌错误！");
-                Preconditions.checkArgument(lowPrice<highPrice,"车辆价位错误！");
-                Preconditions.checkArgument(lowRentalPrice<highRentalPrice,"车辆租价错误！");
+                Preconditions.checkArgument(getStore > 0, "门店错误！");
+                Preconditions.checkArgument(carType.length > 0, "车辆类型错误！");
+                Preconditions.checkArgument(carBrand.length > 0, "车辆品牌错误！");
+                Preconditions.checkArgument(lowPrice < highPrice, "车辆价位错误！");
+                Preconditions.checkArgument(lowRentalPrice < highRentalPrice, "车辆租价错误！");
 
             }
 
             @Override
             protected APIResponse<List<Car>> process() throws BizException {
-                List<Car> cars = carSlaveDao.selectCarByCondition(getStore,carType,carBrand,lowPrice*10000,highPrice*10000,lowRentalPrice,highRentalPrice);
+                List<Car> cars = carSlaveDao.selectCarByCondition(getStore, carType, carBrand, lowPrice * 10000, highPrice * 10000, lowRentalPrice, highRentalPrice);
                 return APIResponse.returnSuccess(cars);
             }
         }.execute();
@@ -81,6 +82,26 @@ public class CarServiceImpl implements CarService{
             @Override
             protected APIResponse<List<Car>> process() throws BizException {
                 List<Car> cars = carSlaveDao.selectAllCarCanUse();
+                return APIResponse.returnSuccess(cars);
+            }
+        }.execute();
+    }
+
+    @Override
+    public APIResponse<List<Car>> selectCarByStore(int storeid) {
+        return new ApiTemplate<List<Car>>() {
+            @Override
+            protected void checkParams() throws BizException {
+                Preconditions.checkArgument(storeid > 0, "门店ID出错！");
+            }
+
+            @Override
+            protected APIResponse<List<Car>> process() throws BizException {
+                Car c = new Car();
+                c.setInStore(storeid);
+                c.setCarState(Car.SYATE_INSTORE);
+                c.setAduitType(Car.ADUIT_PASS);
+                List<Car> cars = carSlaveDao.select(c);
                 return APIResponse.returnSuccess(cars);
             }
         }.execute();

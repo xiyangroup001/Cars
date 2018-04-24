@@ -13,15 +13,19 @@
 
     <import resource="spring_dubbo.xml"></import>
 
-    <!--&lt;!&ndash; 配置拦截器 &ndash;&gt;-->
-    <!--<mvc:interceptors>-->
-        <!--&lt;!&ndash; 多个拦截器，顺序执行 &ndash;&gt;-->
+    <!-- 配置拦截器 -->
+    <mvc:interceptors>
+        <!-- 多个拦截器，顺序执行 -->
         <!--<mvc:interceptor>-->
             <!--&lt;!&ndash; /** 表示所有的url，包括子url路径 &ndash;&gt;-->
             <!--<mvc:mapping path="/**"/>-->
             <!--<bean class="com.xiyan.handerInterceptor.HanderInterceptor1"></bean>-->
         <!--</mvc:interceptor>-->
-    <!--</mvc:interceptors>-->
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <bean class="com.xiyan.handerInterceptor.CORSInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
     <bean id="multipartResolver"
           class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
         <!-- 上传文件大小上限，单位为字节（10MB） -->

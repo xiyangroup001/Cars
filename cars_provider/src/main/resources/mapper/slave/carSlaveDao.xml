@@ -32,8 +32,11 @@
     <select id="selectRowNumber" resultType="int">
         select count(0) from car;
     </select>
-
-
+    <!--List<Car> selectByStore(int storeid);-->
+    <select id="selectByStore" resultMap="car" parameterType="int">
+        select * from car
+        where inStore = #{storeid} ;
+    </select>
     <!--selectCarByCondition(int getStore, int[] carType, String[] carBrand, int lowPrice, int highPrice);-->
     <select id="selectCarByCondition" resultMap="car">
         select * from car where
@@ -50,6 +53,23 @@
             </foreach>
         AND carPrice betWeen #{param4} and #{param5}
         AND rentalPrice betWeen #{param6} and #{param7}
-        AND aduitType = 1
+        AND aduitType = 1 AND carState = 1
+    </select>
+
+
+    <select id="select" resultMap="car" parameterType="com.xiyan.model.entity.Car">
+        select * FROM car
+        <where>
+            <if test="carId != 0">AND carId = #{carId}</if>
+            <if test="carLicense != null">AND carLicense = #{carLicense}</if>
+            <if test="carBrand != null">AND carBrand = #{carBrand}</if>
+            <if test="carType != 0">AND carType = #{carType}</if>
+            <if test="carPrice != 0">AND carPrice = #{carPrice}</if>
+            <if test="inStore != 0">AND inStore = #{inStore}</if>
+            <if test="carState != 0">AND carState = #{carState}</if>
+            <if test="aduitType != null">AND aduitType = #{aduitType}</if>
+            <if test="aduitId != 0">AND aduitId = #{aduitId}</if>
+            <if test="idNumber != 0">AND idNumber = #{idNumber}</if>
+        </where>
     </select>
 </mapper>

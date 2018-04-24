@@ -49,7 +49,7 @@ public class UserServiceImplTest {
         u1.setHeadPicUrl("iwrghjk");
         u1.setRegistrateTime(new Date());
         logger.info("传入的参数为：{}",u1.toString());
-        Assert.assertEquals(1,userService.insertUser(u1));
+        System.out.println(userService.insertUser(u1));
     }
 
     @Test
@@ -81,14 +81,13 @@ public class UserServiceImplTest {
     @Transactional
     public void saveUser() throws Exception {
         User u1 = new User();
-        u1.setUserId(1003);
         u1.setUserName("xiyan");
         u1.setUserGuid("qazwsxedcrfvtgbyhnujmiko");
         u1.setUserPassword("123456");
         u1.setUserType((short) 0);
         u1.setUserPhone("12345678901");
         u1.setHeadPicUrl("iwrghjk");
-        u1.setRegistrateTime(new Date("2017-11-11 12:53:22"));
+        u1.setRegistrateTime(new Date());
         System.out.println(userService.insertUser(u1));
     }
 

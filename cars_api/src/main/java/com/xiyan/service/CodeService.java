@@ -31,7 +31,7 @@ public interface CodeService {
      */
     APIResponse<Integer> updateCode(Code code);
 
-    void sendCode(String phone);
+    APIResponse<String> sendCode(String phone);
 }
 
 

@@ -21,10 +21,13 @@ import java.util.Date;
 @RestController
 @RequestMapping("/image")
 public class ImageController {
-
-
     @RequestMapping(value = "/uploadheadimage", method = RequestMethod.POST)
-    public String uploadHeadImage(@RequestParam(value = "x") String x, @RequestParam(value = "y") String y, @RequestParam(value = "h") String h, @RequestParam(value = "w") String w, @RequestParam(value = "imgFile") MultipartFile imageFile,String name) throws Exception {
+    public String uploadHeadImage(@RequestParam(value = "x") String x,
+                                  @RequestParam(value = "y") String y,
+                                  @RequestParam(value = "h") String h,
+                                  @RequestParam(value = "w") String w,
+                                  @RequestParam(value = "imgFile") MultipartFile imageFile,
+                                  String name) throws Exception {
         String resourcePath = PropertiesUtil.getProp("resources.path");
         if (imageFile != null) {
             if (FileUploadUtil.allowUpload(imageFile.getContentType())) {

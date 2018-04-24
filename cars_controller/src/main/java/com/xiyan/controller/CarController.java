@@ -25,9 +25,9 @@ public class CarController {
         return JSON.toJSONString(o, SerializerFeature.WriteMapNullValue);
     }
 
-    @RequestMapping("/selectallcanusecar")
-    public String selectAllCarCanUse() {
-        Object o = carService.selectAllCarCanUse();
+    @RequestMapping("/selectcarbystore")
+    public String selectCarByStore(int storeid) {
+        Object o = carService.selectCarByStore(storeid);
         return JSON.toJSONString(o, SerializerFeature.WriteMapNullValue);
     }
 }

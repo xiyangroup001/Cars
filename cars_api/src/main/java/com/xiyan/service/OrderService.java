@@ -1,6 +1,7 @@
 package com.xiyan.service;
 
 import com.xiyan.model.entity.Order;
+import com.xiyan.model.entity.User;
 import com.xiyan.model.utils.APIResponse;
 
 import java.util.List;
@@ -23,7 +24,7 @@ public interface OrderService {
      * @param order
      * @return
      */
-    APIResponse<Integer> insertOrder(Order order);
+    APIResponse<Integer> insertOrder(User currentUser,Order order);
 
     /**
      * Method 选择全部用户
@@ -37,6 +38,12 @@ public interface OrderService {
      * @return
      */
     APIResponse<Integer> updateOrder(Order order);
+
+    APIResponse<List<Order>> listOrderByUserId(int userId);
+
+    APIResponse<Boolean> getCar(int userId, int orderId);
+
+    APIResponse<Boolean> returnCar(int userId, int orderId);
 }
 
 

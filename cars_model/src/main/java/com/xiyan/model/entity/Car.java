@@ -25,6 +25,9 @@ public class Car implements Serializable {
     private Short aduitType;            //车辆审核状态
     private int aduitId;        //车辆审核号
 
+    public static final short SYATE_INSTORE = 1;
+    public static final short SYATE_BOOKED = 2;
+    public static final short SYATE_RENTEND_OUT = 3;
 
     public static final short ADUIT_PASS = 1;
 

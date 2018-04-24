@@ -29,7 +29,7 @@ public class CodeSlaveDaoTest {
         c1.setUserPhone("12345678101");
         c1.setSendTime(new Date());
         c1.setCodeVal("1234565");
-        codeMasterDao.insert(c1);
+        //codeMasterDao.insert(c1);
         System.out.println(JSON.toJSONString(codeSlaveDao.selectByPhone("12345678901")));
 
     }

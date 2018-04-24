@@ -37,7 +37,7 @@ public class AdminServiceImplTest {
         admin.setPower((short)2);
         admin.setStore(1003);
 
-        adminService.createAdmin(admin,admin);
+       // adminService.createAdmin(admin,admin);
     }
 
 

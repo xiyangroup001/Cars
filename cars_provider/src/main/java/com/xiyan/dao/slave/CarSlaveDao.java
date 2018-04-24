@@ -16,4 +16,6 @@ public interface CarSlaveDao extends GeneralSlaveDao<Car> {
     List<Car> selectCarByCondition(int getStore, int[] carType, String[] carBrand, int lowPrice, int highPrice,int lowRentalPrice, int highRentalPrice);
 
     List<Car> selectAllCarCanUse();
+
+    List<Car> selectByStore(int storeid);
 }

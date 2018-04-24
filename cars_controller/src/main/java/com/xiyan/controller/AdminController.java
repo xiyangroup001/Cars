@@ -24,7 +24,7 @@ public class AdminController {
         if (adminService.loginAdmin(username, password)) {
             String token = "";
             try {
-                token = JWTUtil.createJWT(username, username, 1000 * 60 * 10);
+                token = JWTUtil.createJWT(username, username, 1000 * 60 * 30);
                 return JSON.toJSONString(APIResponse.returnSuccess(token));
             } catch (Exception e1) {
                 e1.printStackTrace();

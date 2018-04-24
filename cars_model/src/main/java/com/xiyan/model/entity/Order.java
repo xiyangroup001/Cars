@@ -15,7 +15,6 @@ public class Order implements Serializable {
         private String orderId;
         private int userId;
         private int carId;
-
         @JSONField(format = "yyyy-MM-dd HH:mm:SS")
         @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:SS")
         private Date orderGenerationTime;
@@ -33,6 +32,12 @@ public class Order implements Serializable {
         private double totalAmount;
         private short payType;
         private Position position;
+
+        public static final short UNPAID_DEPOSIT = 1;
+        public static final short UNPAID_RENT = 2;
+        public static final short PAID_RENT = 3;
+        public static final short REFUNDED_DEPOSIT = 4;
+
 
     @Override
     public String toString() {
