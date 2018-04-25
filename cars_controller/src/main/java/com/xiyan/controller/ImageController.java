@@ -54,6 +54,7 @@ public class ImageController {
     }
 
     @RequestMapping(value = "/upload", method = RequestMethod.POST)
+    //新建的时候name="",修改的时候要加上val值
     public String upload(@RequestParam(value = "imgFile") MultipartFile imageFile, String name) throws Exception {
         //如果文件不为空，
         if (!imageFile.isEmpty()) {

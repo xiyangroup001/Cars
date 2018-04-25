@@ -39,12 +39,12 @@ public class UserController {
         }
         return JSON.toJSONString(APIResponse.returnFail("用户名或密码错误！"));
     }
-    @PostMapping("/register")
+    @PostMapping("/register")//注册
     public String insertUser(User user) {
         return JSON.toJSONString(userService.insertUser(user), SerializerFeature.WriteMapNullValue);
     }
 
-    @PostMapping("/changepassword")
+    @PostMapping("/changepassword")//修改密码。
     public String changePassword(String token,String oldPassword,String newPassword) {
         User currentUser = getCurrentUser(token);
         if (currentUser == null) {
@@ -54,26 +54,30 @@ public class UserController {
     }
 
 
-    @PostMapping("/all")
+    @PostMapping("/all")//暂时用不到
     public String selectAllUser(String token){
         return JSON.toJSONString(userService.listAllUser(),SerializerFeature.WriteMapNullValue);
     }
 
-    @PostMapping("/delete")
-    public String deleteUser(Integer userId){
-        return JSON.toJSONString(userService.deleteUser(userId),SerializerFeature.WriteMapNullValue);
+    @PostMapping("/delete")//注销，先用不到
+    public String deleteUser(String token,Integer userId){
+        User currentUser = getCurrentUser(token);
+        if (currentUser == null) {
+            return JSON.toJSONString(APIResponse.returnFail("请登录！"), SerializerFeature.WriteMapNullValue);
+        }
+        return JSON.toJSONString(userService.deleteUser(currentUser,userId),SerializerFeature.WriteMapNullValue);
     }
-    @PostMapping("/namecanuse")
+    @PostMapping("/namecanuse")//用户名是否可用，返回bool
     public String nameCanUse(String name){
         return JSON.toJSONString(userService.nameIsUsing(name),SerializerFeature.WriteMapNullValue);
     }
 
-    @PostMapping("/phonecanuse")
+    @PostMapping("/phonecanuse")//电话是否已经注册，返回bool
     public String phoneCanUse(String phone){
         return JSON.toJSONString(userService.phoneIsUsing(phone),SerializerFeature.WriteMapNullValue);
     }
 
-    @PostMapping("/update")
+    @PostMapping("/update")//用户修改信息
     public String updateUser(String token,User user){
         User currentUser = getCurrentUser(token);
         if (currentUser == null) {

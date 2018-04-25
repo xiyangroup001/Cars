@@ -50,6 +50,12 @@ public class CodeServiceImpl implements CodeService {
             return APIResponse.returnSuccess(val);
         }
     }
+
+    @Override
+    public APIResponse<Boolean> checkCode(String phone, String val) {
+        return APIResponse.returnSuccess(codeSlaveDao.selectByPhone(phone).equals(val));
+    }
+
     private static String getCodeVal(){
         String codeVal = "";
         for (int i = 0; i <4; i++) {

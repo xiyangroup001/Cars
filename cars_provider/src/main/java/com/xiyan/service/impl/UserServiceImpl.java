@@ -37,7 +37,7 @@ public class UserServiceImpl implements UserService {
     private UserSlaveDao userSlaveDao;
 
     @Override
-    public APIResponse<Integer> deleteUser(Integer userid) {
+    public APIResponse<Integer> deleteUser(User currentUser,Integer userid) {
         return new ApiTemplate<Integer>(TmonitorConstants.DUBBO_USER_DELETE){
             @Override
             protected void checkParams() throws BizException {
@@ -46,6 +46,10 @@ public class UserServiceImpl implements UserService {
 
             @Override
             protected APIResponse<Integer> process() throws BizException {
+                if (currentUser.getUserId()!=userid){
+                    return APIResponse.returnFail("用户不对！");
+
+                }
                 logger.info("删除用户：{}",userid);
                 return APIResponse.returnSuccess(userMasterDao.delete(userid));
             }

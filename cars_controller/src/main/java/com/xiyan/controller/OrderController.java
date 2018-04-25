@@ -27,7 +27,7 @@ public class OrderController {
     @Resource
     private OrderService orderService;
 
-    @PostMapping("/createorder")
+    @PostMapping("/createorder")//新建订单
     public String creatrOrder(String token,Order order) {
         User currentUser = getCurrentUser(token);
         if (currentUser == null) {
@@ -37,7 +37,7 @@ public class OrderController {
 
     }
 
-    @PostMapping("/getcar")//取车
+    @PostMapping("/getcar")//客户取车，这一步还有点问题 牵扯到支付还没做，这个应该是门店管理员做的。
     public String getCar(String token,Integer OrderId) {
         User currentUser = getCurrentUser(token);
         if (currentUser == null) {
@@ -47,7 +47,7 @@ public class OrderController {
         return JSON.toJSONString(o, SerializerFeature.WriteMapNullValue);
     }
 
-    @PostMapping("/returncar")//取车
+    @PostMapping("/returncar")//客户还车，这一步还有点问题 牵扯到支付还没做。
     public String returnCar(String token,Integer OrderId) {
         User currentUser = getCurrentUser(token);
         if (currentUser == null) {
@@ -58,7 +58,7 @@ public class OrderController {
     }
 
 
-    @PostMapping("/gethistoryorder")
+    @PostMapping("/gethistoryorder")//获取历史订单
     public String getHistoryOrder(String token) {
         Claims claims = null;
         try {

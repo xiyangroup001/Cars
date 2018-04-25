@@ -16,7 +16,7 @@ public interface UserService {
      * @param userid
      * @return
      */
-    APIResponse<Integer> deleteUser(Integer userid);
+    APIResponse<Integer> deleteUser(User currentUser ,Integer userid);
 
     /**
      * Method 新建用户

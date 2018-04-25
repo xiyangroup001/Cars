@@ -12,8 +12,12 @@ import javax.annotation.Resource;
 public class CodeController {
     @Resource
     private CodeService codeService;
-    @RequestMapping("/send")
+    @RequestMapping("/send")//返回发送的值
     public String sendCode(String phone){
         return JSON.toJSONString(codeService.sendCode(phone));
+    }
+    @RequestMapping("/checkcode")//返回发送的值
+    public String checkCode(String phone,String val){
+        return JSON.toJSONString(codeService.checkCode(phone,val));
     }
 }

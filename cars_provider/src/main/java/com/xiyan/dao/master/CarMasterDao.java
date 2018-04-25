@@ -10,5 +10,5 @@ import org.mybatis.spring.annotation.MapperScan;
 @MapperScan
 public interface CarMasterDao extends GeneralMasterDao<Car> {
     int updatePrice(int CarId,double price);
-    int updatePrice(int inStore, int low,int high,double price);
+    int updatePriceBypp(int inStore, int low,int high,double price);
 }

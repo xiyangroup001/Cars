@@ -2,17 +2,21 @@ package com.xiyan.utils;
 
 import io.jsonwebtoken.Claims;
 import org.junit.Test;
+import org.springframework.mock.web.MockMultipartFile;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
 
 
 public class QiniuUtilTest {
     @Test
     public void maissn() {
         try {
-            File file= new File("C:\\Users\\beta_\\Desktop","003.jpg");
-            System.out.println(QiniuUtil.upload(new FileInputStream(file), "35005"));
+            File file= new File("C:\\Users\\beta_\\Desktop","004.jpg");
+            MultipartFile multipartFile = new MockMultipartFile("ss1",new FileInputStream(file));
+            System.out.println(QiniuUtil.upload(multipartFile.getInputStream(), "3506"));
         } catch (Exception e) {
             e.getMessage();
         }
@@ -35,5 +39,12 @@ public class QiniuUtilTest {
         }
     }
 
-
+    @Test
+    public void mssssaissn() {
+        try {
+            QiniuUtil.delete("3506");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

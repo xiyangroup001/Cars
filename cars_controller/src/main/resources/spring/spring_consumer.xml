@@ -20,6 +20,7 @@
             <bean class="com.xiyan.handerInterceptor.CORSInterceptor"/>
         </mvc:interceptor>
     </mvc:interceptors>
+
     <bean id="multipartResolver"
           class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
         <!-- 上传文件大小上限，单位为字节（10MB） -->

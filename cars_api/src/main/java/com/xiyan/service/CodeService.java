@@ -32,6 +32,8 @@ public interface CodeService {
     APIResponse<Integer> updateCode(Code code);
 
     APIResponse<String> sendCode(String phone);
+
+    APIResponse<Boolean> checkCode(String phone, String val);
 }
 
 

@@ -91,7 +91,7 @@ public class CarServiceImpl implements CarService {
             protected APIResponse<Integer> process() throws BizException {
                 if (price<=0.0)
                     return APIResponse.returnFail("价格出错！");
-                carMasterDao.updatePrice(currentAdmin.getStore(),low,high,price);
+                carMasterDao.updatePriceBypp(currentAdmin.getStore(),low,high,price);
                 return APIResponse.returnSuccess();
             }
         }.execute();

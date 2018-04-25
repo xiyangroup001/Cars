@@ -107,7 +107,6 @@ public class QiniuUtil {
         //实例化一个BucketManager对象
         BucketManager bucketManager = new BucketManager(auth, cfg);
         //此处的33是去掉：http://p7kmq7vjn.bkt.clouddn.com/,剩下的key就是图片在七牛云的名称
-        key = key.substring(33);
         //System.out.println("key---------->" + key);
         try {
             //调用delete方法移动文件

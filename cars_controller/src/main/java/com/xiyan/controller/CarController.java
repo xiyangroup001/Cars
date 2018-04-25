@@ -24,7 +24,7 @@ public class CarController {
     @Resource
     private AdminService adminService;
 
-    @RequestMapping("/selectcar")
+    @RequestMapping("/selectcar")//条件选择车辆，价位（单位：万元）
     public String selectCar(int getStore,
                             @RequestParam(value = "carType[]")int[] carType,
                             @RequestParam(value = "carBrand[]")String[] carBrand,
@@ -34,13 +34,13 @@ public class CarController {
         return JSON.toJSONString(o, SerializerFeature.WriteMapNullValue);
     }
 
-    @RequestMapping("/selectcarbystore")
+    @RequestMapping("/selectcarbystore")//通过门店选择车辆
     public String selectCarByStore(int storeid) {
         Object o = carService.selectCarByStore(storeid);
         return JSON.toJSONString(o, SerializerFeature.WriteMapNullValue);
     }
 
-    @RequestMapping("/newcar")
+    @RequestMapping("/newcar") //新上车辆，普通门店管理员可调用。
     public String createCar(String token,Car car) {
         Admin currentAdmin = getCurrentAdmin(token);
         if (currentAdmin == null) {
@@ -49,7 +49,7 @@ public class CarController {
         return JSON.toJSONString(carService.createCar(currentAdmin,car), SerializerFeature.WriteMapNullValue);
     }
 
-    @RequestMapping("/update")
+    @RequestMapping("/update")//修改车辆，普通门店管理员可调用。
     public String updateCar(String token,Car car) {
         Admin currentAdmin = getCurrentAdmin(token);
         if (currentAdmin == null) {
@@ -58,7 +58,7 @@ public class CarController {
         return JSON.toJSONString(carService.updateCar(currentAdmin,car), SerializerFeature.WriteMapNullValue);
     }
 
-    @RequestMapping("/updateprice")
+    @RequestMapping("/updateprice")//修改租金价格，改价用这个借口。
     public String updateCaPrice(String token,int carId,double price) {
         Admin currentAdmin = getCurrentAdmin(token);
         if (currentAdmin == null) {
@@ -66,7 +66,7 @@ public class CarController {
         }
         return JSON.toJSONString(carService.updateCarPrice(currentAdmin,carId,price), SerializerFeature.WriteMapNullValue);
     }
-    @RequestMapping("/updatepricebypp")
+    @RequestMapping("/updatepricebypp")//修改租金价格，根据车辆的价位（单位：元）来修改，改价用这个借口。
     public String updateCaPrice(String token,int low,int high,double price) {
         Admin currentAdmin = getCurrentAdmin(token);
         if (currentAdmin == null) {
@@ -75,7 +75,7 @@ public class CarController {
         return JSON.toJSONString(carService.updateCarPrice(currentAdmin,low,high,price), SerializerFeature.WriteMapNullValue);
     }
 
-       @RequestMapping("/getnotpasscar")
+       @RequestMapping("/getnotpasscar")//获取没有通过审核的列表
     public String getNotPassCar(String token) {
         Admin currentAdmin = getCurrentAdmin(token);
         if (currentAdmin == null) {

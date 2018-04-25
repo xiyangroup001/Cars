@@ -69,8 +69,8 @@
         </set>
         WHERE CarId = #{param1}
     </update>
-    <!--int updatePrice(int inStore, int low,int high,double price);-->
-    <update id="updatePrice">
+    <!--int updatePriceBypp(int inStore, int low,int high,double price);-->
+    <update id="updatePriceBypp">
         UPDATE Car
         <set>
             <if test="rentalPrice != null">rentalPrice=#{param4},</if>
