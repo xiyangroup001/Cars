@@ -1,8 +1,11 @@
 package com.xiyan.dao.master;
 
+import com.xiyan.model.entity.Admin;
 import com.xiyan.model.entity.Car;
 import com.xiyan.model.entity.twolevel.CarQualification;
 import com.xiyan.model.entity.twolevel.CarsPictureUrl;
+import com.xiyan.service.AdminService;
+import com.xiyan.service.CarService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -24,6 +27,11 @@ import java.util.ArrayList;
 public class CarMasterDaoTest {
     @Resource
     private CarMasterDao carMasterDao;
+    @Resource
+    private CarService carService;
+    @Resource
+    private AdminService adminService;
+
     @Test
     public void insertCar() throws Exception {
         /*
@@ -68,6 +76,8 @@ public class CarMasterDaoTest {
         car.setInsuranceType(list1);
 
         carMasterDao.insert(car);
+        Admin admin = adminService.getAdminByName("张三1");
+        carService.createCar(admin,car);
     }
 
 

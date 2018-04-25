@@ -59,6 +59,12 @@ public interface AdminService {
      * @return
      */
     Admin getAdminByName(String adminName);
+
+    APIResponse<Boolean> changePassword(Admin currentAdmin, String oldPassword, String newPassword);
+
+    APIResponse<Boolean> checkCarPass(Admin currentAdmin, int carId);
+
+    APIResponse<Boolean> checkCarFail(Admin currentAdmin, int carId,String message);
 }
 
 

@@ -28,8 +28,12 @@ public class Car implements Serializable {
     public static final short SYATE_INSTORE = 1;
     public static final short SYATE_BOOKED = 2;
     public static final short SYATE_RENTEND_OUT = 3;
+    public static final short SYATE_REPAIR = 4;
+    public static final short SYATE_OUTOFDATE = 5;
 
     public static final short ADUIT_PASS = 1;
+    public static final short NOT_ADUIT = 2;
+    public static final short ADUIT_ERROR = 3;
 
     public int getCarId() {
         return carId;

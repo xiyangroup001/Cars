@@ -38,9 +38,10 @@ public interface UserService {
      */
     APIResponse<Integer> updateUser(User currentUser,User user);
 
-    boolean loginUser(int useId, String password);
+    boolean loginUser(String useId, String password);
 
     User getUserById(int userId);
+    User getUserByName(String userName);
 
     /**
      * Method 名称是否可用
@@ -54,6 +55,8 @@ public interface UserService {
      * @return
      */
     APIResponse<Boolean> phoneIsUsing(String phone);
+
+    APIResponse<Boolean> changePassword(User currentUser, String oldPassword, String newPassword);
 }
 
 

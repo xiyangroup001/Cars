@@ -61,6 +61,22 @@
         </set>
         WHERE CarId = #{CarId}
     </update>
+    <!--int updatePrice(int CarId,double price);-->
+    <update id="updatePrice">
+        UPDATE Car
+        <set>
+            <if test="rentalPrice != null">rentalPrice=#{param2},</if>
+        </set>
+        WHERE CarId = #{param1}
+    </update>
+    <!--int updatePrice(int inStore, int low,int high,double price);-->
+    <update id="updatePrice">
+        UPDATE Car
+        <set>
+            <if test="rentalPrice != null">rentalPrice=#{param4},</if>
+        </set>
+        WHERE inStore = #{param1} AND carPrice betWeen #{param2} and #{param3}
+    </update>
     <delete id="delete">
         DELETE FROM Car
         WHERE CarId = #{CarId}

@@ -43,6 +43,15 @@ public class AdminController {
         return JSON.toJSONString(adminService.createAdmin(currentAdmin, admin), SerializerFeature.WriteMapNullValue);
     }
 
+    @RequestMapping("/changepassword")
+    public String changePassword(String token,String oldPassword,String newPassword) {
+        Admin currentAdmin = getCurrentAdmin(token);
+        if (currentAdmin == null) {
+            return JSON.toJSONString(APIResponse.returnFail("请登录！"), SerializerFeature.WriteMapNullValue);
+        }
+        return JSON.toJSONString(adminService.changePassword(currentAdmin,oldPassword,newPassword), SerializerFeature.WriteMapNullValue);
+    }
+
     @PostMapping("/list")//全部列表
     public String selectAdmin(String token) {
         Admin currentAdmin = getCurrentAdmin(token);
@@ -69,6 +78,24 @@ public class AdminController {
             return JSON.toJSONString(APIResponse.returnFail("请登录！"), SerializerFeature.WriteMapNullValue);
         }
         return JSON.toJSONString(adminService.deleteAdmin(currentAdmin, adminId), SerializerFeature.WriteMapNullValue);
+    }
+
+    @PostMapping("/checkcarpass")
+    public String checkCarPass(String token, int carId) {
+        Admin currentAdmin = getCurrentAdmin(token);
+        if (currentAdmin == null) {
+            return JSON.toJSONString(APIResponse.returnFail("请登录！"), SerializerFeature.WriteMapNullValue);
+        }
+        return JSON.toJSONString(adminService.checkCarPass(currentAdmin, carId), SerializerFeature.WriteMapNullValue);
+    }
+
+    @PostMapping("/checkcarfail")
+    public String checkCarFail(String token, int carId,String message) {
+        Admin currentAdmin = getCurrentAdmin(token);
+        if (currentAdmin == null) {
+            return JSON.toJSONString(APIResponse.returnFail("请登录！"), SerializerFeature.WriteMapNullValue);
+        }
+        return JSON.toJSONString(adminService.checkCarFail(currentAdmin, carId,message), SerializerFeature.WriteMapNullValue);
     }
 
     @PostMapping("/update")

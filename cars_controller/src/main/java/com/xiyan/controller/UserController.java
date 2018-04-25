@@ -8,6 +8,7 @@ import com.xiyan.service.UserService;
 import com.xiyan.utils.JWTUtil;
 import io.jsonwebtoken.Claims;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,12 +25,12 @@ public class UserController {
     @Resource
     private UserService userService;
 
-    @RequestMapping("/login")
-    public String loginUser(int userId, String password) {
-        if(userService.loginUser(userId,password)){
+    @PostMapping("/login")
+    public String loginUser(String userName, String password) {
+        if(userService.loginUser(userName,password)){
             String token = "";
             try {
-                token = JWTUtil.createJWT(String.valueOf(userId),String.valueOf(userId), 1000*60*60);
+                token = JWTUtil.createJWT(userName,userName, 1000*60*60);
                 return JSON.toJSONString(APIResponse.returnSuccess(token));
             } catch (Exception e1) {
                 e1.printStackTrace();
@@ -38,31 +39,41 @@ public class UserController {
         }
         return JSON.toJSONString(APIResponse.returnFail("用户名或密码错误！"));
     }
-    @RequestMapping("/register")
+    @PostMapping("/register")
     public String insertUser(User user) {
         return JSON.toJSONString(userService.insertUser(user), SerializerFeature.WriteMapNullValue);
     }
 
-    @GetMapping("/all")
+    @PostMapping("/changepassword")
+    public String changePassword(String token,String oldPassword,String newPassword) {
+        User currentUser = getCurrentUser(token);
+        if (currentUser == null) {
+            return JSON.toJSONString(APIResponse.returnFail("请登录！"), SerializerFeature.WriteMapNullValue);
+        }
+        return JSON.toJSONString(userService.changePassword(currentUser,oldPassword,newPassword), SerializerFeature.WriteMapNullValue);
+    }
+
+
+    @PostMapping("/all")
     public String selectAllUser(String token){
         return JSON.toJSONString(userService.listAllUser(),SerializerFeature.WriteMapNullValue);
     }
 
-    @GetMapping("/delete")
+    @PostMapping("/delete")
     public String deleteUser(Integer userId){
         return JSON.toJSONString(userService.deleteUser(userId),SerializerFeature.WriteMapNullValue);
     }
-    @GetMapping("/namecanuse")
+    @PostMapping("/namecanuse")
     public String nameCanUse(String name){
         return JSON.toJSONString(userService.nameIsUsing(name),SerializerFeature.WriteMapNullValue);
     }
 
-    @GetMapping("/phonecanuse")
+    @PostMapping("/phonecanuse")
     public String phoneCanUse(String phone){
         return JSON.toJSONString(userService.phoneIsUsing(phone),SerializerFeature.WriteMapNullValue);
     }
 
-    @GetMapping("/update")
+    @PostMapping("/update")
     public String updateUser(String token,User user){
         User currentUser = getCurrentUser(token);
         if (currentUser == null) {
@@ -77,8 +88,8 @@ public class UserController {
         User currentUser;
         try {
             Claims claims = JWTUtil.parseJWT(token);
-            String userId = claims.getSubject();
-            currentUser = userService.getUserById(Integer.parseInt(userId));
+            String userName = claims.getSubject();
+            currentUser = userService.getUserByName(userName);
         } catch (Exception e) {
             return null;
         }

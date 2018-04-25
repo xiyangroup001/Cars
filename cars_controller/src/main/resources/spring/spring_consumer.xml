@@ -15,12 +15,6 @@
 
     <!-- 配置拦截器 -->
     <mvc:interceptors>
-        <!-- 多个拦截器，顺序执行 -->
-        <!--<mvc:interceptor>-->
-            <!--&lt;!&ndash; /** 表示所有的url，包括子url路径 &ndash;&gt;-->
-            <!--<mvc:mapping path="/**"/>-->
-            <!--<bean class="com.xiyan.handerInterceptor.HanderInterceptor1"></bean>-->
-        <!--</mvc:interceptor>-->
         <mvc:interceptor>
             <mvc:mapping path="/**"/>
             <bean class="com.xiyan.handerInterceptor.CORSInterceptor"/>

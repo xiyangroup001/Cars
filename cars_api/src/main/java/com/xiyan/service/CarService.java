@@ -1,5 +1,6 @@
 package com.xiyan.service;
 
+import com.xiyan.model.entity.Admin;
 import com.xiyan.model.entity.Car;
 import com.xiyan.model.utils.APIResponse;
 
@@ -23,7 +24,7 @@ public interface CarService {
      * @param car
      * @return
      */
-    APIResponse<Integer> createCar(Car car);
+    APIResponse<Integer> createCar(Admin currentAdmin,Car car);
 
     /**
      * Method 上多个车辆
@@ -42,24 +43,23 @@ public interface CarService {
      * @param car
      * @return
      */
-    APIResponse<Integer> updateCar(Car car);
+    APIResponse<Integer> updateCar(Admin currentAdmin,Car car);
 
     /**
      * Method 根据车价位改车辆价格
      * @return
      */
-    APIResponse<Integer> updateCarPrice(double low,double high,double price);
-    /**
-     * Method 添加审核信息
-     * @return
-     */
-    APIResponse<Integer> updateCarPrice(int carId,int checkId);
+    APIResponse<Integer> updateCarPrice(Admin currentAdmin,int low,int high,double price);
+
+    APIResponse<Integer> updateCarPrice(Admin currentAdmin,int carId,double price);
 
     APIResponse<List<Car>> selectCarByCondition(int getStore, int[] carType, String[] carBrand, int lowPrice, int highPrice,int lowRentalPrice, int highRentalPrice);
 
     APIResponse<List<Car>> selectAllCarCanUse();
 
     APIResponse<List<Car>> selectCarByStore(int storeid);
+
+    APIResponse<List<Car>>  getNotPassCar(Admin currentAdmin);
 }
 
 

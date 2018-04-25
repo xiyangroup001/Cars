@@ -20,6 +20,8 @@ public class Check implements Serializable {
     private Short checkType;
     private String checkResult;
 
+    public static final short CHECK_CAR = 1;
+
     public int getCheckId() {
         return checkId;
     }

@@ -20,6 +20,7 @@
         select * from user
         <where>
             <if test="userId != 0">AND userId = #{userId},</if>
+            <if test="userName != null">AND userName = #{userName},</if>
             <if test="userGuid != null">AND userGuid = #{userGuid},</if>
             <if test="userPhone != null">AND userPhone = #{userPhone},</if>
             <if test="registrateTime != null">AND registrateTime = #{registrateTime},</if>

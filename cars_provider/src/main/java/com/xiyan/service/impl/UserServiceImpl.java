@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
+import java.util.regex.Pattern;
 
 /**
  * @antuor binwang
@@ -104,8 +105,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean loginUser(int userId, String password) {
-        User user = userSlaveDao.selectById(userId);
+    public boolean loginUser(String userName, String password) {
+        User user = getUserByName(userName);
         if (user==null)
             return false;
         else
@@ -115,6 +116,13 @@ public class UserServiceImpl implements UserService {
     @Override
     public User getUserById(int userId) {
         return userSlaveDao.selectById(userId);
+    }
+
+    @Override
+    public User getUserByName(String userName) {
+        User u = new User();
+        u.setUserName(userName);
+        return userSlaveDao.select(u).get(0);
     }
 
     @Override
@@ -139,6 +147,22 @@ public class UserServiceImpl implements UserService {
                     return APIResponse.returnSuccess(false);
                 }else
                     return APIResponse.returnSuccess(true);
+            }
+        }.execute();
+    }
+
+    @Override
+    public APIResponse<Boolean> changePassword(User currentUser, String oldPassword, String newPassword) {
+        return new ApiTemplate<Boolean>() {
+            @Override
+            protected APIResponse<Boolean> process() throws BizException {
+                Preconditions.checkArgument(Pattern.matches("^[a-zA-Z0-9]{6,16}$", currentUser.getUserPassword()), "密码不符合要求！");
+                if(currentUser.getUserPassword()==oldPassword){
+                    currentUser.setUserPassword(newPassword);
+                    userMasterDao.update(currentUser);
+                    return APIResponse.returnSuccess();
+                }else
+                    return APIResponse.returnFail("旧密码输入不正确！");
             }
         }.execute();
     }
