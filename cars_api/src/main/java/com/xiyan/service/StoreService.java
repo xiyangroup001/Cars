@@ -37,6 +37,10 @@ public interface StoreService {
      * @return
      */
     APIResponse<Integer> updateStore(Store store);
+
+    APIResponse<List<Store>> getStoreByCity(String city);
+
+    APIResponse<Store> getStoreById(int storeId);
 }
 
 

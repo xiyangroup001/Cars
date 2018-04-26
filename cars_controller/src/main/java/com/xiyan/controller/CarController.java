@@ -10,6 +10,7 @@ import com.xiyan.service.CarService;
 import com.xiyan.service.UserService;
 import com.xiyan.utils.JWTUtil;
 import io.jsonwebtoken.Claims;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -35,10 +36,17 @@ public class CarController {
     }
 
     @RequestMapping("/selectcarbystore")//通过门店选择车辆
-    public String selectCarByStore(int storeid) {
-        Object o = carService.selectCarByStore(storeid);
+    public String selectCarByStore(int storeId) {
+        Object o = carService.selectCarByStore(storeId);
         return JSON.toJSONString(o, SerializerFeature.WriteMapNullValue);
     }
+
+    @RequestMapping("/getcarbyid")
+    public String getCarById(int carId) {
+        Object o = carService.selectCarById(carId);
+        return JSON.toJSONString(o, SerializerFeature.WriteMapNullValue);
+    }
+
 
     @RequestMapping("/newcar") //新上车辆，普通门店管理员可调用。
     public String createCar(String token,Car car) {
@@ -74,7 +82,14 @@ public class CarController {
         }
         return JSON.toJSONString(carService.updateCarPrice(currentAdmin,low,high,price), SerializerFeature.WriteMapNullValue);
     }
-
+    @PostMapping("/getneedcheckcarlist")//审核车辆通过，无数据返回 ret=true
+    public String getNeedCheckCarList(String token) {
+        Admin currentAdmin = getCurrentAdmin(token);
+        if (currentAdmin == null) {
+            return JSON.toJSONString(APIResponse.returnFail("请登录！"), SerializerFeature.WriteMapNullValue);
+        }
+        return JSON.toJSONString(carService.getNeedCheckCarList(currentAdmin), SerializerFeature.WriteMapNullValue);
+    }
        @RequestMapping("/getnotpasscar")//获取没有通过审核的列表
     public String getNotPassCar(String token) {
         Admin currentAdmin = getCurrentAdmin(token);

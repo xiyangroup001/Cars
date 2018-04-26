@@ -12,6 +12,7 @@ public class Position implements Serializable {
     //纬度
     private Double latitude;
     private String address;
+    private String city;
 
     public Double getLongitude() {
         return longitude;
@@ -37,8 +38,16 @@ public class Position implements Serializable {
         this.address = address;
     }
 
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
     @Override
     public String toString() {
-        return "Position{" + "longitude=" + longitude + ", latitude=" + latitude + ", address='" + address + '\'' + '}';
+        return "Position{" + "longitude=" + longitude + ", latitude=" + latitude + ", address='" + address + '\'' + ", city='" + city + '\'' + '}';
     }
 }

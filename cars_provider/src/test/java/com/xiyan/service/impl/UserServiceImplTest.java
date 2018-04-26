@@ -34,7 +34,7 @@ public class UserServiceImplTest {
     private Logger logger = LoggerFactory.getLogger(UserServiceImplTest.class);
     @Test
     public void deleteUser() throws Exception {
-        System.out.println(userService.deleteUser(1001));
+       // System.out.println(userService.deleteUser(1001));
     }
 
     @Test

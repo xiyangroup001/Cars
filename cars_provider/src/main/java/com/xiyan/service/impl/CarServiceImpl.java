@@ -40,6 +40,8 @@ public class CarServiceImpl implements CarService {
         return new ApiTemplate<Integer>() {
             @Override
             protected APIResponse<Integer> process() throws BizException {
+                logger.info("参数 currentAdmin : {}",currentAdmin);
+                logger.info("参数 car : {}",car);
                 Check c1 = new Check();
                 c1.setCheckType(Check.CHECK_CAR);
                 checkMasterDao.insert(c1);
@@ -168,6 +170,33 @@ public class CarServiceImpl implements CarService {
                 Car c = new Car();
                 c.setInStore(currentAdmin.getStore());
                 c.setAduitType(Car.ADUIT_ERROR);
+                List<Car> cars = carSlaveDao.select(c);
+                return APIResponse.returnSuccess(cars);
+            }
+        }.execute();
+    }
+
+    @Override
+    public APIResponse<Car> selectCarById(int carId) {
+        return new ApiTemplate<Car>() {
+            @Override
+            protected APIResponse<Car> process() throws BizException {
+                Car car = carSlaveDao.selectById(carId);
+                return APIResponse.returnSuccess(car);
+            }
+        }.execute();
+    }
+
+    @Override
+    public APIResponse<List<Car>> getNeedCheckCarList(Admin currentAdmin) {
+        return new ApiTemplate<List<Car>>() {
+            @Override
+            protected APIResponse<List<Car>> process() throws BizException {
+
+                if (currentAdmin.getPower()!=Admin.SUPER_ADMIN)
+                    return APIResponse.returnFail("权限不匹配！");
+                Car c = new Car();
+                c.setAduitType(Car.NOT_ADUIT);
                 List<Car> cars = carSlaveDao.select(c);
                 return APIResponse.returnSuccess(cars);
             }

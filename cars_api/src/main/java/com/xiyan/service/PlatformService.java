@@ -16,14 +16,14 @@ public interface PlatformService {
      * @param platformId
      * @return
      */
-    APIResponse<Integer> deletePlatform(Short platformId);
+    APIResponse<Integer> deletePlatform(int platformId);
 
     /**
      * Method 新建用户
      * @param platform
      * @return
      */
-    APIResponse<Integer> insertUser(Platform platform);
+    APIResponse<Integer> insertPlatform(Platform platform);
 
     /**
      * Method 选择全部用户

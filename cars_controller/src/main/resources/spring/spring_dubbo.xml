@@ -22,5 +22,9 @@
                      version="${zookeeper.version}"  group="${zookeeper.group}" />
     <dubbo:reference id="orderService" interface="com.xiyan.service.OrderService" registry="cars-registry" protocol="dubbo"
                      version="${zookeeper.version}"  group="${zookeeper.group}" />
+    <dubbo:reference id="storeService" interface="com.xiyan.service.StoreService" registry="cars-registry" protocol="dubbo"
+                     version="${zookeeper.version}"  group="${zookeeper.group}" />
+    <dubbo:reference id="platfromService" interface="com.xiyan.service.PlatformService" registry="cars-registry" protocol="dubbo"
+                     version="${zookeeper.version}"  group="${zookeeper.group}" />
 
 </beans>

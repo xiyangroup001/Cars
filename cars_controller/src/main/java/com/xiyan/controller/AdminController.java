@@ -107,6 +107,14 @@ public class AdminController {
         return JSON.toJSONString(adminService.updateAdmin(currentAdmin, admin), SerializerFeature.WriteMapNullValue);
     }
 
+    @PostMapping("/islogin")//
+    public String isLogin(String token){
+        Admin currentAdmin = getCurrentAdmin(token);
+        if (currentAdmin == null) {
+            return JSON.toJSONString(APIResponse.returnFail("false"), SerializerFeature.WriteMapNullValue);
+        }
+        return JSON.toJSONString(APIResponse.returnSuccess(true),SerializerFeature.WriteMapNullValue);
+    }
     private Admin getCurrentAdmin(String token) {
         Admin currentAdmin;
         try {

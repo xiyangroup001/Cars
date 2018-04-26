@@ -86,6 +86,23 @@ public class UserController {
         return JSON.toJSONString(userService.updateUser(currentUser,user),SerializerFeature.WriteMapNullValue);
     }
 
+    @PostMapping("/getuser")
+    public String getUserById(String token){
+        User currentUser = getCurrentUser(token);
+        if (currentUser == null) {
+            return JSON.toJSONString(APIResponse.returnFail("请登录！"), SerializerFeature.WriteMapNullValue);
+        }
+        return JSON.toJSONString(currentUser,SerializerFeature.WriteMapNullValue);
+    }
+
+    @PostMapping("/islogin")
+    public String isLogin(String token){
+        User currentUser = getCurrentUser(token);
+        if (currentUser == null) {
+            return JSON.toJSONString(APIResponse.returnFail("false"), SerializerFeature.WriteMapNullValue);
+        }
+        return JSON.toJSONString(APIResponse.returnSuccess(true),SerializerFeature.WriteMapNullValue);
+    }
 
 
     private User getCurrentUser(String token) {

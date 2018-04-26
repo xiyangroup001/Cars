@@ -60,6 +60,10 @@ public interface CarService {
     APIResponse<List<Car>> selectCarByStore(int storeid);
 
     APIResponse<List<Car>>  getNotPassCar(Admin currentAdmin);
+
+    APIResponse<Car> selectCarById(int carId);
+
+    APIResponse<List<Car>> getNeedCheckCarList(Admin currentAdmin);
 }
 
 

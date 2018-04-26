@@ -9,4 +9,5 @@ import org.mybatis.spring.annotation.MapperScan;
  */
 @MapperScan
 public interface StoreSlaveDao  extends GeneralSlaveDao<Store> {
+    Store selectById(int storeId);
 }
