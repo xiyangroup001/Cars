@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
-@Service("PlatformService")
+@Service("platformService")
 public class PlatformServiceImpl implements PlatformService {
     @Resource
     private PlatformSlaveDao platformSlaveDao;

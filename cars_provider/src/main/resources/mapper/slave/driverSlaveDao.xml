@@ -26,14 +26,14 @@
     <select id="select" resultMap="driver" parameterType="com.xiyan.model.entity.Driver">
         select * FROM driver
         <where>
-            <if test="idNumber != null">AND idNumber = #{idNumber}</if>
-            <if test="driverName != null">AND driverName = #{driverName}</if>
-            <if test="userId != 0">AND userId = #{userId}</if>
-            <if test="expirationDate != null">AND expirationDate = #{expirationDate}</if>
-            <if test="fileNumber != null">AND fileNumber = #{fileNumber}</if>
-            <if test="driverPic != null">AND driverPic = #{driverPic}</if>
-            <if test="aduitType != null">AND aduitType = #{aduitType}</if>
-            <if test="aduitId != 0">AND aduitId = #{aduitId}</if>
+            <if test="idNumber != null">AND idNumber = #{idNumber} </if>
+            <if test="driverName != null">AND driverName = #{driverName} </if>
+            <if test="userId != 0">AND userId = #{userId} </if>
+            <if test="expirationDate != null">AND expirationDate = #{expirationDate} </if>
+            <if test="fileNumber != null">AND fileNumber = #{fileNumber} </if>
+            <if test="driverPic != null">AND driverPic = #{driverPic} </if>
+            <if test="aduitType != null">AND aduitType = #{aduitType} </if>
+            <if test="aduitId != 0">AND aduitId = #{aduitId} </if>
         </where>
     </select>
     <select id="selectRowNumber" resultType="int">

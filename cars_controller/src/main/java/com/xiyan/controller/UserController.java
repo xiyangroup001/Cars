@@ -7,10 +7,7 @@ import com.xiyan.model.utils.APIResponse;
 import com.xiyan.service.UserService;
 import com.xiyan.utils.JWTUtil;
 import io.jsonwebtoken.Claims;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
@@ -25,8 +22,8 @@ public class UserController {
     @Resource
     private UserService userService;
 
-    @PostMapping("/login")
-    public String loginUser(String userName, String password) {
+    @RequestMapping(value = "/login",produces="text/html;charset=UTF-8")
+    public String loginUser(String userName,String password) {
         if(userService.loginUser(userName,password)){
             String token = "";
             try {
@@ -39,13 +36,14 @@ public class UserController {
         }
         return JSON.toJSONString(APIResponse.returnFail("用户名或密码错误！"));
     }
-    @PostMapping("/register")//注册
+    @RequestMapping(value="/register",produces="text/html;charset=UTF-8")//注册
     public String insertUser(User user) {
         return JSON.toJSONString(userService.insertUser(user), SerializerFeature.WriteMapNullValue);
     }
 
-    @PostMapping("/changepassword")//修改密码。
-    public String changePassword(String token,String oldPassword,String newPassword) {
+    @RequestMapping(value = "/changepassword",produces="text/html;charset=UTF-8")//修改密码。
+    public String changePassword( String token,
+                                  String oldPassword,String newPassword) {
         User currentUser = getCurrentUser(token);
         if (currentUser == null) {
             return JSON.toJSONString(APIResponse.returnFail("请登录！"), SerializerFeature.WriteMapNullValue);
@@ -54,31 +52,31 @@ public class UserController {
     }
 
 
-    @PostMapping("/all")//暂时用不到
-    public String selectAllUser(String token){
+    @RequestMapping(value = "/all",produces="text/html;charset=UTF-8")//暂时用不到
+    public String selectAllUser( String token){
         return JSON.toJSONString(userService.listAllUser(),SerializerFeature.WriteMapNullValue);
     }
 
-    @PostMapping("/delete")//注销，先用不到
-    public String deleteUser(String token,Integer userId){
+    @RequestMapping(value = "/delete" ,produces="text/html;charset=UTF-8")//注销，先用不到
+    public String deleteUser( String token,Integer userId){
         User currentUser = getCurrentUser(token);
         if (currentUser == null) {
             return JSON.toJSONString(APIResponse.returnFail("请登录！"), SerializerFeature.WriteMapNullValue);
         }
         return JSON.toJSONString(userService.deleteUser(currentUser,userId),SerializerFeature.WriteMapNullValue);
     }
-    @PostMapping("/namecanuse")//用户名是否可用，返回bool
-    public String nameCanUse(String name){
+    @RequestMapping(value = "/namecanuse",produces="text/html;charset=UTF-8")//用户名是否可用，返回bool
+    public String nameCanUse( String name){
         return JSON.toJSONString(userService.nameIsUsing(name),SerializerFeature.WriteMapNullValue);
     }
 
-    @PostMapping("/phonecanuse")//电话是否已经注册，返回bool
-    public String phoneCanUse(String phone){
+    @RequestMapping(value = "/phonecanuse",produces="text/html;charset=UTF-8")//电话是否已经注册，返回bool
+    public String phoneCanUse(  String phone){
         return JSON.toJSONString(userService.phoneIsUsing(phone),SerializerFeature.WriteMapNullValue);
     }
 
-    @PostMapping("/update")//用户修改信息
-    public String updateUser(String token,User user){
+    @RequestMapping(value = "/update",produces="text/html;charset=UTF-8")//用户修改信息
+    public String updateUser( String token,User user){
         User currentUser = getCurrentUser(token);
         if (currentUser == null) {
             return JSON.toJSONString(APIResponse.returnFail("请登录！"), SerializerFeature.WriteMapNullValue);
@@ -86,8 +84,8 @@ public class UserController {
         return JSON.toJSONString(userService.updateUser(currentUser,user),SerializerFeature.WriteMapNullValue);
     }
 
-    @PostMapping("/getuser")
-    public String getUserById(String token){
+    @RequestMapping(value = "/getuser",produces="text/html;charset=UTF-8")
+    public String getUserById( String token){
         User currentUser = getCurrentUser(token);
         if (currentUser == null) {
             return JSON.toJSONString(APIResponse.returnFail("请登录！"), SerializerFeature.WriteMapNullValue);
@@ -95,7 +93,7 @@ public class UserController {
         return JSON.toJSONString(currentUser,SerializerFeature.WriteMapNullValue);
     }
 
-    @PostMapping("/islogin")
+    @RequestMapping(value = "/islogin",produces="text/html;charset=UTF-8")
     public String isLogin(String token){
         User currentUser = getCurrentUser(token);
         if (currentUser == null) {

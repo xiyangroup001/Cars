@@ -38,7 +38,7 @@ public interface UserService {
      */
     APIResponse<Integer> updateUser(User currentUser,User user);
 
-    boolean loginUser(String useId, String password);
+    boolean loginUser(String userName, String password);
 
     User getUserById(int userId);
     User getUserByName(String userName);

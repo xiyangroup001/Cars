@@ -11,10 +11,10 @@
     <select id="select" resultMap="store" parameterType="com.xiyan.model.entity.Store">
         select * from store
         <where>
-            <if test="storeId != 0">AND storeId=#{storeName},</if>
-            <if test="storeName != null">AND storeName=#{storeName},</if>
-            <if test="platform != 0">AND platform=#{platform},</if>
-            <if test="location != null">AND location=#{location,typeHandler=com.xiyan.model.typeHandler.PositionTypeHandler},</if>
+            <if test="storeId != 0">AND storeId=#{storeName} </if>
+            <if test="storeName != null">AND storeName=#{storeName} </if>
+            <if test="platform != 0">AND platform=#{platform} </if>
+            <if test="location != null">AND location=#{location,typeHandler=com.xiyan.model.typeHandler.PositionTypeHandler} </if>
         </where>
     </select>
 

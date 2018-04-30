@@ -62,8 +62,9 @@ public class UserServiceImpl implements UserService {
             @Override
             protected void checkParams() throws BizException {
                 Preconditions.checkNotNull(user, "传入参数为空！");
-                Preconditions.checkArgument(userSlaveDao.selectByName(user.getUserName())==0,"用户名已被占用！");
-                Preconditions.checkArgument(userSlaveDao.selectByPhone(user.getUserPhone())==0,"电话号已注册！");
+                Preconditions.checkArgument(userSlaveDao.selectByName(user.getUserName())!=0,"用户名已被占用！");
+                Preconditions.checkArgument(userSlaveDao.selectByPhone(user.getUserPhone())!=0,"电话号已注册！");
+                Preconditions.checkArgument(Pattern.matches("^[a-zA-Z0-9]{6,16}$", user.getUserPassword()), "密码不符合要求！");
 
             }
             @Override
@@ -110,6 +111,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean loginUser(String userName, String password) {
+        if(userName==null || userName.equals(""))
+            return false;
         User user = getUserByName(userName);
         if (user==null)
             return false;
@@ -126,7 +129,11 @@ public class UserServiceImpl implements UserService {
     public User getUserByName(String userName) {
         User u = new User();
         u.setUserName(userName);
-        return userSlaveDao.select(u).get(0);
+        try{
+        return userSlaveDao.select(u).get(0);}
+        catch (Exception e){
+            return null;
+        }
     }
 
     @Override

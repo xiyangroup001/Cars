@@ -21,7 +21,7 @@ import java.util.Date;
 @RestController
 @RequestMapping("/image")
 public class ImageController {
-    @RequestMapping(value = "/uploadheadimage", method = RequestMethod.POST)
+    @RequestMapping(value = "/uploadheadimage", method = RequestMethod.POST,produces="text/html;charset=UTF-8")
     public String uploadHeadImage(@RequestParam(value = "x") String x, @RequestParam(value = "y") String y, @RequestParam(value = "h") String h, @RequestParam(value = "w") String w, @RequestParam(value = "imgFile") MultipartFile imageFile, String name) throws Exception {
         String resourcePath = PropertiesUtil.getProp("resources.path");
         if (imageFile != null) {
@@ -53,7 +53,7 @@ public class ImageController {
         return JSON.toJSONString(APIResponse.returnFail(""));
     }
 
-    @RequestMapping(value = "/upload", method = RequestMethod.POST)
+    @RequestMapping(value = "/upload", method = RequestMethod.POST,produces="text/html;charset=UTF-8")
     //新建的时候name="",修改的时候要加上val值
     public String upload(@RequestParam(value = "imgFile") MultipartFile imageFile, String name) throws Exception {
         //如果文件不为空，
