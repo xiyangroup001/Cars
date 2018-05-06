@@ -7,7 +7,7 @@ CREATE TABLE `code` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='验证码表';
 
 
-DROP TABLE IF EXISTS `user`;
+---DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
   `userName` varchar(16) unique DEFAULT '' COMMENT '用户名',
   `userId` bigint(20) auto_increment NOT NULL COMMENT '用户Id',
@@ -16,12 +16,12 @@ CREATE TABLE `user` (
   `password` varchar(16) NOT NULL DEFAULT '' COMMENT '密码',
   `registrateTime` datetime NOT NULL DEFAULT '1900-01-01 00:00:00' COMMENT '注册时间',
   `userType` smallint(1) NOT NULL DEFAULT '0' COMMENT '用户状态',
-  `HeadPicUrl` varchar(40) NOT NULL DEFAULT '' COMMENT '头像储存地址',
+  `HeadPicUrl` smallint(1) NOT NULL DEFAULT '' COMMENT '头像储存地址',
   PRIMARY KEY (`userId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='用户表';
 
 
-DROP TABLE IF EXISTS `order`;
+---DROP TABLE IF EXISTS `order`;
 CREATE TABLE `order` (
   `orderId` bigint auto_increment NOT NULL COMMENT '订单号',
   `userId` bigint(20) NOT NULL DEFAULT '0'  COMMENT '用户Id',
@@ -39,17 +39,17 @@ CREATE TABLE `order` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='订单表';
 
 
-DROP TABLE IF EXISTS `store`;
+---DROP TABLE IF EXISTS `store`;
 CREATE TABLE `store` (
   `storeId` bigint(20) NOT NULL auto_increment  COMMENT '门店Id',
   `storeName` VARCHAR(20) NOT NULL DEFAULT '0' COMMENT '门店名',
   `platform` TINYINT NOT NULL DEFAULT '0'  COMMENT '所属平台',
-  `location` varchar(40) NOT NULL DEFAULT '0' COMMENT '位置信息',
+  `location` varchar(200) NOT NULL DEFAULT '0' COMMENT '位置信息',
   PRIMARY KEY (`storeId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='门店表';
 
 
-DROP TABLE IF EXISTS `car`;
+---DROP TABLE IF EXISTS `car`;
 CREATE TABLE `car` (
   `carId` bigint(20) NOT NULL auto_increment  COMMENT '车辆Id',
   `carLicense` VARCHAR(10) NOT NULL COMMENT '车牌号',
@@ -80,14 +80,14 @@ CREATE TABLE `driver` (
   PRIMARY KEY (`idNumber`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='驾驶人表';
 
-DROP TABLE IF EXISTS `platform`;
+---DROP TABLE IF EXISTS `platform`;
 CREATE TABLE `platform` (
   `platformId` TINYINT NOT NULL DEFAULT '0' COMMENT '平台编号',
   `platformName` VARCHAR(10) NOT NULL DEFAULT '0'  COMMENT '平台名称',
   PRIMARY KEY (`platformId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='平台表';
 
-DROP TABLE IF EXISTS `admin`;
+---DROP TABLE IF EXISTS `admin`;
 CREATE TABLE `admin` (
   `adminId` VARCHAR(18) NOT NULL DEFAULT ' ' COMMENT '帐号',
   `adminName` VARCHAR(10) NOT NULL DEFAULT ' '  COMMENT '姓名',
@@ -99,7 +99,7 @@ CREATE TABLE `admin` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='管理员表';
 
 
-DROP TABLE IF EXISTS `checks`;
+---DROP TABLE IF EXISTS `checks`;
 CREATE TABLE `checks` (
   `checkId` bigint(20) auto_increment  NOT NULL  COMMENT '审核编号',
   `checkUser` VARCHAR(18) NOT NULL DEFAULT ' ' COMMENT '审核操作人',
@@ -111,3 +111,29 @@ CREATE TABLE `checks` (
 /*
 +1 审核表
 */
+
+---DROP TABLE IF EXISTS `evaluation`;
+CREATE TABLE `evaluation` (
+  `evaluationId`  bigint(20) auto_increment  NOT NULL  COMMENT '评价编号',
+  `userId`  bigint(20)   NOT NULL  COMMENT '评价人',
+  `carId`  bigint(20)   NOT NULL  COMMENT '评价车',
+  `OrderId`  bigint(20)   NOT NULL  COMMENT '订单评价',
+  `carCondition`  int     COMMENT '0',
+  `service`  int  NOT NULL  COMMENT '0',
+  `message` VARCHAR(100)   DEFAULT ' ' COMMENT '内容',
+  `pics` VARCHAR(100)   DEFAULT ' ' COMMENT '图片路径',
+  PRIMARY KEY (`evaluationId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='评价表';
+
+
+
+---DROP TABLE IF EXISTS `coupon`;
+CREATE TABLE `coupon` (
+  `couponId`  bigint(20) auto_increment  NOT NULL  COMMENT '优惠券编号',
+  `userId`  bigint(20)   NOT NULL  COMMENT '评价人',
+  `expiredTime` DATETIME NOT NULL DEFAULT '1900-01-01 00:00:00'  COMMENT '过期时间',
+  `satisfy`  double     COMMENT '满多少',
+  `minus`  double     COMMENT '减多少',
+
+  PRIMARY KEY (`couponId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='优惠券表';

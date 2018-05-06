@@ -1,22 +1,14 @@
 package com.xiyan.utils;
 
 import java.util.Date;
-
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
-
 import org.apache.commons.codec.binary.Base64;
-
-
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtBuilder;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-
-
 public class JWTUtil {
-
-
     private static final String profiles="hxhxhxhxh";
 
     /**
@@ -67,7 +59,6 @@ public class JWTUtil {
         Claims claims = Jwts.parser()
                 .setSigningKey(key)
                 .parseClaimsJws(jwt).getBody();
-
         return claims;
     }
 }

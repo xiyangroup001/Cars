@@ -42,9 +42,9 @@ public class OrderServiceImpl implements OrderService {
         return new ApiTemplate<Integer>() {
             @Override
             protected void checkParams() throws BizException {
-                Preconditions.checkNotNull(order);
+                Preconditions.checkNotNull(order,"");
                 Preconditions.checkNotNull(currentUser);
-                Preconditions.checkArgument(order.getTakeCarShop() != 0, "驱车门店出错！");
+                Preconditions.checkArgument(order.getTakeCarShop() != 0, "取车门店出错！");
             }
 
             @Override
@@ -94,9 +94,7 @@ public class OrderServiceImpl implements OrderService {
         return new ApiTemplate<Boolean>() {
             @Override
             protected APIResponse<Boolean> process() throws BizException {
-
                 Order order = orderSlaveDao.selectById(orderId);
-
                 if (order.getUserId() != userId) return APIResponse.returnFail("该订单不是该用户！");
                 else if (order.getPayType() != Order.UNPAID_RENT) return APIResponse.returnFail("请先付定金，即押金！");
                 order.setPayType(Order.PAID_RENT);

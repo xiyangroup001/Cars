@@ -58,7 +58,7 @@ public class ImageController {
     public String upload(@RequestParam(value = "imgFile") MultipartFile imageFile, String name) throws Exception {
         //如果文件不为空，
         if (!imageFile.isEmpty()) {
-            if (FileUploadUtil.allowUpload(imageFile.getContentType())) {
+      //      if (FileUploadUtil.allowUpload(imageFile.getContentType())) {
                 String result = "";
                 if (name.equals(""))
                     result = QiniuUtil.upload(imageFile.getInputStream());
@@ -67,7 +67,7 @@ public class ImageController {
                     result = QiniuUtil.upload(imageFile.getInputStream(), name);
                 }
                 return JSON.toJSONString(APIResponse.returnSuccess(result));
-            }
+       //     }
         }
         return JSON.toJSONString(APIResponse.returnFail(""));
     }

@@ -234,6 +234,8 @@ public class AdminServiceImpl implements AdminService {
             @Override
             protected void checkParams() throws BizException {
                 Preconditions.checkArgument(newPassWord.length() >= 6 && newPassWord.length() <= 16, "密码长度在6-16之间！");
+                Preconditions.checkArgument(Pattern.matches("^[a-zA-Z0-9]{6,16}$",newPassWord), "密码不符合要求！");
+
             }
             @Override
             protected APIResponse<Integer> process() throws BizException {

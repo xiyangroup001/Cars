@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" " http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xiyan.dao.master.ConponMasterDao">
+    <!--private int couponId;-->
+    <!--private int userId;-->
+    <!--private Date expiredTime;-->
+    <!--private Double satisfy;-->
+    <!--private Double minus;-->
+    <resultMap id="conponMap" type="com.xiyan.model.entity.Conpon">
+        <id property="couponId" column="couponId"/>
+        <result property="userId" column="userId"/>
+        <result property="expiredTime" column="expiredTime"/>
+        <result property="satisfy" column="satisfy"/>
+        <result property="minus" column="minus"/>
+    </resultMap>
+
+    <insert id="insert" parameterType="com.xiyan.model.entity.Conpon">
+        insert into conpon(
+        userId,
+        expiredTime,
+        satisfy,
+        minus
+        )
+        values(
+        #{userId},
+        #{expiredTime},
+        #{satisfy},
+        #{minus},
+        )
+    </insert>
+
+    <update id="update" parameterType="com.xiyan.model.entity.Conpon">
+        update conpon
+        set
+        <trim suffixOverrides=",">
+            <if test="userId != 0">userId = #{userId},</if>
+            <if test="expiredTime != null">expiredTime = #{expiredTime},</if>
+            <if test="satisfy != null">satisfy = #{satisfy},</if>
+            <if test="minus != null">minus = #{minus},</if>
+        </trim>
+        where
+        couponId=#{couponId}
+    </update>
+
+    <delete id="delete" parameterType="int">
+        delete from conpon
+        where
+        couponId = #{id}
+    </delete>
+    <!--int deleteByUser(int userId);-->
+    <delete id="delete" parameterType="int">
+        delete from conpon
+        where
+        userId = #{userId}
+    </delete>
+    <!--int delExpire(int userId, Date date);-->
+    <delete id="delExpire" parameterType="int">
+        delete from conpon
+        where
+        userId = #{param1} and expiredTime &lt; #{param2}
+    </delete>
+</mapper>

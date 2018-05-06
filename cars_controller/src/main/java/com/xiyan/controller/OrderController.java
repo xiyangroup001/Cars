@@ -9,6 +9,7 @@ import com.xiyan.model.utils.APIResponse;
 import com.xiyan.service.AdminService;
 import com.xiyan.service.OrderService;
 import com.xiyan.service.UserService;
+import com.xiyan.utils.GetUserUtil;
 import com.xiyan.utils.JWTUtil;
 import io.jsonwebtoken.Claims;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,16 +23,11 @@ import javax.annotation.Resource;
 @RequestMapping("/order")
 public class OrderController {
     @Resource
-    private UserService userService;
-    @Resource
-    private AdminService adminService;
-    @Resource
     private OrderService orderService;
 
-    @PostMapping(value = "/createorder",produces="text/html;charset=UTF-8")//新建订单
-    public String creatrOrder( String token,
-                               Order order) {
-        User currentUser = getCurrentUser(token);
+    @PostMapping(value = "/createorder", produces = "text/html;charset=UTF-8")//新建订单
+    public String creatrOrder(String token, Order order) {
+        User currentUser = GetUserUtil.getCurrentUser(token);
         if (currentUser == null) {
             return JSON.toJSONString(APIResponse.returnFail("请登录！"), SerializerFeature.WriteMapNullValue);
         }
@@ -39,65 +35,34 @@ public class OrderController {
 
     }
 
-    @PostMapping(value = "/getcar",produces="text/html;charset=UTF-8")//客户取车，这一步还有点问题 牵扯到支付还没做，这个应该是门店管理员做的。
-    public String getCar( String token,
-                          Integer OrderId) {
-        User currentUser = getCurrentUser(token);
+    @PostMapping(value = "/getcar", produces = "text/html;charset=UTF-8")//客户取车，这一步还有点问题 牵扯到支付还没做，这个应该是门店管理员做的。
+    public String getCar(String token, Integer OrderId) {
+        User currentUser = GetUserUtil.getCurrentUser(token);
         if (currentUser == null) {
             return JSON.toJSONString(APIResponse.returnFail("请登录！"), SerializerFeature.WriteMapNullValue);
         }
-        Object o = orderService.getCar(currentUser.getUserId(),OrderId);
+        Object o = orderService.getCar(currentUser.getUserId(), OrderId);
         return JSON.toJSONString(o, SerializerFeature.WriteMapNullValue);
     }
 
-    @PostMapping(value = "/returncar",produces="text/html;charset=UTF-8")//客户还车，这一步还有点问题 牵扯到支付还没做。
-    public String returnCar( String token,
-                             Integer OrderId) {
-        User currentUser = getCurrentUser(token);
+    @PostMapping(value = "/returncar", produces = "text/html;charset=UTF-8")//客户还车，这一步还有点问题 牵扯到支付还没做。
+    public String returnCar(String token, Integer OrderId) {
+        User currentUser = GetUserUtil.getCurrentUser(token);
         if (currentUser == null) {
             return JSON.toJSONString(APIResponse.returnFail("请登录！"), SerializerFeature.WriteMapNullValue);
         }
-        Object o = orderService.returnCar(currentUser.getUserId(),OrderId);
+        Object o = orderService.returnCar(currentUser.getUserId(), OrderId);
         return JSON.toJSONString(o, SerializerFeature.WriteMapNullValue);
     }
 
 
-    @PostMapping(value = "/gethistoryorder",produces="text/html;charset=UTF-8")//获取历史订单
-    public String getHistoryOrder( String token) {
-        Claims claims = null;
-        try {
-            claims = JWTUtil.parseJWT(token);
-            String userId = claims.getSubject();
-            return JSON.toJSONString(orderService.listOrderByUserId(Integer.parseInt(userId)));
-        } catch (Exception e) {
-            e.printStackTrace();
-            return JSON.toJSONString(APIResponse.returnFail( e.getMessage()), SerializerFeature.WriteMapNullValue);
-
+    @PostMapping(value = "/gethistoryorder", produces = "text/html;charset=UTF-8")//获取历史订单
+    public String getHistoryOrder(String token) {
+        User currentUser = GetUserUtil.getCurrentUser(token);
+        if (currentUser == null) {
+            return JSON.toJSONString(APIResponse.returnFail("请登录！"), SerializerFeature.WriteMapNullValue);
         }
-
-
+        return JSON.toJSONString(orderService.listOrderByUserId(currentUser.getUserId()));
     }
 
-    private User getCurrentUser(String token) {
-        User currentUser;
-        try {
-            Claims claims = JWTUtil.parseJWT(token);
-            String userId = claims.getSubject();
-            currentUser = userService.getUserById(Integer.parseInt(userId));
-        } catch (Exception e) {
-            return null;
-        }
-        return currentUser;
-    }
-    private Admin getCurrentAdmin(String token) {
-        Admin currentAdmin;
-        try {
-            Claims claims = JWTUtil.parseJWT(token);
-            String username = claims.getSubject();
-            currentAdmin = adminService.getAdminByName(username);
-        } catch (Exception e) {
-            return null;
-        }
-        return currentAdmin;
-    }
 }

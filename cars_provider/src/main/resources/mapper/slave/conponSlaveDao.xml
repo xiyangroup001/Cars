@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" " http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xiyan.dao.slave.ConponSlaveDao">
+    <resultMap id="conponMap" type="com.xiyan.model.entity.Conpon">
+        <id property="couponId" column="couponId"/>
+        <result property="userId" column="userId"/>
+        <result property="expiredTime" column="expiredTime"/>
+        <result property="satisfy" column="satisfy"/>
+        <result property="minus" column="minus"/>
+    </resultMap>
+
+    <select id="selectAll" resultMap="conponMap">
+        select * from conpon;
+    </select>
+
+    <select id="select" resultMap="conponMap" parameterType="com.xiyan.model.entity.Conpon">
+        select * from conpon
+        <where>
+            <if test="couponId != 0">AND couponId = #{couponId} </if>
+            <if test="userId != 0">AND userId = #{userId} </if>
+        </where>
+    </select>
+
+
+    <select id="selectRowNumber" resultType="int">
+        select count(0) from conpon;
+    </select>
+</mapper>

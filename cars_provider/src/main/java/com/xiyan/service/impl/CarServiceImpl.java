@@ -37,9 +37,17 @@ public class CarServiceImpl implements CarService {
 
     @Override
     public APIResponse<Integer> createCar(Admin currentAdmin, Car car) {
+
         return new ApiTemplate<Integer>() {
             @Override
+            protected void checkParams() throws BizException {
+                Preconditions.checkArgument(car!=null,"传入数据不能为NULL");
+                Preconditions.checkArgument(!car.getCarBrand().equals(""),"传入品牌不能为NULL");
+            }
+
+            @Override
             protected APIResponse<Integer> process() throws BizException {
+
                 logger.info("参数 currentAdmin : {}",currentAdmin);
                 logger.info("参数 car : {}",car);
                 Check c1 = new Check();
@@ -89,6 +97,11 @@ public class CarServiceImpl implements CarService {
     @Override
     public APIResponse<Integer> updateCarPrice(Admin currentAdmin,int low, int high, double price) {
         return new ApiTemplate<Integer>() {
+            @Override
+            protected void checkParams() throws BizException {
+                Preconditions.checkArgument(low<high,"价格下限要低于上限！");
+            }
+
             @Override
             protected APIResponse<Integer> process() throws BizException {
                 if (price<=0.0)

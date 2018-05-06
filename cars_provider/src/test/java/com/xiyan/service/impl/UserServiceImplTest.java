@@ -41,7 +41,7 @@ public class UserServiceImplTest {
     public void insertUser() throws Exception {
         User u1 = new User();
         u1.setUserId(1006);
-        u1.setUserName("xiyan");
+        u1.setUserName("laowang");
         u1.setUserGuid("qazwsxedcrfvtgbyhnujmiko");
         u1.setUserPassword("123456");
         u1.setUserType((short) 0);

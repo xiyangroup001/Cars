@@ -51,6 +51,7 @@ public class CarMasterDaoTest {
         car.setInStore(10236);
         CarQualification qualification = new CarQualification();
         qualification.setAddress("SSSSS");
+
         CarsPictureUrl carsPictureUrl = new CarsPictureUrl();
 
         carsPictureUrl.setComcInsrPicUrl("/001");

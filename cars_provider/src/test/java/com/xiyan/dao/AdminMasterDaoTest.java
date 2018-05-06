@@ -14,9 +14,7 @@ import javax.annotation.Resource;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(value = "classpath:spring/spring.xml")
-@SuppressWarnings("deprecation")
-@TransactionConfiguration(transactionManager = "txManager", defaultRollback = true)
-//@Transactional
+@TransactionConfiguration(transactionManager = "txManager")
 public class AdminMasterDaoTest {
     @Resource
     private AdminMasterDao adminMasterDao;
@@ -39,9 +37,8 @@ public class AdminMasterDaoTest {
         System.out.println(admin);
         admin.setPassWord("111111111");
      //   adminMasterDao.update(admin);
-
+   //     adminMasterDao.delete(1234);
         System.out.println(adminSlaveDao.selectAll());
 //        System.out.println(adminSlaveDao.selectById("123654789963258742"));
     }
-
 }
