@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" " http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xiyan.dao.slave.EvaluationSlaveDao" >
+
+    <resultMap id="evaluationMap" type="com.xiyan.model.entity.Evaluation">
+        <id property="evaluationId" column="evaluationId"/>
+        <result property="userId" column="userId"/>
+        <result property="carId" column="carId"/>
+        <result property="OrderId" column="OrderId"/>
+        <result property="carCondition" column="carCondition"/>
+        <result property="service" column="service"/>
+        <result property="message" column="message"/>
+        <result property="pics" column="pics" typeHandler="com.xiyan.model.typeHandler.ArrayListTypeHandler"/>
+    </resultMap>
+
+    <select id="selectAll" resultMap="evaluationMap">
+        select * from evaluation;
+    </select>
+    <select id="select" resultMap="evaluationMap">
+        select * from evaluation
+        <where>
+            <if test="evaluationId != 0">AND evaluationId = #{evaluationId} </if>
+            <if test="userId != 0">AND userId = #{userId} </if>
+            <if test="carId != 0">AND carId = #{carId} </if>
+            <if test="OrderId != 0">AND OrderId = #{OrderId} </if>
+            <if test="carCondition != 0">AND carCondition = #{carCondition} </if>
+            <if test="service != 0">AND service = #{service} </if>
+        </where>
+    </select>
+
+
+    <select id="selectById" resultMap="evaluationMap">
+        select * from evaluation WHERE evaluationId = #{evaluationId} ;
+    </select>
+
+    <select id="selectRowNumber" resultType="int">
+        select count(0) from admin;
+    </select>
+</mapper>

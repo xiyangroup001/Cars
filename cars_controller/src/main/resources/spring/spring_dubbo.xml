@@ -29,5 +29,7 @@
 
     <dubbo:reference id="conponService" interface="com.xiyan.service.ConponService" registry="cars-registry" protocol="dubbo"
                      version="${zookeeper.version}"  group="${zookeeper.group}" />
+    <dubbo:reference id="evaluationService" interface="com.xiyan.service.EvaluationService" registry="cars-registry" protocol="dubbo"
+                     version="${zookeeper.version}"  group="${zookeeper.group}" />
 
 </beans>
