@@ -1,5 +1,6 @@
 package com.xiyan.dao.slave;
 
+import com.xiyan.service.CarService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -8,6 +9,7 @@ import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.util.Date;
 
 /**
  * @antuor binwang
@@ -21,6 +23,8 @@ import javax.annotation.Resource;
 public class CarSlaveDaoTest {
     @Resource
     private CarSlaveDao carSlaveDao;
+    @Resource
+    private CarService carService;
     @Test
     public void selectAllCar() throws Exception {
         System.out.println(carSlaveDao.selectAll());
@@ -30,7 +34,9 @@ public class CarSlaveDaoTest {
     public void selectCarByCondition() throws Exception {
         int[] a = new int[]{1,2,3};
         String[] brand = new String[]{"大众","奔驰","宝马"};
-        System.out.println(carSlaveDao.selectCarByCondition(10236,a,brand,30,120000,50,200));
+        System.out.println(carService.selectCarByCondition(10236,a,brand,1,120,50,200,
+                new Date(118,4,15),
+                new Date(118,4,18)));
     }
 
 }

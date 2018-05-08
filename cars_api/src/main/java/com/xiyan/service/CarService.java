@@ -4,6 +4,7 @@ import com.xiyan.model.entity.Admin;
 import com.xiyan.model.entity.Car;
 import com.xiyan.model.utils.APIResponse;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -53,7 +54,7 @@ public interface CarService {
 
     APIResponse<Integer> updateCarPrice(Admin currentAdmin,int carId,double price);
 
-    APIResponse<List<Car>> selectCarByCondition(int getStore, int[] carType, String[] carBrand, int lowPrice, int highPrice,int lowRentalPrice, int highRentalPrice);
+    APIResponse<List<Car>> selectCarByCondition(int getStore, int[] carType, String[] carBrand, int lowPrice, int highPrice, int lowRentalPrice, int highRentalPrice, Date startDate, Date endDate);
 
     APIResponse<List<Car>> selectAllCarCanUse();
 

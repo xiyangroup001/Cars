@@ -47,12 +47,7 @@
         where
         couponId = #{id}
     </delete>
-    <!--int deleteByUser(int userId);-->
-    <delete id="delete" parameterType="int">
-        delete from conpon
-        where
-        userId = #{userId}
-    </delete>
+
     <!--int delExpire(int userId, Date date);-->
     <delete id="delExpire" parameterType="int">
         delete from conpon

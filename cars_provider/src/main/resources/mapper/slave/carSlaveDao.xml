@@ -16,6 +16,8 @@
         <result property="insuranceType" column="insuranceType" typeHandler="com.xiyan.model.typeHandler.ArrayListTypeHandler"/>
         <result property="aduitType" column="aduitType"/>
         <result property="aduitId" column="aduitId"/>
+        <result property="reserveDateList" column="reserveDateList" typeHandler="com.xiyan.model.typeHandler.ReserveDateTypeHandler"/>
+
     </resultMap>
 
     <select id="selectAll" resultMap="car">
@@ -53,7 +55,7 @@
             </foreach>
         AND carPrice betWeen #{param4} and #{param5}
         AND rentalPrice betWeen #{param6} and #{param7}
-        AND aduitType = 1 AND carState = 1
+        AND aduitType = 1 AND carState &lt;3
     </select>
 
 

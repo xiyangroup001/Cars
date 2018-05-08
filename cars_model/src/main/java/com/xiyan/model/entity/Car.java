@@ -2,9 +2,11 @@ package com.xiyan.model.entity;
 
 import com.xiyan.model.entity.twolevel.CarQualification;
 import com.xiyan.model.entity.twolevel.CarsPictureUrl;
+import com.xiyan.model.entity.twolevel.ReserveDate;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @antuor binwang
@@ -24,6 +26,9 @@ public class Car implements Serializable {
     private ArrayList<Integer> insuranceType;       //保险类型
     private Short aduitType;            //车辆审核状态
     private int aduitId;        //车辆审核号
+
+    private List<ReserveDate> reserveDateList;
+
 
     public static final short SYATE_INSTORE = 1;
     public static final short SYATE_BOOKED = 2;
@@ -139,8 +144,16 @@ public class Car implements Serializable {
         this.aduitId = aduitId;
     }
 
+    public List<ReserveDate> getReserveDateList() {
+        return reserveDateList;
+    }
+
+    public void setReserveDateList(List<ReserveDate> reserveDateList) {
+        this.reserveDateList = reserveDateList;
+    }
+
     @Override
     public String toString() {
-        return "Car{" + "carId=" + carId + ", carLicense='" + carLicense + '\'' + ", carBrand='" + carBrand + '\'' + ", carType=" + carType + ", carPrice=" + carPrice + ", inStore=" + inStore + ", carState=" + carState + ", rentalPrice=" + rentalPrice + ", carPicture=" + carPicture + ", carQualification=" + carQualification + ", insuranceType=" + insuranceType + ", aduitType=" + aduitType + ", aduitId=" + aduitId + '}';
+        return "Car{" + "carId=" + carId + ", carLicense='" + carLicense + '\'' + ", carBrand='" + carBrand + '\'' + ", carType=" + carType + ", carPrice=" + carPrice + ", inStore=" + inStore + ", carState=" + carState + ", rentalPrice=" + rentalPrice + ", carPicture=" + carPicture + ", carQualification=" + carQualification + ", insuranceType=" + insuranceType + ", aduitType=" + aduitType + ", aduitId=" + aduitId + ", reserveDateList=" + reserveDateList + '}';
     }
 }

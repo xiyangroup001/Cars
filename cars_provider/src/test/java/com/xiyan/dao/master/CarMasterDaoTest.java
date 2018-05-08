@@ -4,6 +4,7 @@ import com.xiyan.model.entity.Admin;
 import com.xiyan.model.entity.Car;
 import com.xiyan.model.entity.twolevel.CarQualification;
 import com.xiyan.model.entity.twolevel.CarsPictureUrl;
+import com.xiyan.model.entity.twolevel.ReserveDate;
 import com.xiyan.service.AdminService;
 import com.xiyan.service.CarService;
 import org.junit.Test;
@@ -14,6 +15,8 @@ import org.springframework.test.context.transaction.TransactionConfiguration;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 /**
  * @antuor binwang
@@ -76,11 +79,30 @@ public class CarMasterDaoTest {
         list1.add(Integer.valueOf(11));
         car.setInsuranceType(list1);
 
+        List<ReserveDate> reserveDates =new ArrayList<ReserveDate>();
+
+        ReserveDate reserveDate = new ReserveDate();
+        reserveDate.setStartDate( new Date(118,5,9));
+        reserveDate.setEndDate( new Date(118,5,12));
+        reserveDates.add(reserveDate);
+        car.setReserveDateList(reserveDates);
+
         carMasterDao.insert(car);
         Admin admin = adminService.getAdminByName("张三1");
         carService.createCar(admin,car);
     }
 
+    @Test
+    public void selectCars() {
+        Date d1 =  new Date(118,5,8);
+        Date d2 =  new Date(118,5,11);
+        Date cd1 =  new Date(118,5,9);
+        Date cd2 =  new Date(118,5,12);
+        System.out.println(checkTime(d1,d2,cd1,cd2));
+    }
+    private boolean checkTime(Date d1,Date d2,Date cd1,Date cd2){
+        return cd1.after(d2) || cd2.before(d1);
 
+    }
 
 }

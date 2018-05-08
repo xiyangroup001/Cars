@@ -14,6 +14,8 @@ import io.jsonwebtoken.Claims;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.Date;
+import java.util.List;
 
 @RestController
 @RequestMapping(value = "/car")
@@ -28,8 +30,9 @@ public class CarController {
                             @RequestParam(value = "carType[]")int[] carType,
                             @RequestParam(value = "carBrand[]")String[] carBrand,
                             int lowPrice, int highPrice,
-                            int lowRentalPrice, int highRentalPrice) {
-        Object o = carService.selectCarByCondition(getStore,carType,carBrand,lowPrice,highPrice,lowRentalPrice,highRentalPrice);
+                            int lowRentalPrice, int highRentalPrice,
+                            Date startDate, Date endDate) {
+        APIResponse<List<Car>> o = carService.selectCarByCondition(getStore,carType,carBrand,lowPrice,highPrice,lowRentalPrice,highRentalPrice,startDate,endDate);
         return JSON.toJSONString(o, SerializerFeature.WriteMapNullValue);
     }
 

@@ -64,6 +64,8 @@ CREATE TABLE `car` (
   `insuranceType` VARCHAR(40) NOT NULL DEFAULT 'ss' COMMENT '保险类型',
   `aduitType` TINYINT NOT NULL DEFAULT '0' COMMENT '车辆审核状态',
   `aduitId` bigint(20) NOT NULL DEFAULT '0' COMMENT '车辆审核号',
+  `reserveDateList` varchar(512) NOT NULL DEFAULT ' ' COMMENT '车辆预定信息',
+
   PRIMARY KEY (`carId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='车辆表';
 

@@ -10,6 +10,7 @@ import com.xiyan.dao.slave.UserSlaveDao;
 import com.xiyan.model.entity.Car;
 import com.xiyan.model.entity.Order;
 import com.xiyan.model.entity.User;
+import com.xiyan.model.entity.twolevel.ReserveDate;
 import com.xiyan.model.exception.BizException;
 import com.xiyan.model.utils.APIResponse;
 import com.xiyan.model.utils.ApiTemplate;
@@ -49,13 +50,22 @@ public class OrderServiceImpl implements OrderService {
 
             @Override
             protected APIResponse process() throws BizException {
-                Car car= carSlaveDao.selectById(order.getCarId());
-                car.setCarState(Car.SYATE_BOOKED);
-                carMasterDao.update(car);
+
                 order.setOrderGenerationTime(new Date());
                 order.setUserId(currentUser.getUserId());
                 order.setPayType(Order.UNPAID_DEPOSIT);
-                return APIResponse.returnSuccess(orderMasterDao.insert(order));
+                orderMasterDao.insert(order);
+                Car car= carSlaveDao.selectById(order.getCarId());
+                car.setCarState(Car.SYATE_BOOKED);
+
+                ReserveDate reserveDate = new ReserveDate();
+                reserveDate.setOrderId(order.getOrderId());
+                reserveDate.setStartDate(order.getStartTime());
+                reserveDate.setEndDate(order.getEndTime());
+                car.getReserveDateList().add(reserveDate);
+                carMasterDao.update(car);
+
+                return APIResponse.returnSuccess();
             }
         }.execute();
 
@@ -101,6 +111,13 @@ public class OrderServiceImpl implements OrderService {
                 orderMasterDao.update(order);
 
                 Car car= carSlaveDao.selectById(order.getCarId());
+                List<ReserveDate> list = car.getReserveDateList();
+                for (int i = 0; i < list.size(); i++) {
+                    if (list.get(i).getOrderId()==(orderId)){
+                        list.remove(i);
+                        break;
+                    }
+                }
                 car.setCarState(Car.SYATE_RENTEND_OUT);
                 carMasterDao.update(car);
 

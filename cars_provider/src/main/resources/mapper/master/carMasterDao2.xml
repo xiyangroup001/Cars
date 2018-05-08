@@ -18,6 +18,7 @@
             <if test="insuranceType != null">insuranceType,</if>
             <if test="aduitId != null">aduitId,</if>
             <if test="aduitType != null ">aduitType,</if>
+            <if test="reserveDateList != null ">reserveDateList,</if>
         </trim>
         values
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -36,6 +37,8 @@
                 com.xiyan.model.typeHandler.ArrayListTypeHandler},</if>
             <if test="aduitId != null">#{aduitId},</if>
             <if test="aduitType != null ">#{aduitType},</if>
+            <if test="reserveDateList != null">#{reserveDateList,typeHandler =
+                com.xiyan.model.typeHandler.ReserveDateTypeHandler},</if>
         </trim>
 
     </insert>
@@ -58,6 +61,8 @@
                 com.xiyan.model.typeHandler.ArrayListTypeHandler},</if>
             <if test="aduitId != null">aduitId=#{aduitId},</if>
             <if test="aduitType != null ">aduitType=#{aduitType},</if>
+            <if test="reserveDateList != null">reserveDateList=#{reserveDateList,typeHandler =
+                com.xiyan.model.typeHandler.ReserveDateTypeHandler,</if>
         </set>
         WHERE CarId = #{CarId}
     </update>

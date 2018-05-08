@@ -12,7 +12,7 @@ import java.util.Date;
  * @date 2018/2/5  17:55
  */
 public class Order implements Serializable {
-        private String orderId;
+        private int orderId;
         private int userId;
         private int carId;
         @JSONField(format = "yyyy-MM-dd HH:mm:SS")
@@ -57,11 +57,11 @@ public class Order implements Serializable {
                 '}';
     }
 
-    public String getOrderId() {
+    public int getOrderId() {
         return orderId;
     }
 
-    public void setOrderId(String orderId) {
+    public void setOrderId(int orderId) {
         this.orderId = orderId;
     }
 

@@ -56,8 +56,8 @@ public class EvaluationController {
         return JSON.toJSONString(evaluationService.updateEvaluation(currentUser,evaluation), SerializerFeature.WriteMapNullValue);
     }
 
-    @RequestMapping(value = "/update",produces="text/html;charset=UTF-8")//
-    public String updateEvaluation(int evaluationId,String token) {
+    @RequestMapping(value = "/del",produces="text/html;charset=UTF-8")//
+    public String delEvaluation(int evaluationId,String token) {
         Admin currentAdmin = GetUserUtil.getCurrentAdmin(token);
         if (currentAdmin == null) {
             return JSON.toJSONString(APIResponse.returnFail("请登录！"), SerializerFeature.WriteMapNullValue);

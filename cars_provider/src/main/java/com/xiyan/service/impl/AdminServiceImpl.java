@@ -51,11 +51,12 @@ public class AdminServiceImpl implements AdminService {
             protected void checkParams() throws BizException {
                 Preconditions.checkNotNull(adminId);
                 Admin admin = adminSlaveDao.selectById(adminId);
-                Preconditions.checkArgument(currentAdmin.getPower()>admin.getPower(),"权限不匹配");
+                Preconditions.checkArgument(currentAdmin.getPower()>admin.getPower(),"权限不匹配！");
             }
             @Override
             protected APIResponse<Integer> process() throws BizException {
                 logger.info("删除Admin---参数：{}", adminId);
+                logger.info("删除Admin---操作人：{}", currentAdmin);
                 APIResponse<Integer> response = APIResponse.returnSuccess(adminMasterDao.delete(adminId));
                 logger.info("删除Admin---参数结果：{}", response);
                 return response;
@@ -65,6 +66,8 @@ public class AdminServiceImpl implements AdminService {
 
     @Override
     public boolean loginAdmin(String adminName, String passWord) {
+        Preconditions.checkArgument(Pattern.matches("^[a-zA-Z0-9]{6,16}$",passWord), "密码不符合要求！");
+
         Admin admin = adminSlaveDao.selectByName(adminName);
         if (admin == null) return false;
         else return admin.getPassWord().equals(passWord);
