@@ -24,7 +24,8 @@ public class CarController {
     private CarService carService;
     @Resource
     private AdminService adminService;
-
+    @Resource
+    private GetUserUtil getUserUtil;
     @RequestMapping(value = "/selectcar" ,produces="text/html;charset=UTF-8")//条件选择车辆，价位（单位：万元）
     public String selectCar(int getStore,
                             @RequestParam(value = "carType[]")int[] carType,
@@ -52,7 +53,7 @@ public class CarController {
     @RequestMapping(value = "/newcar",produces="text/html;charset=UTF-8") //新上车辆，普通门店管理员可调用。
     public String createCar( String token,
                              Car car) {
-        Admin currentAdmin = GetUserUtil.getCurrentAdmin(token);
+        Admin currentAdmin = getUserUtil.getCurrentAdmin(token);
         if (currentAdmin == null) {
             return JSON.toJSONString(APIResponse.returnFail("请登录！"), SerializerFeature.WriteMapNullValue);
         }
@@ -62,7 +63,7 @@ public class CarController {
     @RequestMapping(value = "/update",produces="text/html;charset=UTF-8")//修改车辆，普通门店管理员可调用。
     public String updateCar( String token,
                              Car car) {
-        Admin currentAdmin = GetUserUtil.getCurrentAdmin(token);
+        Admin currentAdmin = getUserUtil.getCurrentAdmin(token);
         if (currentAdmin == null) {
             return JSON.toJSONString(APIResponse.returnFail("请登录！"), SerializerFeature.WriteMapNullValue);
         }
@@ -73,7 +74,7 @@ public class CarController {
     public String updateCaPrice( String token,
                                  int carId,
                                  double price) {
-        Admin currentAdmin = GetUserUtil.getCurrentAdmin(token);
+        Admin currentAdmin = getUserUtil.getCurrentAdmin(token);
         if (currentAdmin == null) {
             return JSON.toJSONString(APIResponse.returnFail("请登录！"), SerializerFeature.WriteMapNullValue);
         }
@@ -84,7 +85,7 @@ public class CarController {
                                  int low,
                                  int high,
                                  double price) {
-        Admin currentAdmin = GetUserUtil.getCurrentAdmin(token);
+        Admin currentAdmin = getUserUtil.getCurrentAdmin(token);
         if (currentAdmin == null) {
             return JSON.toJSONString(APIResponse.returnFail("请登录！"), SerializerFeature.WriteMapNullValue);
         }
@@ -92,7 +93,7 @@ public class CarController {
     }
     @PostMapping(value = "/getneedcheckcarlist",produces="text/html;charset=UTF-8")//审核车辆通过，无数据返回 ret=true
     public String getNeedCheckCarList(String token) {
-        Admin currentAdmin = GetUserUtil.getCurrentAdmin(token);
+        Admin currentAdmin = getUserUtil.getCurrentAdmin(token);
         if (currentAdmin == null) {
             return JSON.toJSONString(APIResponse.returnFail("请登录！"), SerializerFeature.WriteMapNullValue);
         }
@@ -100,7 +101,7 @@ public class CarController {
     }
        @RequestMapping(value = "/getnotpasscar",produces="text/html;charset=UTF-8")//获取没有通过审核的列表
     public String getNotPassCar( String token) {
-        Admin currentAdmin = GetUserUtil.getCurrentAdmin(token);
+        Admin currentAdmin = getUserUtil.getCurrentAdmin(token);
         if (currentAdmin == null) {
             return JSON.toJSONString(APIResponse.returnFail("请登录！"), SerializerFeature.WriteMapNullValue);
         }

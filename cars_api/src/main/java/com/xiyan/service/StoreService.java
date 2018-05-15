@@ -1,5 +1,6 @@
 package com.xiyan.service;
 
+import com.xiyan.model.entity.Admin;
 import com.xiyan.model.entity.Store;
 import com.xiyan.model.utils.APIResponse;
 
@@ -16,31 +17,31 @@ public interface StoreService {
      * @param storeId
      * @return
      */
-    APIResponse<Integer> deleteStore(Integer storeId);
+    APIResponse<Integer> deleteStore(Integer storeId, Admin admin);
 
     /**
      * Method 新建用户
      * @param store
      * @return
      */
-    APIResponse<Integer> insertStore(Store store);
+    APIResponse<Integer> insertStore(Store store, Admin admin);
 
     /**
      * Method 选择全部用户
      * @return
      */
-    APIResponse<List<Store>> listAllStore();
+    APIResponse<List<Store>> listAllStore(Admin admin);
 
     /**
      * Method 更新用户信息
      * @param store
      * @return
      */
-    APIResponse<Integer> updateStore(Store store);
+    APIResponse<Integer> updateStore(Store store, Admin admin);
 
     APIResponse<List<Store>> getStoreByCity(String city);
 
-    APIResponse<Store> getStoreById(int storeId);
+    APIResponse<Store> getStoreById(int storeId, Admin admin);
 }
 
 

@@ -49,7 +49,7 @@ public class UserServiceImplTest {
         u1.setHeadPicUrl("iwrghjk");
         u1.setRegistrateTime(new Date());
         logger.info("传入的参数为：{}",u1.toString());
-        System.out.println(userService.insertUser(u1));
+//        System.out.println(userService.insertUser(u1));
     }
 
     @Test
@@ -88,7 +88,7 @@ public class UserServiceImplTest {
         u1.setUserPhone("12345678901");
         u1.setHeadPicUrl("iwrghjk");
         u1.setRegistrateTime(new Date());
-        System.out.println(userService.insertUser(u1));
+//        System.out.println(userService.insertUser(u1));
     }
 
 

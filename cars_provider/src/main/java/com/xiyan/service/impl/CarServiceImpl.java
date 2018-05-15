@@ -148,6 +148,8 @@ public class CarServiceImpl implements CarService {
                 Preconditions.checkArgument(carBrand.length > 0, "车辆品牌错误！");
                 Preconditions.checkArgument(lowPrice < highPrice, "车辆价位错误！");
                 Preconditions.checkArgument(lowRentalPrice < highRentalPrice, "车辆租价错误！");
+                Preconditions.checkArgument(startDate.before(endDate) , "车辆时间选择错误！");
+
             }
 
             @Override

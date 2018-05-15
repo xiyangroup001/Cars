@@ -27,7 +27,7 @@ public class CarSlaveDaoTest {
     private CarService carService;
     @Test
     public void selectAllCar() throws Exception {
-        System.out.println(carSlaveDao.selectAll());
+//        System.out.println(carSlaveDao.selectAll());
     }
 
     @Test

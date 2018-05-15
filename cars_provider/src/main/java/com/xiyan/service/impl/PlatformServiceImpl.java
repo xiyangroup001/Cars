@@ -1,7 +1,9 @@
 package com.xiyan.service.impl;
 
+import com.google.common.base.Preconditions;
 import com.xiyan.dao.master.PlatformMasterDao;
 import com.xiyan.dao.slave.PlatformSlaveDao;
+import com.xiyan.model.entity.Admin;
 import com.xiyan.model.entity.Platform;
 import com.xiyan.model.exception.BizException;
 import com.xiyan.model.utils.APIResponse;
@@ -19,8 +21,13 @@ public class PlatformServiceImpl implements PlatformService {
     private PlatformMasterDao platformMasterDao;
 
     @Override
-    public APIResponse<Integer> deletePlatform(int platformId) {
+    public APIResponse<Integer> deletePlatform(int platformId, Admin admin) {
         return new ApiTemplate<Integer>() {
+            @Override
+            protected void checkParams() throws BizException {
+                Preconditions.checkArgument(admin.getPower()==Admin.SUPER_ADMIN,"超级管理员才有平台管理权限！");
+            }
+
             @Override
             protected APIResponse<Integer> process() throws BizException {
                 return APIResponse.returnSuccess(platformMasterDao.delete(platformId));
@@ -29,8 +36,12 @@ public class PlatformServiceImpl implements PlatformService {
     }
 
     @Override
-    public APIResponse<Integer> insertPlatform(Platform platform) {
+    public APIResponse<Integer> insertPlatform(Platform platform, Admin admin) {
         return new ApiTemplate<Integer>() {
+            @Override
+            protected void checkParams() throws BizException {
+                Preconditions.checkArgument(admin.getPower()==Admin.SUPER_ADMIN,"超级管理员才有平台管理权限！");
+            }
             @Override
             protected APIResponse<Integer> process() throws BizException {
                 return APIResponse.returnSuccess(platformMasterDao.insert(platform));
@@ -39,8 +50,12 @@ public class PlatformServiceImpl implements PlatformService {
     }
 
     @Override
-    public APIResponse<List<Platform>> listAllPlatform() {
+    public APIResponse<List<Platform>> listAllPlatform(Admin admin) {
         return new ApiTemplate<List<Platform>>() {
+            @Override
+            protected void checkParams() throws BizException {
+                Preconditions.checkArgument(admin.getPower()==Admin.SUPER_ADMIN,"超级管理员才有平台管理权限！");
+            }
             @Override
             protected APIResponse<List<Platform>> process() throws BizException {
                 return APIResponse.returnSuccess(platformSlaveDao.selectAll());
@@ -49,8 +64,12 @@ public class PlatformServiceImpl implements PlatformService {
     }
 
     @Override
-    public APIResponse<Integer> updatePlatform(Platform platform) {
+    public APIResponse<Integer> updatePlatform(Platform platform, Admin admin) {
         return new ApiTemplate<Integer>() {
+            @Override
+            protected void checkParams() throws BizException {
+                Preconditions.checkArgument(admin.getPower()==Admin.SUPER_ADMIN,"超级管理员才有平台管理权限！");
+            }
             @Override
             protected APIResponse<Integer> process() throws BizException {
                 return APIResponse.returnSuccess(platformMasterDao.update(platform));

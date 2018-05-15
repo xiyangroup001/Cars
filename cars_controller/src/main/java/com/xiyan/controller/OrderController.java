@@ -24,10 +24,11 @@ import javax.annotation.Resource;
 public class OrderController {
     @Resource
     private OrderService orderService;
-
+    @Resource
+    private GetUserUtil getUserUtil;
     @PostMapping(value = "/createorder", produces = "text/html;charset=UTF-8")//新建订单
     public String creatrOrder(String token, Order order) {
-        User currentUser = GetUserUtil.getCurrentUser(token);
+        User currentUser = getUserUtil.getCurrentUser(token);
         if (currentUser == null) {
             return JSON.toJSONString(APIResponse.returnFail("请登录！"), SerializerFeature.WriteMapNullValue);
         }
@@ -37,7 +38,7 @@ public class OrderController {
 
     @PostMapping(value = "/getcar", produces = "text/html;charset=UTF-8")//客户取车，这一步还有点问题 牵扯到支付还没做，这个应该是门店管理员做的。
     public String getCar(String token, Integer OrderId) {
-        User currentUser = GetUserUtil.getCurrentUser(token);
+        User currentUser = getUserUtil.getCurrentUser(token);
         if (currentUser == null) {
             return JSON.toJSONString(APIResponse.returnFail("请登录！"), SerializerFeature.WriteMapNullValue);
         }
@@ -47,7 +48,7 @@ public class OrderController {
 
     @PostMapping(value = "/returncar", produces = "text/html;charset=UTF-8")//客户还车，这一步还有点问题 牵扯到支付还没做。
     public String returnCar(String token, Integer OrderId) {
-        User currentUser = GetUserUtil.getCurrentUser(token);
+        User currentUser = getUserUtil.getCurrentUser(token);
         if (currentUser == null) {
             return JSON.toJSONString(APIResponse.returnFail("请登录！"), SerializerFeature.WriteMapNullValue);
         }
@@ -58,7 +59,7 @@ public class OrderController {
 
     @PostMapping(value = "/gethistoryorder", produces = "text/html;charset=UTF-8")//获取历史订单
     public String getHistoryOrder(String token) {
-        User currentUser = GetUserUtil.getCurrentUser(token);
+        User currentUser = getUserUtil.getCurrentUser(token);
         if (currentUser == null) {
             return JSON.toJSONString(APIResponse.returnFail("请登录！"), SerializerFeature.WriteMapNullValue);
         }

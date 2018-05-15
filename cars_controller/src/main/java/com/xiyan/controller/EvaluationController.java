@@ -18,10 +18,11 @@ import javax.annotation.Resource;
 public class EvaluationController {
     @Resource
     private EvaluationService evaluationService;
-
+    @Resource
+    private GetUserUtil getUserUtil;
     @RequestMapping(value = "/create",produces="text/html;charset=UTF-8")//新建
     public String createEvaluation(int orderId, Evaluation evaluation, String token) {
-        User currentUser = GetUserUtil.getCurrentUser(token);
+        User currentUser = getUserUtil.getCurrentUser(token);
         if (currentUser == null) {
             return JSON.toJSONString(APIResponse.returnFail("请登录！"), SerializerFeature.WriteMapNullValue);
         }
@@ -35,7 +36,7 @@ public class EvaluationController {
 
     @RequestMapping(value = "/getbyorder",produces="text/html;charset=UTF-8")//
     public String getEvaluationByOrder(int orderId,String token) {
-        User currentUser = GetUserUtil.getCurrentUser(token);
+        User currentUser = getUserUtil.getCurrentUser(token);
         if (currentUser == null) {
             return JSON.toJSONString(APIResponse.returnFail("请登录！"), SerializerFeature.WriteMapNullValue);
         }
@@ -49,7 +50,7 @@ public class EvaluationController {
 
     @RequestMapping(value = "/update",produces="text/html;charset=UTF-8")//
     public String updateEvaluation(Evaluation evaluation,String token) {
-        User currentUser = GetUserUtil.getCurrentUser(token);
+        User currentUser = getUserUtil.getCurrentUser(token);
         if (currentUser == null) {
             return JSON.toJSONString(APIResponse.returnFail("请登录！"), SerializerFeature.WriteMapNullValue);
         }
@@ -58,7 +59,7 @@ public class EvaluationController {
 
     @RequestMapping(value = "/del",produces="text/html;charset=UTF-8")//
     public String delEvaluation(int evaluationId,String token) {
-        Admin currentAdmin = GetUserUtil.getCurrentAdmin(token);
+        Admin currentAdmin = getUserUtil.getCurrentAdmin(token);
         if (currentAdmin == null) {
             return JSON.toJSONString(APIResponse.returnFail("请登录！"), SerializerFeature.WriteMapNullValue);
         }

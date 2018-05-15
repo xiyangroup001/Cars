@@ -23,9 +23,12 @@ import javax.annotation.Resource;
 public class ConponController {
     @Resource
     private ConponService conponService;
+
+    @Resource
+    private GetUserUtil getUserUtil;
     @RequestMapping(value = "/getbyuser",produces="text/html;charset=UTF-8")//返回发送的值
     public String getConponByUser(String token){
-        User currentUser = GetUserUtil.getCurrentUser(token);
+        User currentUser = getUserUtil.getCurrentUser(token);
         if (currentUser == null) {
             return JSON.toJSONString(APIResponse.returnFail("请登录！"), SerializerFeature.WriteMapNullValue);
         }
@@ -34,7 +37,7 @@ public class ConponController {
 
     @RequestMapping(value = "/newconpon",produces="text/html;charset=UTF-8")//返回发送的值
     public String newConpon(Conpon conpon,String token){
-        Admin currentAdmin = GetUserUtil.getCurrentAdmin(token);
+        Admin currentAdmin = getUserUtil.getCurrentAdmin(token);
         if (currentAdmin == null) {
             return JSON.toJSONString(APIResponse.returnFail("请登录！"), SerializerFeature.WriteMapNullValue);
         }
@@ -43,7 +46,7 @@ public class ConponController {
 
     @RequestMapping(value = "/updateconpon",produces="text/html;charset=UTF-8")
     public String updateConpon(Conpon conpon,String token){
-        Admin currentAdmin = GetUserUtil.getCurrentAdmin(token);
+        Admin currentAdmin = getUserUtil.getCurrentAdmin(token);
         if (currentAdmin == null) {
             return JSON.toJSONString(APIResponse.returnFail("请登录！"), SerializerFeature.WriteMapNullValue);
         }
@@ -57,7 +60,7 @@ public class ConponController {
 
     @RequestMapping(value = "/getbyid",produces="text/html;charset=UTF-8")
     public String getConponById(int conponId,String token){
-        User currentUser = GetUserUtil.getCurrentUser(token);
+        User currentUser = getUserUtil.getCurrentUser(token);
         if (currentUser == null) {
             return JSON.toJSONString(APIResponse.returnFail("请登录！"), SerializerFeature.WriteMapNullValue);
         }
@@ -66,7 +69,7 @@ public class ConponController {
 
     @RequestMapping(value = "/delexpire",produces="text/html;charset=UTF-8")
     public String delExpire(String token){
-        User currentUser = GetUserUtil.getCurrentUser(token);
+        User currentUser = getUserUtil.getCurrentUser(token);
         if (currentUser == null) {
             return JSON.toJSONString(APIResponse.returnFail("请登录！"), SerializerFeature.WriteMapNullValue);
         }

@@ -1,5 +1,6 @@
 package com.xiyan.service;
 
+import com.xiyan.model.entity.Admin;
 import com.xiyan.model.entity.Platform;
 import com.xiyan.model.utils.APIResponse;
 
@@ -16,27 +17,27 @@ public interface PlatformService {
      * @param platformId
      * @return
      */
-    APIResponse<Integer> deletePlatform(int platformId);
+    APIResponse<Integer> deletePlatform(int platformId, Admin admin);
 
     /**
      * Method 新建用户
      * @param platform
      * @return
      */
-    APIResponse<Integer> insertPlatform(Platform platform);
+    APIResponse<Integer> insertPlatform(Platform platform, Admin admin);
 
     /**
      * Method 选择全部用户
      * @return
      */
-    APIResponse<List<Platform>> listAllPlatform();
+    APIResponse<List<Platform>> listAllPlatform( Admin admin);
 
     /**
      * Method 更新用户信息
      * @param platform
      * @return
      */
-    APIResponse<Integer> updatePlatform(Platform platform);
+    APIResponse<Integer> updatePlatform(Platform platform, Admin admin);
 }
 
 

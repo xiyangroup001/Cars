@@ -5,12 +5,18 @@ import com.xiyan.model.entity.User;
 import com.xiyan.service.AdminService;
 import com.xiyan.service.UserService;
 import io.jsonwebtoken.Claims;
+import org.springframework.stereotype.Component;
+
+import javax.annotation.Resource;
 
 public class GetUserUtil {
-    private static UserService userService;
-    private static AdminService adminService;
 
-    public static User getCurrentUser(String token) {
+    @Resource
+    private  UserService userService;
+    @Resource
+    private  AdminService adminService;
+
+    public  User getCurrentUser(String token) {
         User currentUser;
         try {
             Claims claims = JWTUtil.parseJWT(token);
@@ -22,7 +28,8 @@ public class GetUserUtil {
         return currentUser;
     }
 
-    public static Admin getCurrentAdmin(String token) {
+
+    public  Admin getCurrentAdmin(String token) {
         Admin currentAdmin;
         try {
             Claims claims = JWTUtil.parseJWT(token);
@@ -33,4 +40,6 @@ public class GetUserUtil {
         }
         return currentAdmin;
     }
+
+
 }

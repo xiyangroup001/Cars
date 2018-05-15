@@ -23,6 +23,8 @@ public class UserController {
     @Resource
     private UserService userService;
 
+    @Resource
+    private GetUserUtil getUserUtil;
     @RequestMapping(value = "/login",produces="text/html;charset=UTF-8")
     public String loginUser(String userName,String password) {
         if(userService.loginUser(userName,password)){
@@ -45,7 +47,7 @@ public class UserController {
     @RequestMapping(value = "/changepassword",produces="text/html;charset=UTF-8")//修改密码。
     public String changePassword( String token,
                                   String oldPassword,String newPassword) {
-        User currentUser = GetUserUtil.getCurrentUser(token);
+        User currentUser = getUserUtil.getCurrentUser(token);
         if (currentUser == null) {
             return JSON.toJSONString(APIResponse.returnFail("请登录！"), SerializerFeature.WriteMapNullValue);
         }
@@ -60,7 +62,7 @@ public class UserController {
 
     @RequestMapping(value = "/delete" ,produces="text/html;charset=UTF-8")//注销，先用不到
     public String deleteUser( String token,Integer userId){
-        User currentUser = GetUserUtil.getCurrentUser(token);
+        User currentUser = getUserUtil.getCurrentUser(token);
         if (currentUser == null) {
             return JSON.toJSONString(APIResponse.returnFail("请登录！"), SerializerFeature.WriteMapNullValue);
         }
@@ -78,7 +80,7 @@ public class UserController {
 
     @RequestMapping(value = "/update",produces="text/html;charset=UTF-8")//用户修改信息
     public String updateUser( String token,User user){
-        User currentUser = GetUserUtil.getCurrentUser(token);
+        User currentUser = getUserUtil.getCurrentUser(token);
         if (currentUser == null) {
             return JSON.toJSONString(APIResponse.returnFail("请登录！"), SerializerFeature.WriteMapNullValue);
         }
@@ -87,7 +89,7 @@ public class UserController {
 
     @RequestMapping(value = "/getuser",produces="text/html;charset=UTF-8")
     public String getUserById( String token){
-        User currentUser = GetUserUtil.getCurrentUser(token);
+        User currentUser = getUserUtil.getCurrentUser(token);
         if (currentUser == null) {
             return JSON.toJSONString(APIResponse.returnFail("请登录！"), SerializerFeature.WriteMapNullValue);
         }
@@ -96,7 +98,7 @@ public class UserController {
 
     @RequestMapping(value = "/islogin",produces="text/html;charset=UTF-8")
     public String isLogin(String token){
-        User currentUser = GetUserUtil.getCurrentUser(token);
+        User currentUser = getUserUtil.getCurrentUser(token);
         if (currentUser == null) {
             return JSON.toJSONString(APIResponse.returnFail("false"), SerializerFeature.WriteMapNullValue);
         }
