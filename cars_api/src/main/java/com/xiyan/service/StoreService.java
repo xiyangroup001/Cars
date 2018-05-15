@@ -41,7 +41,7 @@ public interface StoreService {
 
     APIResponse<List<Store>> getStoreByCity(String city);
 
-    APIResponse<Store> getStoreById(int storeId, Admin admin);
+    APIResponse<Store> getStoreById(int storeId);
 }
 
 

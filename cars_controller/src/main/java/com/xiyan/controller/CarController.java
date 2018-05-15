@@ -91,7 +91,7 @@ public class CarController {
         }
         return JSON.toJSONString(carService.updateCarPrice(currentAdmin,low,high,price), SerializerFeature.WriteMapNullValue);
     }
-    @PostMapping(value = "/getneedcheckcarlist",produces="text/html;charset=UTF-8")//审核车辆通过，无数据返回 ret=true
+    @RequestMapping(value = "/getneedcheckcarlist",produces="text/html;charset=UTF-8")//审核车辆通过，无数据返回 ret=true
     public String getNeedCheckCarList(String token) {
         Admin currentAdmin = getUserUtil.getCurrentAdmin(token);
         if (currentAdmin == null) {

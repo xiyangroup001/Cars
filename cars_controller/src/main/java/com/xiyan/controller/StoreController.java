@@ -54,11 +54,8 @@ public class StoreController {
         return JSON.toJSONString(storeService.deleteStore(storeId,currentAdmin));
     }
     @RequestMapping(value = "/getstorebyid",produces="text/html;charset=UTF-8")
-    public String getStoreById( int storeId,String token){
-        Admin currentAdmin = getUserUtil.getCurrentAdmin(token);
-        if (currentAdmin == null) {
-            return JSON.toJSONString(APIResponse.returnFail("请登录！"), SerializerFeature.WriteMapNullValue);
-        }
-        return JSON.toJSONString(storeService.getStoreById(storeId,currentAdmin));
+    public String getStoreById( int storeId){
+
+        return JSON.toJSONString(storeService.getStoreById(storeId));
     }
 }

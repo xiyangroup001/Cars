@@ -110,13 +110,9 @@ public class StoreServiceImpl implements StoreService {
     }
 
     @Override
-    public APIResponse<Store> getStoreById(int storeId, Admin admin) {
+    public APIResponse<Store> getStoreById(int storeId  ) {
         return new ApiTemplate<Store>() {
-            @Override
-            protected void checkParams() throws BizException {
-                Preconditions.checkArgument(admin.getPower() > Admin.STORE_ADMIN, "权限不够！，需要平台管理员及以上权限！");
-            }
-            @Override
+
             protected APIResponse<Store> process() throws BizException {
 
                 return APIResponse.returnSuccess(storeSlaveDao.selectById(storeId));
