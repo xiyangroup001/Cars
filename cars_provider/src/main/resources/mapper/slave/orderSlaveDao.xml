@@ -18,7 +18,7 @@
     </resultMap>
 
     <select id="select" resultMap="order" parameterType="com.xiyan.model.entity.Order">
-        select * from order
+        select * from orders
         <where>
             <if test="orderId != 0">AND orderId = #{orderId} </if>
             <if test="userId != 0">AND userId = #{userId} </if>
@@ -36,11 +36,11 @@
     </select>
 
     <select id="selectAll" resultMap="order" parameterType="com.xiyan.model.entity.Order">
-        select * from order
+        select * from orders
     </select>
     <!--Order selectById(int orderId);-->
     <select id="selectById" resultMap="order" parameterType="int">
-        select * from order where orderId = #{orderId}
+        select * from orders where orderId = #{orderId}
     </select>
     <select id="selectRowNumber" resultType="int">
         select count(0) from order;

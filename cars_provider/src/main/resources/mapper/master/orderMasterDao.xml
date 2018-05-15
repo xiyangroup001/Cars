@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" " http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xiyan.dao.master.OrderMasterDao">
     <insert id="insert" useGeneratedKeys="true" keyProperty="orderId" parameterType="com.xiyan.model.entity.Order">
-        INSERT INTO order
+        INSERT INTO orders
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="userId != 0">userId,</if>
             <if test="carId != 0">carId,</if>
@@ -33,7 +33,7 @@
     </insert>
 
     <update id="update">
-        UPDATE order
+        UPDATE orders
         <trim prefix="SET" suffixOverrides="," >
             <if test="userId != 0">userId = #{userId},</if>
             <if test="carId != 0">carId = #{carId},</if>
@@ -51,7 +51,7 @@
     </update>
 
     <delete id="delete">
-        DELETE FROM order
+        DELETE FROM orders
         WHERE orderId = #{id}
     </delete>
 

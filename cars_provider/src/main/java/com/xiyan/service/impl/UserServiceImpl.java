@@ -168,7 +168,7 @@ public class UserServiceImpl implements UserService {
             @Override
             protected APIResponse<Boolean> process() throws BizException {
                 Preconditions.checkArgument(Pattern.matches("^[a-zA-Z0-9]{6,16}$", currentUser.getUserPassword()), "密码不符合要求！");
-                if(currentUser.getUserPassword()==oldPassword){
+                if(currentUser.getUserPassword().equals(oldPassword)){
                     currentUser.setUserPassword(newPassword);
                     userMasterDao.update(currentUser);
                     return APIResponse.returnSuccess();
