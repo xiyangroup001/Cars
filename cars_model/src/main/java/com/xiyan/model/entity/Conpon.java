@@ -1,8 +1,9 @@
 package com.xiyan.model.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Conpon {
+public class Conpon implements Serializable {
 
     private int couponId;
     private int userId;

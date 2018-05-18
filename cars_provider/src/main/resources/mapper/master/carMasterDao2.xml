@@ -44,7 +44,7 @@
     </insert>
 
     <update id="update">
-        UPDATE Car
+        UPDATE car
         <set>
             <if test="carLicense != null">carLicense=#{carLicense},</if>
             <if test="carBrand != null">carBrand=#{carBrand},</if>
@@ -57,33 +57,33 @@
                 com.xiyan.model.typeHandler.CarsPicUrlTypeHandler},</if>
             <if test="carQualification != null">carQualification=#{carQualification,typeHandler =
                 com.xiyan.model.typeHandler.CarQualTypeHandler},</if>
-            <if test="insuranceType != null">insuranceType=#{insurance,typeHandler =
+            <if test="insuranceType != null">insuranceType=#{insuranceType,typeHandler =
                 com.xiyan.model.typeHandler.ArrayListTypeHandler},</if>
             <if test="aduitId != null">aduitId=#{aduitId},</if>
             <if test="aduitType != null ">aduitType=#{aduitType},</if>
             <if test="reserveDateList != null">reserveDateList=#{reserveDateList,typeHandler =
-                com.xiyan.model.typeHandler.ReserveDateTypeHandler,</if>
+                com.xiyan.model.typeHandler.ReserveDateTypeHandler},</if>
         </set>
-        WHERE CarId = #{CarId}
+        WHERE carId = #{carId}
     </update>
-    <!--int updatePrice(int CarId,double price);-->
+    <!--int updatePrice(int carId,double price);-->
     <update id="updatePrice">
-        UPDATE Car
+        UPDATE car
         <set>
             <if test="rentalPrice != null">rentalPrice=#{param2},</if>
         </set>
-        WHERE CarId = #{param1}
+        WHERE carId = #{param1}
     </update>
     <!--int updatePriceBypp(int inStore, int low,int high,double price);-->
     <update id="updatePriceBypp">
-        UPDATE Car
+        UPDATE car
         <set>
             <if test="rentalPrice != null">rentalPrice=#{param4},</if>
         </set>
         WHERE inStore = #{param1} AND carPrice betWeen #{param2} and #{param3}
     </update>
     <delete id="delete">
-        DELETE FROM Car
-        WHERE CarId = #{CarId}
+        DELETE FROM car
+        WHERE carId = #{carId}
     </delete>
 </mapper>

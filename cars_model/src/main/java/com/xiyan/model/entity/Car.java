@@ -30,15 +30,15 @@ public class Car implements Serializable {
     private List<ReserveDate> reserveDateList;
 
 
-    public static final short SYATE_INSTORE = 1;
-    public static final short SYATE_BOOKED = 2;
-    public static final short SYATE_RENTEND_OUT = 3;
-    public static final short SYATE_REPAIR = 4;
-    public static final short SYATE_OUTOFDATE = 5;
+    public static final short SYATE_INSTORE = 1;//车辆状态。在门店
+    public static final short SYATE_BOOKED = 2;//车辆状态。已被预订，添加预订信息后已经不用该属性
+    public static final short SYATE_RENTEND_OUT = 3;//车辆状态。在出租中
+    public static final short SYATE_REPAIR = 4;//车辆状态。维修
+    public static final short SYATE_OUTOFDATE = 5;//超出日期
 
-    public static final short ADUIT_PASS = 1;
-    public static final short NOT_ADUIT = 2;
-    public static final short ADUIT_ERROR = 3;
+    public static final short ADUIT_PASS = 1;//审核状态，通过
+    public static final short NOT_ADUIT = 2;//审核状态，未审核
+    public static final short ADUIT_ERROR = 3;//审核状态，未通过
 
     public int getCarId() {
         return carId;

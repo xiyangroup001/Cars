@@ -1,5 +1,6 @@
 package com.xiyan.service;
 
+import com.xiyan.model.entity.Admin;
 import com.xiyan.model.entity.Order;
 import com.xiyan.model.entity.User;
 import com.xiyan.model.utils.APIResponse;
@@ -44,6 +45,16 @@ public interface OrderService {
     APIResponse<Boolean> getCar(int userId, int orderId);
 
     APIResponse<Boolean> returnCar(int userId, int orderId);
+
+    APIResponse<Integer> returnDeposit(int userId, Integer orderId);
+
+    APIResponse<Integer> payAll(int userId, Integer orderId);
+
+    APIResponse<Integer> payDeposit(int userId, Integer orderId);
+
+    APIResponse<List<Order>> getByCarId(Admin currentAdmin, int carId);
+
+    APIResponse<Order> getByOrderId(Admin currentAdmin, int orderId);
 }
 
 

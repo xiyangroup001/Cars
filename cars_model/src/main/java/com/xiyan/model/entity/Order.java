@@ -33,10 +33,10 @@ public class Order implements Serializable {
         private short payType;
         private Position position;
 
-        public static final short UNPAID_DEPOSIT = 1;
-        public static final short UNPAID_RENT = 2;
-        public static final short PAID_RENT = 3;
-        public static final short REFUNDED_DEPOSIT = 4;
+        public static final short UNPAID_DEPOSIT = 1;//未支付定金
+        public static final short UNPAID_RENT = 2;//支付定金，未支付全部金额
+        public static final short PAID_RENT = 3;//支付全部
+        public static final short REFUNDED_DEPOSIT = 4;//已退还押金，即完成
 
 
     @Override

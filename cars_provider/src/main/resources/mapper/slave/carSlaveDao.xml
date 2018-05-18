@@ -23,8 +23,8 @@
     <select id="selectAll" resultMap="car">
         select * from car;
     </select>
-    <!--List<Car> selectAllCarCanUse();-->
-    <select id="selectAllCarCanUse" resultMap="car">
+    <!--List<car> selectAllcarCanUse();-->
+    <select id="selectAllcarCanUse" resultMap="car">
         select * from car where aduitType = 1;
     </select>
     <select id="selectById" resultMap="car" parameterType="int">
@@ -34,12 +34,12 @@
     <select id="selectRowNumber" resultType="int">
         select count(0) from car;
     </select>
-    <!--List<Car> selectByStore(int storeid);-->
+    <!--List<car> selectByStore(int storeid);-->
     <select id="selectByStore" resultMap="car" parameterType="int">
         select * from car
         where inStore = #{storeid} ;
     </select>
-    <!--selectCarByCondition(int getStore, int[] carType, String[] carBrand, int lowPrice, int highPrice);-->
+    <!--selectcarByCondition(int getStore, int[] carType, String[] carBrand, int lowPrice, int highPrice);-->
     <select id="selectCarByCondition" resultMap="car">
         select * from car where
             inStore = #{param1}

@@ -86,10 +86,10 @@ public class CarMasterDaoTest {
         reserveDate.setEndDate( new Date(118,5,12));
         reserveDates.add(reserveDate);
         car.setReserveDateList(reserveDates);
-
-        carMasterDao.insert(car);
-        Admin admin = adminService.getAdminByName("张三1");
-        carService.createCar(admin,car);
+        car.setCarId(120);
+        carMasterDao.update(car);
+       // Admin admin = adminService.getAdminByName("张三1");
+       // carService.createCar(admin,car);
     }
 
     @Test

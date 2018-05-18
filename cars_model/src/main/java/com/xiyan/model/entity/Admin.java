@@ -15,10 +15,10 @@ public class Admin implements Serializable {
     private int store;
     private short power;
 
-    public static final short PLATFORM_ADMIN = 3;
-    public static final short STORE_ADMIN = 2;
-    public static final short ADMIN = 1;
-    public static final short SUPER_ADMIN = 4;
+    public static final short PLATFORM_ADMIN = 3;//平台级别的管理员
+    public static final short STORE_ADMIN = 2;//门店级别的管理员
+    public static final short ADMIN = 1;//普通管理员
+    public static final short SUPER_ADMIN = 4;//我们的后台管理员
 
     public String getAdminId() {
         return adminId;

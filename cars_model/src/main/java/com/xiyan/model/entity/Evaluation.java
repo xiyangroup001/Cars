@@ -1,8 +1,9 @@
 package com.xiyan.model.entity;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Evaluation {
+public class Evaluation implements Serializable {
 
     private int evaluationId;
     private int userId;

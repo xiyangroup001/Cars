@@ -28,9 +28,9 @@
             <if test="endTime != null">AND endTime = #{endTime} </if>
             <if test="takeCarShop != 0">AND takeCarShop = #{takeCarShop} </if>
             <if test="returnCarShop != 0">AND returnCarShop = #{returnCarShop} </if>
-            <if test="prepayAmount != null">AND prepayAmount = #{prepayAmount} </if>
-            <if test="totalAmount != null">AND totalAmount = #{totalAmount} </if>
-            <if test="payType != null">AND payType = #{payType} </if>
+            <if test="prepayAmount != 0.0">AND prepayAmount = #{prepayAmount} </if>
+            <if test="totalAmount != 0.0">AND totalAmount = #{totalAmount} </if>
+            <if test="payType != 0">AND payType = #{payType} </if>
             <if test="position != null">AND position = #{position,typeHandler=com.xiyan.model.typeHandler.PositionTypeHandler} </if>
         </where>
     </select>
