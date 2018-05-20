@@ -36,26 +36,6 @@ public class OrderController {
 
     }
 
-    @RequestMapping(value = "/getbycar", produces = "text/html;charset=UTF-8")//新建订单
-    public String getByCar(String token, int carId) {
-        Admin currentAdmin = getUserUtil.getCurrentAdmin(token);
-        if (currentAdmin == null) {
-            return JSON.toJSONString(APIResponse.returnFail("请登录！"), SerializerFeature.WriteMapNullValue);
-        }
-        return JSON.toJSONString(orderService.getByCarId(currentAdmin, carId));
-
-    }
-
-    @RequestMapping(value = "/getbyorderid", produces = "text/html;charset=UTF-8")//新建订单
-    public String getById(String token, int carId) {
-        Admin currentAdmin = getUserUtil.getCurrentAdmin(token);
-        if (currentAdmin == null) {
-            return JSON.toJSONString(APIResponse.returnFail("请登录！"), SerializerFeature.WriteMapNullValue);
-        }
-        return JSON.toJSONString(orderService.getByOrderId(currentAdmin, carId));
-
-    }
-
     @RequestMapping(value = "/paydeposit", produces = "text/html;charset=UTF-8")//支付定金
     public String PayDeposit(String token, Integer OrderId) {
         User currentUser = getUserUtil.getCurrentUser(token);
@@ -77,31 +57,59 @@ public class OrderController {
     }
     @RequestMapping(value = "/getcar", produces = "text/html;charset=UTF-8")//客户取车，这一步还有点问题 牵扯到支付还没做，这个应该是门店管理员做的。
     public String getCar(String token, Integer OrderId) {
-        User currentUser = getUserUtil.getCurrentUser(token);
-        if (currentUser == null) {
+        Admin currentAdmin = getUserUtil.getCurrentAdmin(token);
+        if (currentAdmin == null) {
             return JSON.toJSONString(APIResponse.returnFail("请登录！"), SerializerFeature.WriteMapNullValue);
         }
-        Object o = orderService.getCar(currentUser.getUserId(), OrderId);
+        Object o = orderService.getCar(currentAdmin, OrderId);
         return JSON.toJSONString(o, SerializerFeature.WriteMapNullValue);
     }
 
     @RequestMapping(value = "/returncar", produces = "text/html;charset=UTF-8")//客户还车，这一步还有点问题 牵扯到支付还没做。
     public String returnCar(String token, Integer OrderId) {
-        User currentUser = getUserUtil.getCurrentUser(token);
-        if (currentUser == null) {
+        Admin currentAdmin = getUserUtil.getCurrentAdmin(token);
+        if (currentAdmin == null) {
             return JSON.toJSONString(APIResponse.returnFail("请登录！"), SerializerFeature.WriteMapNullValue);
         }
-        Object o = orderService.returnCar(currentUser.getUserId(), OrderId);
+        Object o = orderService.returnCar(currentAdmin, OrderId);
         return JSON.toJSONString(o, SerializerFeature.WriteMapNullValue);
     }
-    @RequestMapping(value = "/returndeposit", produces = "text/html;charset=UTF-8")//支付定金
-    public String returnDeposit(String token, Integer OrderId) {
+
+
+    @RequestMapping(value = "/getbycar", produces = "text/html;charset=UTF-8")//新建订单
+    public String getByCar(String token, int carId) {
+        Admin currentAdmin = getUserUtil.getCurrentAdmin(token);
+        if (currentAdmin == null) {
+            return JSON.toJSONString(APIResponse.returnFail("请登录！"), SerializerFeature.WriteMapNullValue);
+        }
+        return JSON.toJSONString(orderService.getByCarId(currentAdmin, carId));
+
+    }
+
+    @RequestMapping(value = "/getbyorderidinuser", produces = "text/html;charset=UTF-8")//用户用来查看订单详情
+    public String getByIdInUser(String token, int carId) {
         User currentUser = getUserUtil.getCurrentUser(token);
         if (currentUser == null) {
             return JSON.toJSONString(APIResponse.returnFail("请登录！"), SerializerFeature.WriteMapNullValue);
         }
-        Object o = orderService.returnDeposit(currentUser.getUserId(), OrderId);
-        return JSON.toJSONString(o, SerializerFeature.WriteMapNullValue);
+        return JSON.toJSONString(orderService.getByIdInUser(currentUser, carId));
+    }
+    @RequestMapping(value = "/getbyorderidinadmin", produces = "text/html;charset=UTF-8")//Admin用来查看订单详情
+    public String getByIdInAdmin(String token, int carId) {
+        Admin currentAdmin = getUserUtil.getCurrentAdmin(token);
+        if (currentAdmin == null) {
+            return JSON.toJSONString(APIResponse.returnFail("请登录！"), SerializerFeature.WriteMapNullValue);
+        }
+        return JSON.toJSONString(orderService.getByIdInAdmin(currentAdmin, carId));
+    }
+
+    @RequestMapping(value = "/getorderbystore", produces = "text/html;charset=UTF-8")//获取历史订单
+    public String getOrderByStore(String token) {
+        Admin currentAdmin = getUserUtil.getCurrentAdmin(token);
+        if (currentAdmin == null) {
+            return JSON.toJSONString(APIResponse.returnFail("请登录！"), SerializerFeature.WriteMapNullValue);
+        }
+        return JSON.toJSONString(orderService.getOrderByStore(currentAdmin));
     }
 
     @RequestMapping(value = "/gethistoryorder", produces = "text/html;charset=UTF-8")//获取历史订单
@@ -111,6 +119,15 @@ public class OrderController {
             return JSON.toJSONString(APIResponse.returnFail("请登录！"), SerializerFeature.WriteMapNullValue);
         }
         return JSON.toJSONString(orderService.listOrderByUserId(currentUser.getUserId()));
+    }
+
+    @RequestMapping(value = "/delorder", produces = "text/html;charset=UTF-8")//获取历史订单
+    public String delOrder(String token,int orderId) {
+        Admin currentAdmin = getUserUtil.getCurrentAdmin(token);
+        if (currentAdmin == null) {
+            return JSON.toJSONString(APIResponse.returnFail("请登录！"), SerializerFeature.WriteMapNullValue);
+        }
+        return JSON.toJSONString(orderService.deleteOrder(currentAdmin,orderId));
     }
 
 }

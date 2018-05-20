@@ -43,6 +43,16 @@ public class CarController {
         return JSON.toJSONString(o, SerializerFeature.WriteMapNullValue);
     }
 
+    @RequestMapping(value = "/getcarbytype",produces="text/html;charset=UTF-8")
+    public String getCarByType(String token, int carState) {
+        Admin currentAdmin = getUserUtil.getCurrentAdmin(token);
+        if (currentAdmin == null) {
+            return JSON.toJSONString(APIResponse.returnFail("请登录！"), SerializerFeature.WriteMapNullValue);
+        }
+        Object o = carService.selectCarByType(currentAdmin,carState);
+        return JSON.toJSONString(o, SerializerFeature.WriteMapNullValue);
+    }
+
     @RequestMapping(value = "/getcarbyid",produces="text/html;charset=UTF-8")
     public String getCarById( int carId) {
         Object o = carService.selectCarById(carId);
@@ -91,6 +101,7 @@ public class CarController {
         }
         return JSON.toJSONString(carService.updateCarPrice(currentAdmin,low,high,price), SerializerFeature.WriteMapNullValue);
     }
+
     @RequestMapping(value = "/getneedcheckcarlist",produces="text/html;charset=UTF-8")//审核车辆通过，无数据返回 ret=true
     public String getNeedCheckCarList(String token) {
         Admin currentAdmin = getUserUtil.getCurrentAdmin(token);
@@ -99,8 +110,8 @@ public class CarController {
         }
         return JSON.toJSONString(carService.getNeedCheckCarList(currentAdmin), SerializerFeature.WriteMapNullValue);
     }
-       @RequestMapping(value = "/getnotpasscar",produces="text/html;charset=UTF-8")//获取没有通过审核的列表
-    public String getNotPassCar( String token) {
+    @RequestMapping(value = "/getnotpasscar",produces="text/html;charset=UTF-8")//获取管理员所在门店没有通过审核的列表
+    public String getNotPassCar(String token) {
         Admin currentAdmin = getUserUtil.getCurrentAdmin(token);
         if (currentAdmin == null) {
             return JSON.toJSONString(APIResponse.returnFail("请登录！"), SerializerFeature.WriteMapNullValue);

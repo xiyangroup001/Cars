@@ -65,6 +65,8 @@ public interface CarService {
     APIResponse<Car> selectCarById(int carId);
 
     APIResponse<List<Car>> getNeedCheckCarList(Admin currentAdmin);
+
+    APIResponse<List<Car>> selectCarByType(Admin currentAdmin, int carState);
 }
 
 

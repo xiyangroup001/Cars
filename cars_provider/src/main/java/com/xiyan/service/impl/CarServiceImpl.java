@@ -246,7 +246,22 @@ public class CarServiceImpl implements CarService {
         }.execute();
     }
 
-    private boolean checkTime(Date d1,Date d2,Date cd1,Date cd2){
+    @Override
+    public APIResponse<List<Car>> selectCarByType(Admin currentAdmin, int carState) {
+        return new ApiTemplate<List<Car>>() {
+            @Override
+            protected APIResponse<List<Car>> process() throws BizException {
+                if (currentAdmin.getPower()>=Admin.PLATFORM_ADMIN) return APIResponse.returnFail("权限不匹配！只允许门店或普通管理员进行此操作！");
+                Car c = new Car();
+                c.setInStore(currentAdmin.getStore());
+                c.setCarState((short) carState);
+                List<Car> cars = carSlaveDao.select(c);
+                return APIResponse.returnSuccess(cars);
+            }
+        }.execute();
+    }
+
+    private boolean checkTime(Date d1, Date d2, Date cd1, Date cd2){
         return cd1.after(d2) || cd2.before(d1);
 
     }

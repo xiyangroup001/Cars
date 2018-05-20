@@ -36,7 +36,9 @@ public class Order implements Serializable {
         public static final short UNPAID_DEPOSIT = 1;//未支付定金
         public static final short UNPAID_RENT = 2;//支付定金，未支付全部金额
         public static final short PAID_RENT = 3;//支付全部
-        public static final short REFUNDED_DEPOSIT = 4;//已退还押金，即完成
+        public static final short REFUNDED_DEPOSIT = 4;//已退还押金，位评论
+        public static final short CAR_OUT = 5;//车辆已取走。
+        public static final short COMMENTED = 6;//已评论，完成
 
 
     @Override

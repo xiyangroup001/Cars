@@ -18,7 +18,7 @@ public interface OrderService {
      * @param orderId
      * @return
      */
-    APIResponse<Integer> deleteOrder(Integer orderId);
+    APIResponse<Integer> deleteOrder(Admin currentAdmin,Integer orderId);
 
     /**
      * Method 新建用户
@@ -27,26 +27,11 @@ public interface OrderService {
      */
     APIResponse<Integer> insertOrder(User currentUser,Order order);
 
-    /**
-     * Method 选择全部用户
-     * @return
-     */
-    APIResponse<List<Order>> listAllOrder();
-
-    /**
-     * Method 更新用户信息
-     * @param order
-     * @return
-     */
-    APIResponse<Integer> updateOrder(Order order);
-
     APIResponse<List<Order>> listOrderByUserId(int userId);
 
-    APIResponse<Boolean> getCar(int userId, int orderId);
+    APIResponse<Boolean> getCar(Admin currentAdmin, int orderId);
 
-    APIResponse<Boolean> returnCar(int userId, int orderId);
-
-    APIResponse<Integer> returnDeposit(int userId, Integer orderId);
+    APIResponse<Boolean> returnCar(Admin currentAdmin, int orderId);
 
     APIResponse<Integer> payAll(int userId, Integer orderId);
 
@@ -54,7 +39,11 @@ public interface OrderService {
 
     APIResponse<List<Order>> getByCarId(Admin currentAdmin, int carId);
 
-    APIResponse<Order> getByOrderId(Admin currentAdmin, int orderId);
+    APIResponse<Order> getByIdInAdmin(Admin currentAdmin, int orderId);
+
+    APIResponse<Order> getByIdInUser(User currentUser, int carId);
+
+    APIResponse<List<Order>> getOrderByStore(Admin currentAdmin);
 }
 
 
