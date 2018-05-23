@@ -40,6 +40,15 @@ public class AdminServiceImplTest {
        // adminService.createAdmin(admin,admin);
     }
 
+    @Test
+    public void testcheck() throws Exception {
+        Admin admin = new Admin();
+
+        admin.setPower(Admin.SUPER_ADMIN);
+        //adminService.checkCarPass(admin,139);
+        System.out.println(adminService.listUnde(admin));
+        // adminService.createAdmin(admin,admin);
+    }
 
 
 }

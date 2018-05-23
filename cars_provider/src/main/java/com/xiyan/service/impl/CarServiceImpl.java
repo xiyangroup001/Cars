@@ -16,6 +16,7 @@ import com.xiyan.service.CarService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -43,12 +44,11 @@ public class CarServiceImpl implements CarService {
         return new ApiTemplate<Integer>() {
             @Override
             protected void checkParams() throws BizException {
-                Preconditions.checkArgument(car != null, "传入数据不能为NULL");
-                Preconditions.checkArgument(!car.getCarBrand().equals(""), "传入品牌不能为NULL");
-                Preconditions.checkArgument(!car.getCarLicense().equals(""), "传入牌照不能为NULL");
-                Preconditions.checkArgument(car.getRentalPrice() >= 0, "租金需要大于等于0");
-                Preconditions.checkArgument(car.getCarPrice() > 0, "车辆价位需要大于0");
-
+                Preconditions.checkNotNull(car , "传入数据不能为NULL");
+                Preconditions.checkArgument(car.getCarBrand()!=null&&!car.getCarBrand().equals(""), "传入品牌不能为NULL");
+                Preconditions.checkArgument(car.getCarLicense()!=null&&!car.getCarLicense().equals(""), "传入牌照不能为NULL");
+                Preconditions.checkArgument(car.getRentalPrice()!=null&&car.getRentalPrice() >= 0, "租金需要大于等于0");
+                Preconditions.checkArgument(car.getRentalPrice()!=null&&car.getCarPrice() > 0, "车辆价位需要大于0");
 
             }
 
@@ -65,6 +65,8 @@ public class CarServiceImpl implements CarService {
                 car.setCarState(Car.SYATE_INSTORE);
                 car.setAduitType(Car.NOT_ADUIT);
                 car.setAduitId(c1.getCheckId());
+                List<ReserveDate> reserveDates = new ArrayList<>();
+                car.setReserveDateList(reserveDates);
                 carMasterDao.insert(car);
                 return APIResponse.returnSuccess();
             }
@@ -198,8 +200,6 @@ public class CarServiceImpl implements CarService {
             protected APIResponse<List<Car>> process() throws BizException {
                 Car c = new Car();
                 c.setInStore(storeid);
-                c.setCarState(Car.SYATE_INSTORE);
-                c.setAduitType(Car.ADUIT_PASS);
                 List<Car> cars = carSlaveDao.select(c);
                 return APIResponse.returnSuccess(cars);
             }

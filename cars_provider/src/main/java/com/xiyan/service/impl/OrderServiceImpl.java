@@ -136,7 +136,7 @@ public class OrderServiceImpl implements OrderService {
             @Override
             protected APIResponse<Boolean> process() throws BizException {
                 Order order = orderSlaveDao.selectById(orderId);
-                if (order.getPayType() != Order.UNPAID_RENT) return APIResponse.returnFail("请先付定金，即押金！");
+                if (order.getPayType() != Order.PAID_RENT) return APIResponse.returnFail("订单状态不对！付全部金额后进行此操作！");
                 order.setPayType(Order.CAR_OUT);
                 orderMasterDao.update(order);
 
@@ -162,7 +162,7 @@ public class OrderServiceImpl implements OrderService {
             @Override
             protected APIResponse<Boolean> process() throws BizException {
                 Order order = orderSlaveDao.selectById(orderId);
-                if (order.getPayType() != Order.CAR_OUT) return APIResponse.returnFail("请先付定金，即押金！");
+                if (order.getPayType() != Order.CAR_OUT) return APIResponse.returnFail("订单状态不对！取车后进行此操作！");
                 order.setPayType(Order.REFUNDED_DEPOSIT);
                 orderMasterDao.update(order);
 

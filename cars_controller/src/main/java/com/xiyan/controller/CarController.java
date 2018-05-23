@@ -38,8 +38,12 @@ public class CarController {
     }
 
     @RequestMapping(value = "/selectcarbystore",produces="text/html;charset=UTF-8")//通过门店选择车辆
-    public String selectCarByStore( int storeId) {
-        Object o = carService.selectCarByStore(storeId);
+    public String selectCarByStore(String token) {
+        Admin currentAdmin = getUserUtil.getCurrentAdmin(token);
+        if (currentAdmin == null) {
+            return JSON.toJSONString(APIResponse.returnFail("请登录！"), SerializerFeature.WriteMapNullValue);
+        }
+        Object o = carService.selectCarByStore(currentAdmin.getStore());
         return JSON.toJSONString(o, SerializerFeature.WriteMapNullValue);
     }
 

@@ -29,7 +29,7 @@ public class AdminController {
         if (adminService.loginAdmin(username, password)) {
             String token = "";
             try {
-                token = JWTUtil.createJWT(username, username, 1000 * 60 * 30);
+                token = JWTUtil.createJWT(username, username, 1000 * 60 * 60);
                 return JSON.toJSONString(APIResponse.returnSuccess(token));
             } catch (Exception e1) {
                 e1.printStackTrace();
@@ -126,6 +126,15 @@ public class AdminController {
             return JSON.toJSONString(APIResponse.returnFail("false"), SerializerFeature.WriteMapNullValue);
         }
         return JSON.toJSONString(APIResponse.returnSuccess(true),SerializerFeature.WriteMapNullValue);
+    }
+
+    @RequestMapping(value = "/getadmin",produces="text/html;charset=UTF-8")//
+    public String getAdmin( String token){
+        Admin currentAdmin = getUserUtil.getCurrentAdmin(token);
+        if (currentAdmin == null) {
+            return JSON.toJSONString(APIResponse.returnFail("false"), SerializerFeature.WriteMapNullValue);
+        }
+        return JSON.toJSONString(currentAdmin,SerializerFeature.WriteMapNullValue);
     }
 
 }

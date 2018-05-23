@@ -13,6 +13,17 @@
 
     </resultMap>
 
+    <select id="select" resultMap="admin">
+        select * FROM admin
+        <where>
+            <if test="adminId != null">AND adminId = #{adminId}</if>
+            <if test="adminName != null">AND adminName = #{adminName}</if>
+            <if test="platformId != 0">AND platformId = #{platformId}</if>
+            <if test="power != 0">AND power = #{power}</if>
+            <if test="store != 0">AND store = #{store}</if>
+        </where>
+    </select>
+
     <select id="selectAll" resultMap="admin">
         select * from admin;
     </select>

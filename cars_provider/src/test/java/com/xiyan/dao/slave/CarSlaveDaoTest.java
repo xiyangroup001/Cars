@@ -39,4 +39,10 @@ public class CarSlaveDaoTest {
                 new Date(118,4,18)));
     }
 
+    @Test
+    public void select() throws Exception {
+
+        System.out.println(carService.selectCarByStore(10236));
+    }
+
 }

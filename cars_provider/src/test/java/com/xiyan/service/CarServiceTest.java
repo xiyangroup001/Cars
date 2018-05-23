@@ -76,5 +76,6 @@ public class CarServiceTest {
 
         Admin admin = adminService.getAdminByName("张三1");
         carService.createCar(admin,car);
+        System.out.println(carService.selectCarByStore(10025));;
     }
 }
